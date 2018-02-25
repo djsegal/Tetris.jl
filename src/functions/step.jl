@@ -6,7 +6,7 @@ function step(cur_player::AbstractPlayer)
   toggle_piece(cur_piece, false)
 
   if check_drop(cur_piece)
-    soft_drop!(cur_piece)
+    drop_piece!(cur_piece)
     toggle_piece(cur_piece, true)
   else
     toggle_piece(cur_piece, true)
