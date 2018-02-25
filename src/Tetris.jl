@@ -1,5 +1,13 @@
 module Tetris
 
-# package code goes here
+  using Revise
 
-end # module
+  include("abstracts.jl")
+  include("structs.jl")
+  include("constructors.jl")
+
+  include("assets/index.jl")
+  include("layouts/index.jl")
+  include("start.jl")
+
+end
