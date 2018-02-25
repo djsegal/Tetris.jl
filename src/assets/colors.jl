@@ -1,34 +1,46 @@
 colors_asset() = """
   <style>
-    .cs-amber,.cs-hover-amber:hover{color:#000!important;background-color:#ffc107!important}
-    .cs-aqua,.cs-hover-aqua:hover{color:#000!important;background-color:#00ffff!important}
-    .cs-blue,.cs-hover-blue:hover{color:#fff!important;background-color:#2196F3!important}
-    .cs-light-blue,.cs-hover-light-blue:hover{color:#000!important;background-color:#87CEEB!important}
-    .cs-brown,.cs-hover-brown:hover{color:#fff!important;background-color:#795548!important}
-    .cs-cyan,.cs-hover-cyan:hover{color:#000!important;background-color:#00bcd4!important}
-    .cs-blue-grey,.cs-hover-blue-grey:hover,.cs-blue-gray,.cs-hover-blue-gray:hover{color:#fff!important;background-color:#607d8b!important}
-    .cs-green,.cs-hover-green:hover{color:#fff!important;background-color:#4CAF50!important}
-    .cs-light-green,.cs-hover-light-green:hover{color:#000!important;background-color:#8bc34a!important}
-    .cs-indigo,.cs-hover-indigo:hover{color:#fff!important;background-color:#3f51b5!important}
-    .cs-khaki,.cs-hover-khaki:hover{color:#000!important;background-color:#f0e68c!important}
-    .cs-lime,.cs-hover-lime:hover{color:#000!important;background-color:#cddc39!important}
-    .cs-orange,.cs-hover-orange:hover{color:#000!important;background-color:#ff9800!important}
-    .cs-deep-orange,.cs-hover-deep-orange:hover{color:#fff!important;background-color:#ff5722!important}
-    .cs-pink,.cs-hover-pink:hover{color:#fff!important;background-color:#e91e63!important}
-    .cs-purple,.cs-hover-purple:hover{color:#fff!important;background-color:#9c27b0!important}
-    .cs-deep-purple,.cs-hover-deep-purple:hover{color:#fff!important;background-color:#673ab7!important}
-    .cs-red,.cs-hover-red:hover{color:#fff!important;background-color:#f44336!important}
-    .cs-sand,.cs-hover-sand:hover{color:#000!important;background-color:#fdf5e6!important}
-    .cs-teal,.cs-hover-teal:hover{color:#fff!important;background-color:#009688!important}
-    .cs-yellow,.cs-hover-yellow:hover{color:#000!important;background-color:#ffeb3b!important}
-    .cs-white,.cs-hover-white:hover{color:#000!important;background-color:#fff!important}
-    .cs-black,.cs-hover-black:hover{color:#fff!important;background-color:#000!important}
-    .cs-grey,.cs-hover-grey:hover,.cs-gray,.cs-hover-gray:hover{color:#000!important;background-color:#9e9e9e!important}
-    .cs-light-grey,.cs-hover-light-grey:hover,.cs-light-gray,.cs-hover-light-gray:hover{color:#000!important;background-color:#f1f1f1!important}
-    .cs-dark-grey,.cs-hover-dark-grey:hover,.cs-dark-gray,.cs-hover-dark-gray:hover{color:#fff!important;background-color:#616161!important}
-    .cs-pale-red,.cs-hover-pale-red:hover{color:#000!important;background-color:#ffdddd!important}
-    .cs-pale-green,.cs-hover-pale-green:hover{color:#000!important;background-color:#ddffdd!important}
-    .cs-pale-yellow,.cs-hover-pale-yellow:hover{color:#000!important;background-color:#ffffcc!important}
-    .cs-pale-blue,.cs-hover-pale-blue:hover{color:#000!important;background-color:#ddffff!important}
+
+    .cs-white { background-color: #FFFFFF !important }
+    .cs-black { background-color: #000000 !important }
+    .cs-grey { background-color: #9E9E9E !important }
+    .cs-light-grey { background-color: #f1f1f1 !important }
+    .cs-dark-grey { background-color: #616161 !important }
+
+    .cs-cyan {
+      background-color: #00BCD4 !important;
+      border: solid 1px #0097A7 !important;
+    }
+
+    .cs-yellow {
+      background-color: #FFEB3B !important;
+      border: solid 1px #FBC02D !important;
+    }
+
+    .cs-purple {
+      background-color: #9C27B0 !important;
+      border: solid 1px #7B1FA2 !important;
+    }
+
+    .cs-green {
+      background-color: #4CAF50 !important;
+      border: solid 1px #388E3C !important;
+    }
+
+    .cs-red {
+      background-color: #F44336 !important;
+      border: solid 1px #D32F2F !important;
+    }
+
+    .cs-blue {
+      background-color: #2196F3 !important;
+      border: solid 1px #1976D2 !important;
+    }
+
+    .cs-orange {
+      background-color: #FF9800 !important;
+      border: solid 1px #F57C00 !important;
+    }
+
   </style>
 """

@@ -8,6 +8,9 @@ module Tetris
 
   include("assets/index.jl")
   include("layouts/index.jl")
+  include("tetrominoes/index.jl")
+
+  include("functions/index.jl")
   include("start.jl")
 
 end

@@ -4,16 +4,19 @@ function start()
 
   cur_player = Player(cur_game)
 
-  cur_html = ""
+  cur_html = bundled_assets
 
-  cur_html *= colors_asset()
+  cur_html *= grid_layout(cur_player.grid)
 
-  cur_html *= depth_asset()
+  display(HTML(cur_html))
 
-  cur_html *= style_asset()
+  cur_player.is_playing = true
 
-  cur_html *= grid_layout()
+  while cur_player.is_playing
+    step(cur_player)
+    sleep(0.05)
+  end
 
-  HTML(cur_html)
+  return
 
 end

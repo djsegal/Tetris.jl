@@ -1,22 +1,24 @@
-function grid_layout()
-  cur_grid = """<table class="cs-tetris-table z-depth-1">"""
+function grid_layout(cur_grid::AbstractGrid)
+  cur_layout = """<table class="cs-tetris-table z-depth-1">"""
 
-  for cur_row in 22:-1:1
+  total_rows = cur_grid.rows + cur_grid.hidden_rows
+
+  for cur_row in total_rows:-1:1
     cur_class = "cs-row-$(cur_row)"
 
-    ( cur_row > 20 ) && ( cur_class *= " hidden" )
+    ( cur_row > cur_grid.rows ) && ( cur_class *= " hidden" )
 
-    cur_grid *= """<tr class="$(cur_class)">"""
+    cur_layout *= """<tr class="$(cur_class)">"""
 
-    for cur_col in 1:10
-      cur_grid *= """<td class="cs-light-grey">"""
-      cur_grid *= """</td>"""
+    for cur_col in 1:cur_grid.cols
+      cur_layout *= """<td class="cs-light-grey">"""
+      cur_layout *= """</td>"""
     end
 
-    cur_grid *= """</tr>"""
+    cur_layout *= """</tr>"""
   end
 
-  cur_grid *= """</table>"""
+  cur_layout *= """</table>"""
 
-  cur_grid
+  cur_layout
 end
