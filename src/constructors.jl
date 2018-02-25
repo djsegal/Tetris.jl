@@ -5,11 +5,17 @@ function Game()
 end
 
 function Player(cur_game::AbstractGame=Game())
-  cur_player = Player(cur_game, Nullable{AbstractGrid}())
+  cur_player = Player(
+    cur_game,
+    Nullable{AbstractGrid}(),
+    Nullable{AbstractBag}(),
+    Nullable{AbstractPiece}()
+  )
 
   push!(cur_game.players, cur_player)
 
   Grid(cur_player)
+  Bag(cur_player)
 
   cur_player
 end
@@ -20,6 +26,14 @@ function Grid(cur_player::AbstractPlayer=Player())
   cur_player.grid = cur_grid
 
   cur_grid
+end
+
+function Bag(cur_player::AbstractPlayer=Player())
+  cur_bag = Bag(cur_player, Piece[])
+
+  cur_player.bag = cur_bag
+
+  cur_bag
 end
 
 function Piece(cur_grid::AbstractGrid=Grid())
