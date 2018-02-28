@@ -1,5 +1,9 @@
 style_asset() = """
   <style>
+    div.output_area  div.cs-tetris-container:focus {
+      outline: none;
+    }
+
     div.output_area table.cs-tetris-table {
       margin: 2.5vmin auto;
     }
