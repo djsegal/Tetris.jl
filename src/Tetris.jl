@@ -14,6 +14,8 @@ module Tetris
   include("tetrominoes/index.jl")
 
   include("functions/index.jl")
+  include("actions/index.jl")
+
   include("setup.jl")
   include("start.jl")
 

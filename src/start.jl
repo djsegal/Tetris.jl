@@ -16,17 +16,18 @@ function start()
 
   # display(HTML(cur_html))
 
+    for asdf in 1:3
     # while cur_player.is_playing
-    #   # println("40404")
-    #   # println(is_playing)
-    #   step(cur_player)
-    #   sleep(0.5)
-    #   # println("404041")
-    #   # println(cur_player.is_playing)
-    #   # println(is_playing)
-    #   # cur_player.is_playing = is_playing
-    #   # println(cur_player.is_playing)
-    # end
+      # println("40404")
+      # println(is_playing)
+      step(cur_player)
+      sleep(0.5)
+      # println("404041")
+      # println(cur_player.is_playing)
+      # println(is_playing)
+      # cur_player.is_playing = is_playing
+      # println(cur_player.is_playing)
+    end
   # end
 
   return

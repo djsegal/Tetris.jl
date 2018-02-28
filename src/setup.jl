@@ -13,7 +13,8 @@ function setup()
   action_observer = Observable(cur_scope, "action", "")
 
   on(action_observer) do cur_action
-    println("JS sent $cur_action")
+    ( cur_action == "" ) && return
+    getfield(Tetris, Symbol(cur_action))(cur_player)
   end
 
   display(

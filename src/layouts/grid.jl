@@ -53,7 +53,7 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
     if ( cur_key_code == 83 ) ; is_arrow_key = true ; $cur_observer[] = "down" ; end
 
     if ( cur_key_code == 81 ) ; is_arrow_key = true ; $cur_observer[] = "counter" ; end
-    if ( cur_key_code == 69 ) ; is_arrow_key = true ; $cur_observer[] = "clock" ; end
+    if ( cur_key_code == 69 ) ; is_arrow_key = true ; $cur_observer[] = "clockwise" ; end
 
     if is_arrow_key ; cur_event.preventDefault() ; end
   end
