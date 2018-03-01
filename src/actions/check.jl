@@ -1,7 +1,7 @@
 function check(cur_blocks::Vector{Tuple{Int,Int}}, cur_grid::AbstractGrid)
   for (cur_row, cur_col) in cur_blocks
-    iszero(cur_col) && return false
-    iszero(cur_row) && return false
+    ( cur_col <= 0 ) && return false
+    ( cur_row <= 0 ) && return false
 
     ( cur_col > cur_grid.cols ) && return false
 
