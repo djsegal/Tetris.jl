@@ -1,34 +1,63 @@
 function start()
 
-  # @manipulate for is_playing in [true, false]
-    cur_game = setup()
+  # ---------------
+  #  setup styling
+  # ---------------
 
-    cur_player = cur_game.players[1]
+  cur_html = HTML(bundled_assets)
 
-    cur_player.is_playing = true
+  display(cur_html)
 
-  # cur_html = """
-  #   <script class="cs-step-script">
-  #     \$(".cs-step-script").parent().css("padding", 0);
-  #     \$(".js-tetris-container").focus();
-  #   </script>
-  # """
+  # ----------------
+  #  create objects
+  # ----------------
 
-  # display(HTML(cur_html))
+  cur_scope = Scope()
 
-    for asdf in 1:3
-    # while cur_player.is_playing
-      # println("40404")
-      # println(is_playing)
-      step(cur_player)
-      sleep(0.5)
-      # println("404041")
-      # println(cur_player.is_playing)
-      # println(is_playing)
-      # cur_player.is_playing = is_playing
-      # println(cur_player.is_playing)
+  cur_game = Game()
+
+  cur_player = Player(cur_game)
+
+  # ------------
+  #  receive js
+  # ------------
+
+  action_observer = Observable(cur_scope, "action", "")
+
+  cur_player.observer.action = action_observer
+
+  on(action_observer) do cur_action
+    if cur_action == "play"
+      cur_game.in_focus = true
+      drop_clock(cur_player)
+      return
     end
-  # end
+
+    if cur_action != "pause"
+      cur_player.action = cur_action
+
+      ( cur_action != "" ) &&
+        getfield(Tetris, Symbol(cur_action))(cur_player)
+
+      return
+    end
+
+    cur_state = cur_player.state
+    is_paused = !cur_state.is_playing && !cur_state.has_lost
+    cur_state.is_playing = !cur_state.is_playing
+
+    is_paused && drop_clock(cur_player)
+  end
+
+  # -------------
+  #  render grid
+  # -------------
+
+  display(
+    cur_scope(
+      render(action_observer, cur_player.grid)
+    )
+  )
 
   return
 

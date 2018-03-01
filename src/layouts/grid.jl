@@ -10,13 +10,17 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
     for cur_col in 1:cur_grid.cols
       push!(
         cur_cell_array,
-        Node(:td, attributes=Dict(:class => "cs-light-grey"))
+        Node(:td)
       )
     end
 
     cur_class = "cs-row-$(cur_row)"
 
-    ( cur_row > cur_grid.rows ) && ( cur_class *= " hidden" )
+    if ( cur_row > cur_grid.rows )
+      cur_class *= " cs-grey"
+    else
+      cur_class *= " cs-light-grey"
+    end
 
     push!(
       cur_row_array,
@@ -37,6 +41,10 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
   cur_events = Dict()
 
+  cur_events["dblclick"] = @js function (cur_event)
+    $cur_observer[] = "play";
+  end
+
   cur_events["keydown"] = @js function (cur_event)
     cur_key_code = cur_event.keyCode;
 
@@ -54,6 +62,8 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
     if ( cur_key_code == 81 ) ; is_arrow_key = true ; $cur_observer[] = "counter" ; end
     if ( cur_key_code == 69 ) ; is_arrow_key = true ; $cur_observer[] = "clockwise" ; end
+
+    if ( cur_key_code == 80 ) ; is_arrow_key = true ; $cur_observer[] = "pause" ; end
 
     if is_arrow_key ; cur_event.preventDefault() ; end
   end
@@ -73,6 +83,8 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
     if ( cur_key_code == 81 ) ; $cur_observer[] = "" ; end
     if ( cur_key_code == 69 ) ; $cur_observer[] = "" ; end
+
+    if ( cur_key_code == 80 ) ; $cur_observer[] = "" ; end
   end
 
   cur_container = dom"div[tabindex=1]"(

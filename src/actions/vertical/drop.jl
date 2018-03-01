@@ -1,4 +1,4 @@
-function slide!(cur_piece::AbstractPiece, cur_grid::AbstractGrid, cur_direction::Integer)
+function drop!(cur_player::AbstractPlayer, cur_piece::AbstractPiece, cur_grid::AbstractGrid, cur_direction::Integer)
   cur_blocks = map(
     cur_block -> calc_block_coords(cur_block),
     cur_piece.blocks
@@ -12,8 +12,8 @@ function slide!(cur_piece::AbstractPiece, cur_grid::AbstractGrid, cur_direction:
 
     for (cur_index, cur_block) in enumerate(cur_blocks)
       cur_blocks[cur_index] = (
-        first(cur_block) + 0,
-        last(cur_block) + sign(cur_direction)
+        first(cur_block) + sign(cur_direction),
+        last(cur_block) + 0
       )
     end
 
@@ -27,11 +27,9 @@ function slide!(cur_piece::AbstractPiece, cur_grid::AbstractGrid, cur_direction:
 
   did_move || return false
 
-  toggle_piece(cur_piece, false)
+  cur_piece.i += new_direction
 
-  cur_piece.j += new_direction
-
-  toggle_piece(cur_piece, true)
+  move!(cur_player)
 
   true
 end

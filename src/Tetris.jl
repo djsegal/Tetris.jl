@@ -4,10 +4,11 @@ module Tetris
   using JSExpr
 
   using WebIO
+  using DataStructures
 
   include("abstracts.jl")
-  include("structs.jl")
-  include("constructors.jl")
+  include("structs/index.jl")
+  include("clocks/index.jl")
 
   include("assets/index.jl")
   include("layouts/index.jl")
@@ -16,7 +17,6 @@ module Tetris
   include("functions/index.jl")
   include("actions/index.jl")
 
-  include("setup.jl")
   include("start.jl")
 
 end
