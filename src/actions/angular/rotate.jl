@@ -19,3 +19,7 @@ function rotate!(cur_player::AbstractPlayer, cur_piece::AbstractPiece, cur_grid:
 
   true
 end
+
+function rotate!(cur_player::AbstractPlayer, cur_piece::Nullable{AbstractPiece}, cur_grid::AbstractGrid, cur_direction::Integer)
+  false
+end
