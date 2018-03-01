@@ -16,6 +16,12 @@ function move!(cur_player::AbstractPlayer)
     cur_piece.blocks
   )
 
+  copy_plot = deepcopy(new_plot)
+
+  old_plot, new_plot =
+    setdiff(old_plot, new_plot),
+    setdiff(new_plot, old_plot)
+
   for (cur_row, cur_col) in old_plot
     cur_html *= """
       cur_cell = \$(".cs-row-$(cur_row) td:nth-child($(cur_col))");
@@ -51,7 +57,7 @@ function move!(cur_player::AbstractPlayer)
 
   display(HTML(cur_html))
 
-  cur_player.state.last_plot = new_plot
+  cur_player.state.last_plot = copy_plot
 
   cur_player.clock.last_move = now()
 
