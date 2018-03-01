@@ -33,6 +33,14 @@ function start()
       return
     end
 
+    if cur_action == "suspend"
+      cur_game.in_focus = false
+      cur_player.clock.drop =
+        Nullable{Base.Random.UUID}()
+
+      return
+    end
+
     if cur_action != "pause"
       cur_player.action = cur_action
 

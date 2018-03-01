@@ -45,6 +45,10 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
     $cur_observer[] = "play";
   end
 
+  cur_events["blur"] = @js function (cur_event)
+    $cur_observer[] = "suspend";
+  end
+
   cur_events["keydown"] = @js function (cur_event)
     cur_key_code = cur_event.keyCode;
 
