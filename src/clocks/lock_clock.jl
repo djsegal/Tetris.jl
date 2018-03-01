@@ -24,7 +24,6 @@ function lock_clock(cur_player::AbstractPlayer)
     end
 
     glue_piece!(cur_player)
-    drop_clock(cur_player)
     break
   end
 

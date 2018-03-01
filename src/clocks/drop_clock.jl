@@ -6,19 +6,17 @@ function drop_clock(cur_player::AbstractPlayer)
 
   cur_player.clock.drop = cur_uuid
 
+  cur_player.clock.lock =
+    Nullable{Base.Random.UUID}()
+
   @async while cur_player.state.is_playing && !cur_player.state.has_lost && cur_player.clock.drop == cur_uuid
     did_step = step(cur_player)
 
-    if did_step
-      sleep(0.5)
-      continue
+    if !did_step && isnull(cur_player.clock.lock)
+      lock_clock(cur_player)
     end
 
-    cur_player.clock.drop =
-      Nullable{Base.Random.UUID}()
-
-    lock_clock(cur_player)
-    break
+    sleep(0.5)
   end
 
 end
