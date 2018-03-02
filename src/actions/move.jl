@@ -1,12 +1,9 @@
 function move!(cur_player::AbstractPlayer)
 
-  cur_html = """
-    <script class="cs-step-script">
-      \$(".cs-step-script").parent().css("padding", 0);
+  cur_js = """
+    \$(".js-active-piece").removeClass();
 
-      \$(".js-active-piece").removeClass();
-
-      var cur_cell;
+    var cur_cell;
   """
 
   cur_piece = cur_player.piece
@@ -17,15 +14,13 @@ function move!(cur_player::AbstractPlayer)
   )
 
   for (cur_row, cur_col) in cur_coords
-    cur_html *= """
+    cur_js *= """
       cur_cell = \$(".cs-row-$(cur_row) td:nth-child($(cur_col))");
       cur_cell.addClass("cs-$(cur_piece.color) js-active-piece");
     """
   end
 
-  cur_html *= "</script>"
-
-  display(HTML(cur_html))
+  evaljs(cur_player.game.scope, JSString(cur_js))
 
   cur_player.clock.last_move = now()
 
