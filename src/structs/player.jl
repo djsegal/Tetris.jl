@@ -10,6 +10,7 @@ mutable struct Player <: AbstractPlayer
   clock::Union{AbstractClock, Nullable{AbstractClock}}
 
   action::AbstractString
+  lines::Int
 end
 
 function Player(cur_game::AbstractGame=Game())
@@ -21,7 +22,8 @@ function Player(cur_game::AbstractGame=Game())
     Nullable{AbstractObserver}(),
     Nullable{AbstractState}(),
     Nullable{AbstractClock}(),
-    ""
+    "",
+    0
   )
 
   push!(cur_game.players, cur_player)
