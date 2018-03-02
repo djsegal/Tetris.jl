@@ -12,8 +12,6 @@ function start()
   #  create objects
   # ----------------
 
-  cur_scope = Scope()
-
   cur_game = Game()
 
   cur_player = Player(cur_game)
@@ -22,7 +20,7 @@ function start()
   #  receive js
   # ------------
 
-  action_observer = Observable(cur_scope, "action", "")
+  action_observer = Observable(cur_game.scope, "action", "")
 
   cur_player.observer.action = action_observer
 
@@ -62,7 +60,7 @@ function start()
   # -------------
 
   display(
-    cur_scope(
+    cur_game.scope(
       render(action_observer, cur_player.grid)
     )
   )
