@@ -1,7 +1,8 @@
 function glue_piece!(cur_player::AbstractPlayer)
   cur_js = """
-    \$(".js-active-piece").removeClass("js-active-piece");
-    \$(".js-shadow-piece").removeClass("js-shadow-piece");
+    \$(".js-shadow-piece, .js-active-piece").removeClass();
+
+    var tmp_cell;
   """
 
   cur_piece = cur_player.piece
@@ -12,6 +13,12 @@ function glue_piece!(cur_player::AbstractPlayer)
 
   for cur_block in cur_piece.blocks
     (cur_row, cur_col) = calc_block_coords(cur_block)
+
+    cur_js *= """
+      tmp_cell = \$(".cs-row-$(cur_row) td:nth-child($(cur_col))");
+
+      tmp_cell.addClass("cs-color cs-$(cur_piece.color)");
+    """
 
     ( cur_grid.height < cur_row ) &&
       ( cur_grid.height = cur_row )
