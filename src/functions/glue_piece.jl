@@ -1,6 +1,7 @@
 function glue_piece!(cur_player::AbstractPlayer)
   cur_js = """
     \$(".js-active-piece").removeClass("js-active-piece");
+    \$(".js-shadow-piece").removeClass("js-shadow-piece");
   """
 
   cur_piece = cur_player.piece

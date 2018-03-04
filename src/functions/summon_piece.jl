@@ -11,4 +11,6 @@ function summon_piece!(cur_player::AbstractPlayer)
 
   cur_player.piece = cur_piece
   cur_piece.owner = cur_player
+
+  reset_shadow!(cur_player)
 end

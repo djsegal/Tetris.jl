@@ -1,4 +1,4 @@
-function drop!(cur_player::AbstractPlayer, cur_piece::AbstractPiece, cur_grid::AbstractGrid, cur_direction::Integer)
+function drop!(cur_player::AbstractPlayer, cur_piece::AbstractPiece, cur_grid::AbstractGrid, cur_direction::Integer, is_main_piece::Bool)
   cur_blocks = map(
     cur_block -> calc_block_coords(cur_block),
     cur_piece.blocks
@@ -29,11 +29,11 @@ function drop!(cur_player::AbstractPlayer, cur_piece::AbstractPiece, cur_grid::A
 
   cur_piece.i += new_direction
 
-  move!(cur_player)
+  move!(cur_piece, is_main_piece)
 
   true
 end
 
-function drop!(cur_player::AbstractPlayer, cur_piece::Nullable{AbstractPiece}, cur_grid::AbstractGrid, cur_direction::Integer)
+function drop!(cur_player::AbstractPlayer, cur_piece::Nullable{AbstractPiece}, cur_grid::AbstractGrid, cur_direction::Integer, is_main_piece::Bool)
   false
 end

@@ -16,10 +16,6 @@ style_asset() = """
       background: initial;
     }
 
-    .cs-tetris-table tr {
-      background-color: red;
-    }
-
     .cs-tetris-table td {
       width: 3vmin;
       height: 3vmin;
@@ -64,5 +60,9 @@ style_asset() = """
       margin-right: 1.08em;
     }
 
+    .js-shadow-piece:not(.js-active-piece) {
+      opacity: 0.3;
+      border: none !important;
+    }
   </style>
 """

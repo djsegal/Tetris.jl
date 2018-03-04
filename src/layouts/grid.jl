@@ -16,8 +16,10 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
     cur_class = "cs-row-$(cur_row)"
 
-    if ( cur_row > cur_grid.rows )
-      cur_class *= " cs-grey"
+    is_hidden_row = ( cur_row > cur_grid.rows )
+
+    if is_hidden_row
+      cur_class *= " cs-dark-grey"
     else
       cur_class *= " cs-light-grey"
     end

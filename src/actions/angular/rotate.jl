@@ -15,7 +15,9 @@ function rotate!(cur_player::AbstractPlayer, cur_piece::AbstractPiece, cur_grid:
     cur_block.x *= +sign(cur_direction)
   end
 
-  move!(cur_player)
+  move!(cur_piece)
+
+  reset_shadow!(cur_player)
 
   true
 end

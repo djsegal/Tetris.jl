@@ -1,12 +1,12 @@
-function move!(cur_player::AbstractPlayer)
+function move!(cur_piece::AbstractPiece, is_main_piece::Bool=true)
+  cur_class = is_main_piece ?
+    "js-active-piece" : "js-shadow-piece"
 
   cur_js = """
-    \$(".js-active-piece").removeClass();
+    \$(".$(cur_class)").removeClass();
 
     var cur_cell;
   """
-
-  cur_piece = cur_player.piece
 
   cur_coords = map(
     cur_block -> calc_block_coords(cur_block),
@@ -16,13 +16,17 @@ function move!(cur_player::AbstractPlayer)
   for (cur_row, cur_col) in cur_coords
     cur_js *= """
       cur_cell = \$(".cs-row-$(cur_row) td:nth-child($(cur_col))");
-      cur_cell.addClass("cs-$(cur_piece.color) js-active-piece");
+      cur_cell.addClass("cs-$(cur_piece.color)");
+      cur_cell.addClass("$(cur_class)");
     """
   end
 
+  cur_player = cur_piece.owner
+
   evaljs(cur_player.game.scope, JSString(cur_js))
 
-  cur_player.clock.last_move = now()
+  is_main_piece &&
+    ( cur_player.clock.last_move = now() )
 
   return
 

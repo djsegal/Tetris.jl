@@ -1,13 +1,12 @@
 colors_asset() = """
   <style>
 
-    .cs-blue-grey { background-color: #607D8B !important }
+    .cs-grey { background-color: grey !important;}
 
-    .cs-white { background-color: #FFFFFF !important }
-    .cs-black { background-color: #000000 !important }
-    .cs-grey { background-color: #9E9E9E !important }
-    .cs-light-grey { background-color: #f1f1f1 !important }
-    .cs-dark-grey { background-color: #616161 !important }
+    .cs-light-grey { background-color: #F1F1F1 !important }
+    .cs-dark-grey { background-color: #9E9E9E !important; }
+
+    .cs-blue-grey { background-color: #607D8B !important }
 
     .cs-cyan {
       background-color: #00BCD4 !important;
