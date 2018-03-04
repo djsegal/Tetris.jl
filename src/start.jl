@@ -80,6 +80,21 @@ function start()
     )
   )
 
+  # ----------------
+  #  responsiveness
+  # ----------------
+
+  evaljs(
+    cur_player.game.scope,
+    JSString("""
+      var cur_container = \$(".js-tetris-container"),
+        cur_subarea = cur_container.parent().parent();
+
+      cur_subarea.css("max-width", "100%");
+      cur_container[0].scrollIntoViewIfNeeded();
+    """)
+  )
+
   return
 
 end
