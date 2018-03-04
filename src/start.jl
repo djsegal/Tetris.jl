@@ -64,14 +64,16 @@ function start()
 
       getfield(Tetris, Symbol(cur_action))(cur_player)
 
-      cur_uuid = Base.Random.uuid1()
-      cur_player.clock.hold = cur_uuid
+      if cur_action == "left" || cur_action == "right"
+        cur_uuid = Base.Random.uuid1()
+        cur_player.clock.hold = cur_uuid
 
-      cur_func = function(cur_timer::Timer)
-        hold_clock(cur_player, cur_uuid)
+        cur_func = function(cur_timer::Timer)
+          hold_clock(cur_player, cur_uuid)
+        end
+
+        Timer(cur_func, 0.35)
       end
-
-      Timer(cur_func, 0.35)
 
       return
     end
