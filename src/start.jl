@@ -28,6 +28,14 @@ function start()
     if cur_action == "play"
       cur_game.in_focus = true
       drop_clock(cur_player)
+
+      evaljs(
+        cur_player.game.scope,
+        JSString("""
+          \$(".js-splash-screen").addClass("cs-disappear");
+        """)
+      )
+
       return
     end
 
@@ -35,6 +43,13 @@ function start()
       cur_game.in_focus = false
       cur_player.clock.drop =
         Nullable{Base.Random.UUID}()
+
+      evaljs(
+        cur_player.game.scope,
+        JSString("""
+          \$(".js-splash-screen").removeClass("cs-disappear");
+        """)
+      )
 
       return
     end

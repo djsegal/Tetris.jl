@@ -1,6 +1,8 @@
 colors_asset() = """
   <style>
 
+    .cs-blue-grey { background-color: #607D8B !important }
+
     .cs-white { background-color: #FFFFFF !important }
     .cs-black { background-color: #000000 !important }
     .cs-grey { background-color: #9E9E9E !important }

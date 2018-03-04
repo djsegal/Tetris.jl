@@ -34,9 +34,13 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
   end
 
   cur_table = Node(
-    :table,
-    cur_row_array...,
-    attributes=Dict(:class => "cs-tetris-table z-depth-1")
+    :div,
+    Node(
+      :table,
+      cur_row_array...,
+      attributes=Dict(:class => "cs-tetris-table z-depth-1")
+    ),
+    attributes=Dict(:class => "col-sm-12")
   )
 
   cur_events = Dict()
@@ -92,8 +96,19 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
   end
 
   cur_container = dom"div[tabindex=1]"(
-    cur_table,
-    attributes=Dict(:class => "js-tetris-container cs-tetris-container"),
+    dom"div"(
+      cur_table,
+      attributes=Dict(:class => "row")
+    ),
+    dom"div"(
+      dom"div"(
+        dom"h1"("tetris."),
+        dom"div"("double-click to play."),
+        attributes=Dict(:class => "cs-splash-text")
+      ),
+      attributes=Dict(:class => "cs-splash-screen js-splash-screen cs-blue-grey")
+    ),
+    attributes=Dict(:class => "js-tetris-container cs-tetris-container container-fluid"),
     events=cur_events
   )
 
