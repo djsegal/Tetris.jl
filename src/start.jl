@@ -1,8 +1,8 @@
 function start()
 
-  # ---------------
-  #  setup styling
-  # ---------------
+  # --------------
+  #  send styling
+  # --------------
 
   cur_html = HTML(bundled_assets)
 
@@ -25,64 +25,26 @@ function start()
   cur_player.observer.action = action_observer
 
   on(action_observer) do cur_action
-    if cur_action == "play"
-      cur_game.in_focus = true
-      drop_clock(cur_player)
 
-      evaljs(
-        cur_player.game.scope,
-        JSString("""
-          \$(".js-splash-screen").addClass("cs-disappear");
-        """)
-      )
+    ( cur_action == "" ) && ( cur_action = "free" )
 
-      return
+    getfield(Tetris, Symbol(cur_action))(cur_player)
+
+    in(cur_action, ["left", "right"]) || return
+
+    cur_player.action = cur_action
+
+    cur_uuid = Base.Random.uuid1()
+    cur_player.clock.hold = cur_uuid
+
+    cur_func = function(cur_timer::Timer)
+      hold_clock(cur_player, cur_uuid)
     end
 
-    if cur_action == "suspend"
-      cur_game.in_focus = false
-      cur_player.clock.drop =
-        Nullable{Base.Random.UUID}()
+    Timer(cur_func, 0.35)
 
-      evaljs(
-        cur_player.game.scope,
-        JSString("""
-          \$(".js-splash-screen").removeClass("cs-disappear");
-        """)
-      )
+    return
 
-      return
-    end
-
-    if cur_action != "pause"
-      cur_player.action = cur_action
-
-      if cur_action == ""
-        cur_player.clock.hold = Nullable{Base.Random.UUID}()
-        return
-      end
-
-      getfield(Tetris, Symbol(cur_action))(cur_player)
-
-      if cur_action == "left" || cur_action == "right"
-        cur_uuid = Base.Random.uuid1()
-        cur_player.clock.hold = cur_uuid
-
-        cur_func = function(cur_timer::Timer)
-          hold_clock(cur_player, cur_uuid)
-        end
-
-        Timer(cur_func, 0.35)
-      end
-
-      return
-    end
-
-    cur_state = cur_player.state
-    is_paused = !cur_state.is_playing && !cur_state.has_lost
-    cur_state.is_playing = !cur_state.is_playing
-
-    is_paused && drop_clock(cur_player)
   end
 
   # -------------
