@@ -57,8 +57,21 @@ function start()
     if cur_action != "pause"
       cur_player.action = cur_action
 
-      ( cur_action != "" ) &&
-        getfield(Tetris, Symbol(cur_action))(cur_player)
+      if cur_action == ""
+        cur_player.clock.hold = Nullable{Base.Random.UUID}()
+        return
+      end
+
+      getfield(Tetris, Symbol(cur_action))(cur_player)
+
+      cur_uuid = Base.Random.uuid1()
+      cur_player.clock.hold = cur_uuid
+
+      cur_func = function(cur_timer::Timer)
+        hold_clock(cur_player, cur_uuid)
+      end
+
+      Timer(cur_func, 0.35)
 
       return
     end
