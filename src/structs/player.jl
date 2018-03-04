@@ -6,6 +6,7 @@ mutable struct Player <: AbstractPlayer
 
   piece::Union{AbstractPiece, Nullable{AbstractPiece}}
   shadow::Union{AbstractPiece, Nullable{AbstractPiece}}
+  hold::Union{AbstractPiece, Nullable{AbstractPiece}}
 
   observer::Union{AbstractObserver, Nullable{AbstractObserver}}
   state::Union{AbstractState, Nullable{AbstractState}}
@@ -20,6 +21,7 @@ function Player(cur_game::AbstractGame=Game())
     cur_game,
     Nullable{AbstractGrid}(),
     Nullable{AbstractBag}(),
+    Nullable{AbstractPiece}(),
     Nullable{AbstractPiece}(),
     Nullable{AbstractPiece}(),
     Nullable{AbstractObserver}(),

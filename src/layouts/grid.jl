@@ -56,6 +56,7 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
   end
 
   cur_events["keydown"] = @js function (cur_event)
+
     cur_key_code = cur_event.keyCode;
 
     is_arrow_key = false;
@@ -75,10 +76,14 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
     if ( cur_key_code == 80 ) ; is_arrow_key = true ; $cur_observer[] = "pause" ; end
 
+    if ( cur_key_code == 32 ) ; is_arrow_key = true ; $cur_observer[] = "hold" ; end
+
     if is_arrow_key ; cur_event.preventDefault() ; end
+
   end
 
   cur_events["keyup"] = @js function (cur_event)
+
     cur_key_code = cur_event.keyCode;
 
     if ( cur_key_code == 37 ) ; $cur_observer[] = "" ; end
@@ -95,6 +100,9 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
     if ( cur_key_code == 69 ) ; $cur_observer[] = "" ; end
 
     if ( cur_key_code == 80 ) ; $cur_observer[] = "" ; end
+
+    if ( cur_key_code == 32 ) ; $cur_observer[] = "" ; end
+
   end
 
   cur_container = dom"div[tabindex=1]"(

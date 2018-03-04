@@ -45,4 +45,6 @@ function glue_piece!(cur_player::AbstractPlayer)
 
   cur_piece.owner = Nullable{AbstractContainer}()
   cur_player.piece = Nullable{AbstractPiece}()
+
+  cur_player.state.can_hold |= true
 end
