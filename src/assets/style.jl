@@ -62,7 +62,24 @@ style_asset() = """
 
     .js-shadow-piece:not(.js-active-piece) {
       opacity: 0.3;
-      border: none !important;
+      border: solid 1px #F1F1F1 !important;
     }
+
+    .js-shadow-piece:not(.js-active-piece).cs-no-top-border {
+      border-top: none !important;
+    }
+
+    .js-shadow-piece:not(.js-active-piece).cs-no-bottom-border {
+      border-bottom: none !important;
+    }
+
+    .js-shadow-piece:not(.js-active-piece).cs-no-left-border {
+      border-left: none !important;
+    }
+
+    .js-shadow-piece:not(.js-active-piece).cs-no-right-border {
+      border-right: none !important;
+    }
+
   </style>
 """

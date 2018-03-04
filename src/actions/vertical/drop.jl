@@ -29,7 +29,7 @@ function drop!(cur_player::AbstractPlayer, cur_piece::AbstractPiece, cur_grid::A
 
   cur_piece.i += new_direction
 
-  move!(cur_piece, is_main_piece)
+  is_main_piece && move!(cur_player, false)
 
   true
 end
