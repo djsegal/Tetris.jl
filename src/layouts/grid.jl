@@ -108,6 +108,11 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
         dom"div"("double-click to play."),
         attributes=Dict(:class => "cs-splash-text")
       ),
+      dom"div"(
+        dom"div"("⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️"),
+        dom"div"("q. e. space"),
+        attributes=Dict(:class => "cs-how-to")
+      ),
       attributes=Dict(:class => "cs-splash-screen js-splash-screen cs-blue-grey")
     ),
     attributes=Dict(:class => "js-tetris-container cs-tetris-container container-fluid"),

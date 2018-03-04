@@ -60,6 +60,18 @@ style_asset() = """
       margin-right: 1.08em;
     }
 
+    .cs-how-to {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin-bottom: 1.08em;
+      margin-right: 1.08em;
+      text-align: center;
+      font-weight: bold;
+      font-family: monospace;
+      opacity: 0.8;;
+    }
+
     .js-shadow-piece:not(.js-active-piece) {
       opacity: 0.3;
       border: solid 1px #F1F1F1 !important;
