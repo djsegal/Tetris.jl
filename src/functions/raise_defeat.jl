@@ -6,4 +6,6 @@ function raise_defeat(cur_player::AbstractPlayer)
     cur_player.game.scope,
     js"alert('You lost :(')"
   )
+
+  false
 end

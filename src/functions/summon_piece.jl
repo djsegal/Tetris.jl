@@ -13,4 +13,11 @@ function summon_piece!(cur_player::AbstractPlayer)
   cur_piece.owner = cur_player
 
   reset_shadow!(cur_player)
+
+  check(cur_piece, cur_player.grid) ||
+    return false
+
+  move!(cur_player)
+
+  true
 end
