@@ -7,7 +7,7 @@ for cur_tetromino in tetrominoes
   include("$(cur_tetromino).jl")
 end
 
-function make_piece!(cur_container::AbstractContainer, piece_char::Char)
+function make_piece!(cur_container::AbstractContainer, piece_char::Char, cur_association::Symbol=:pieces)
   piece_func = getfield(
     Tetris,
     Symbol("$(piece_char)_piece")
@@ -15,7 +15,11 @@ function make_piece!(cur_container::AbstractContainer, piece_char::Char)
 
   cur_piece = piece_func(cur_container)
 
-  push!(cur_container.pieces, cur_piece)
+  if cur_association == :pieces
+    push!(cur_container.pieces, cur_piece)
+  else
+    setfield!(cur_container, cur_association, cur_piece)
+  end
 
   true
 end
