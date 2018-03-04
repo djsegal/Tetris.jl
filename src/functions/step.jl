@@ -9,10 +9,7 @@ function step(cur_player::AbstractPlayer)
     return false
   end
 
-  if !down(cur_player)
-    raise_defeat(cur_player)
-    return false
-  end
+  down(cur_player) || return false
 
   true
 end
