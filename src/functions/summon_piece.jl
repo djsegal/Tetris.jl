@@ -1,5 +1,11 @@
 function summon_piece!(cur_player::AbstractPlayer)
-  isempty(cur_player.bag.pieces) && fill_bag!(cur_player.bag)
+
+  cur_bag = cur_player.bag
+  cur_previews = cur_bag.previews
+
+  while length(cur_bag.pieces) < ( 2 * cur_previews + 1 )
+    fill_bag!(cur_bag)
+  end
 
   cur_piece = shift!(cur_player.bag.pieces)
 
