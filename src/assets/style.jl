@@ -21,6 +21,10 @@ style_asset() = """
       margin: 0;
     }
 
+    .cs-tetris-container .row {
+      font-family: 'Press Start 2P', cursive;
+    }
+
     .cs-tetris-table *:hover {
       background: initial;
     }
