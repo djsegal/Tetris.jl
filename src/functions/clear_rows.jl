@@ -17,13 +17,13 @@ function clear_rows!(cur_player::AbstractPlayer, cleared_rows::Vector{Int})
       cur_grid.table[cur_range,:]
 
     cur_js *= """
-      \$(".cs-row-$(cur_row)").empty();
+      \$(".cs-main-area .cs-row-$(cur_row)").empty();
     """
 
     for tmp_row in cur_range
       cur_js *= """
-        beg_row = "cs-row-$(tmp_row)";
-        end_row = "cs-row-$(tmp_row-cur_index)";
+        beg_row = "cs-main-area .cs-row-$(tmp_row)";
+        end_row = "cs-main-area .cs-row-$(tmp_row-cur_index)";
 
         \$("." + beg_row).children().appendTo("." + end_row);
         \$("." + beg_row).empty();
@@ -46,7 +46,7 @@ function clear_rows!(cur_player::AbstractPlayer, cleared_rows::Vector{Int})
 
   for tmp_row in cur_range
     cur_js *= """
-      work_row = "cs-row-$(tmp_row)";
+      work_row = "cs-main-area .cs-row-$(tmp_row)";
 
       \$("$(cur_string)").appendTo("." + work_row);
     """

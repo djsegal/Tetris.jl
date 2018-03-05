@@ -1,49 +1,5 @@
 function render(cur_observer::Observable, cur_grid::AbstractGrid)
-  cur_row_array = Array{Node}(0)
-
-  total_rows = cur_grid.rows + cur_grid.hidden_rows
-
-  for cur_row in total_rows:-1:1
-
-    cur_cell_array = Array{Node}(0)
-
-    for cur_col in 1:cur_grid.cols
-      push!(
-        cur_cell_array,
-        Node(:td)
-      )
-    end
-
-    cur_class = "cs-row-$(cur_row)"
-
-    is_hidden_row = ( cur_row > cur_grid.rows )
-
-    if is_hidden_row
-      cur_class *= " cs-dark-grey"
-    else
-      cur_class *= " cs-light-grey"
-    end
-
-    push!(
-      cur_row_array,
-      Node(
-        :tr,
-        cur_cell_array...,
-        attributes=Dict(:class => cur_class)
-      )
-    )
-
-  end
-
-  cur_table = Node(
-    :div,
-    Node(
-      :table,
-      cur_row_array...,
-      attributes=Dict(:class => "cs-tetris-table z-depth-1")
-    ),
-    attributes=Dict(:class => "col-sm-12")
-  )
+  cur_table = make_table(cur_grid.rows, cur_grid.cols, cur_grid.hidden_rows)
 
   cur_events = Dict()
 
@@ -107,7 +63,10 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
   cur_container = dom"div[tabindex=1]"(
     dom"div"(
-      cur_table,
+      dom"div"(
+        cur_table,
+        attributes=Dict(:class => "col-sm-7 cs-col cs-main-area")
+      ),
       attributes=Dict(:class => "row")
     ),
     dom"div"(

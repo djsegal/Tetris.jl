@@ -1,6 +1,7 @@
 include("calc_block_coords.jl")
 include("fill_bag.jl")
 include("summon_piece.jl")
+include("make_table.jl")
 include("glue_piece.jl")
 include("pin_piece.jl")
 include("clear_rows.jl")

@@ -31,9 +31,9 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
 
   for (cur_row, cur_col) in cur_coords
     cur_js *= """
-      \$(".cs-row-$(cur_row) td:nth-child($(cur_col)).js-shadow-piece").removeClass();
+      \$(".cs-main-area .cs-row-$(cur_row) td:nth-child($(cur_col)).js-shadow-piece").removeClass();
 
-      cur_cell = \$(".cs-row-$(cur_row) td:nth-child($(cur_col)):not(.cs-color)");
+      cur_cell = \$(".cs-main-area .cs-row-$(cur_row) td:nth-child($(cur_col)):not(.cs-color)");
 
       cur_cell.addClass("js-active-piece cs-color");
       cur_cell.addClass("cs-$(cur_piece.color)");
@@ -65,7 +65,7 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
 
   for (cur_row, cur_col) in cur_coords
     cur_js *= """
-      cur_cell = \$(".cs-row-$(cur_row) td:nth-child($(cur_col)):not(.cs-color)");
+      cur_cell = \$(".cs-main-area .cs-row-$(cur_row) td:nth-child($(cur_col)):not(.cs-color)");
 
       cur_cell.addClass("js-shadow-piece cs-color");
       cur_cell.addClass("cs-$(cur_shadow.color)");
@@ -82,7 +82,7 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
 
   for (cur_row, cur_col) in cur_coords
     cur_js *= """
-      cur_cell = \$(".cs-row-$(cur_row) td:nth-child($(cur_col)).js-shadow-piece");
+      cur_cell = \$(".cs-main-area .cs-row-$(cur_row) td:nth-child($(cur_col)).js-shadow-piece");
     """
 
     cur_dict = Dict(
@@ -94,7 +94,7 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
 
     for (cur_direction, (other_row, other_col)) in cur_dict
       cur_js *= """
-        other_cell = \$(".cs-row-$(other_row) td:nth-child($(other_col)).cs-color:not(.js-shadow-piece)");
+        other_cell = \$(".cs-main-area .cs-row-$(other_row) td:nth-child($(other_col)).cs-color:not(.js-shadow-piece)");
 
         if ( other_cell.length > 0 ) {
           cur_cell.addClass("cs-no-$(cur_direction)-border");

@@ -15,7 +15,7 @@ function glue_piece!(cur_player::AbstractPlayer)
     (cur_row, cur_col) = calc_block_coords(cur_block)
 
     cur_js *= """
-      tmp_cell = \$(".cs-row-$(cur_row) td:nth-child($(cur_col))");
+      tmp_cell = \$(".cs-main-area .cs-row-$(cur_row) td:nth-child($(cur_col))");
 
       tmp_cell.addClass("cs-color cs-$(cur_piece.color)");
     """
