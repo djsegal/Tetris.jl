@@ -61,6 +61,15 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
   end
 
+  cur_preview_tables = []
+
+  for cur_preview in 1:cur_grid.player.bag.previews
+    push!(
+      cur_preview_tables,
+      make_table(2, 4, class_names="cs-preview-piece js-preview-piece js-preview-piece__$(cur_preview)")
+    )
+  end
+
   cur_side_bar = Node(
     :div,
     dom"h1"(
@@ -68,6 +77,7 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
       attributes=Dict(:class => "cs-level-text js-level-text")
     ),
     make_table(2, 4, class_names="cs-hold-piece js-hold-piece"),
+    cur_preview_tables...,
     dom"h2"(
       "00000000",
       attributes=Dict(:class => "cs-score-text js-score-text")

@@ -21,5 +21,33 @@ function summon_piece!(cur_player::AbstractPlayer)
 
   move!(cur_player)
 
+  cur_game = cur_player.game
+
+  cur_js = """
+    \$(".js-preview-piece td").removeClass();
+    var tmp_cell;
+  """
+
+  for (cur_index, cur_piece) in enumerate(cur_player.bag.pieces[1:cur_previews])
+    for cur_block in cur_piece.blocks
+      (cur_row, cur_col) = calc_block_coords(cur_block)
+
+      cur_row += 2
+      cur_col += 3
+
+      ( cur_piece.name == 'i' ) && ( cur_row -= 1 )
+
+      cur_js *= """
+        tmp_cell = \$(".js-preview-piece__$(cur_index) .cs-row-$(cur_row) td:nth-child($(cur_col))");
+        tmp_cell.addClass("cs-color cs-$(cur_piece.color)");
+      """
+    end
+  end
+
+  evaljs(
+    cur_game.scope,
+    JSString(cur_js)
+  )
+
   true
 end
