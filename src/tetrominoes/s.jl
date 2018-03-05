@@ -5,6 +5,7 @@ function s_piece(cur_container::AbstractContainer)
     's',
     "green",
     3,
+    0,
     -1,
     -1
   )

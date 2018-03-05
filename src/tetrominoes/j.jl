@@ -5,6 +5,7 @@ function j_piece(cur_container::AbstractContainer)
     'j',
     "blue",
     3,
+    0,
     -1,
     -1
   )

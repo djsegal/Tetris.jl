@@ -5,6 +5,7 @@ function l_piece(cur_container::AbstractContainer)
     'l',
     "orange",
     3,
+    0,
     -1,
     -1
   )

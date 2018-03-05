@@ -5,6 +5,7 @@ function i_piece(cur_container::AbstractContainer)
     'i',
     "cyan",
     4,
+    0,
     -1,
     -1
   )

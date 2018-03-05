@@ -1,4 +1,13 @@
 function rotate!(cur_player::AbstractPlayer, cur_piece::AbstractPiece, cur_grid::AbstractGrid, cur_direction::Integer)
+  ( cur_piece.name == 'o' ) && return false
+
+  cur_piece.rotation += cur_direction
+
+  while cur_piece.rotation <= 0
+    cur_piece.rotation += 4
+  end
+
+  cur_piece.rotation %= 4
 
   cur_blocks = map(
     cur_block -> calc_block_coords(cur_block, cur_direction),

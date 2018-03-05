@@ -4,7 +4,9 @@ mutable struct Piece{T <: Vector{<:AbstractBlock}} <: AbstractPiece
 
   name::Char
   color::AbstractString
+
   width::Integer
+  rotation::Integer
 
   i::Integer
   j::Integer
@@ -17,6 +19,7 @@ function Piece(cur_owner::AbstractContainer)
       Block[],
       'x',
       "grey",
+      -1,
       -1,
       -1,
       -1

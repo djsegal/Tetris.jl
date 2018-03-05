@@ -5,6 +5,7 @@ function t_piece(cur_container::AbstractContainer)
     't',
     "purple",
     3,
+    0,
     -1,
     -1
   )

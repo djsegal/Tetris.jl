@@ -5,6 +5,7 @@ function o_piece(cur_container::AbstractContainer)
     'o',
     "yellow",
     2,
+    0,
     -1,
     -1
   )

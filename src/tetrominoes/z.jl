@@ -5,6 +5,7 @@ function z_piece(cur_container::AbstractContainer)
     'z',
     "red",
     3,
+    0,
     -1,
     -1
   )
