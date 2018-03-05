@@ -47,6 +47,8 @@ function hold(cur_player::AbstractPlayer)
   reset_shadow!(cur_player)
   move!(cur_player)
 
+  step(cur_player)
+
   return
 
 end
