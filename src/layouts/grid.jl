@@ -67,6 +67,7 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
       "Level 1",
       attributes=Dict(:class => "cs-level-text js-level-text")
     ),
+    make_table(2, 4, class_names="cs-hold-piece js-hold-piece"),
     dom"h2"(
       "00000000",
       attributes=Dict(:class => "cs-score-text js-score-text")

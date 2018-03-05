@@ -17,6 +17,10 @@ style_asset() = """
       margin: 0 auto;
     }
 
+    div.cs-side-bar table.cs-tetris-table {
+      margin: 0;
+    }
+
     .cs-tetris-table *:hover {
       background: initial;
     }
@@ -108,5 +112,10 @@ style_asset() = """
     .cs-tetris-container h1.cs-level-text {
       margin-top: 6vmin !important;
     }
+
+    .cs-side-bar .cs-hold-piece {
+      opacity: 0.55;
+    }
+
   </style>
 """
