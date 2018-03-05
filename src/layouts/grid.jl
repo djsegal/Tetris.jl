@@ -61,12 +61,26 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
   end
 
+  cur_side_bar = Node(
+    :div,
+    dom"h1"(
+      "Level 1",
+      attributes=Dict(:class => "cs-level-text js-level-text")
+    ),
+    dom"h2"(
+      "00000000",
+      attributes=Dict(:class => "cs-score-text js-score-text")
+    ),
+    attributes=Dict(:class => "col-sm-5 cs-col hidden-xs cs-side-bar")
+  )
+
   cur_container = dom"div[tabindex=1]"(
     dom"div"(
       dom"div"(
         cur_table,
         attributes=Dict(:class => "col-sm-7 cs-col cs-main-area")
       ),
+      cur_side_bar,
       attributes=Dict(:class => "row")
     ),
     dom"div"(

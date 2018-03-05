@@ -8,8 +8,13 @@ style_asset() = """
       position: relative;
     }
 
-    div.output_area table.cs-tetris-table {
-      margin: 2.5vmin auto;
+    div.cs-tetris-container div.cs-col {
+      margin: 2.5vmin 0;
+      padding: 0 2.5vmin;
+    }
+
+    div.cs-main-area table.cs-tetris-table {
+      margin: 0 auto;
     }
 
     .cs-tetris-table *:hover {
@@ -93,5 +98,15 @@ style_asset() = """
       border-right: none !important;
     }
 
+    .cs-tetris-container h1.cs-level-text, .cs-tetris-container h2.cs-score-text {
+      color: #9E9E9E;
+      margin: 0;
+      padding: 0;
+      height: 6vmin;
+    }
+
+    .cs-tetris-container h1.cs-level-text {
+      margin-top: 6vmin !important;
+    }
   </style>
 """
