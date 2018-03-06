@@ -38,8 +38,21 @@ function glue_piece!(cur_player::AbstractPlayer)
     push!(cleared_rows, cur_row)
   end
 
-  isempty(cleared_rows) ||
-    ( cur_js *= clear_rows!(cur_player, cleared_rows) )
+  if !isempty(cleared_rows)
+    cleared_count = length(cleared_rows)
+
+    @assert 0 < cleared_count < 5
+
+    score_array = [ 100, 300, 500, 800 ]
+
+    cur_player.score += score_array[cleared_count]
+
+    cur_js *= """
+      \$(".js-score-text").text("$(lpad(cur_player.score, 8, "0"))");
+    """
+
+    cur_js *= clear_rows!(cur_player, cleared_rows)
+  end
 
   evaljs(cur_player.game.scope, JSString(cur_js))
 
