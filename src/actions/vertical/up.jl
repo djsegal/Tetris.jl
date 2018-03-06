@@ -1,6 +1,8 @@
 function up(cur_player::AbstractPlayer)
   cur_piece = cur_player.piece
 
+  isnull(cur_piece) && return false
+
   did_move = up(cur_player, cur_piece, true)
 
   cur_player.clock.lock =
