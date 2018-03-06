@@ -37,6 +37,23 @@ function clear_rows!(cur_player::AbstractPlayer, cleared_rows::Vector{Int})
   cur_grid.height -= row_count
   cur_player.lines += row_count
 
+  lines_per_level = 10
+
+  if cur_player.lines >= ( lines_per_level * cur_player.level )
+    cur_player.level = 1 + Int(
+      floor(
+        cur_player.lines /
+        lines_per_level
+      )
+    )
+
+    drop_clock(cur_player)
+
+    cur_js *= """
+      \$(".js-level-text").text("Level $(cur_player.level)");
+    """
+  end
+
   cur_range = -(row_count-1):0
   cur_range += end_index
 
