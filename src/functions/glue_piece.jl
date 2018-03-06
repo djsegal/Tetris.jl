@@ -38,10 +38,22 @@ function glue_piece!(cur_player::AbstractPlayer)
     push!(cleared_rows, cur_row)
   end
 
-  if !isempty(cleared_rows)
+  if isempty(cleared_rows)
+    cur_player.combo = 0
+  else
     cleared_count = length(cleared_rows)
 
     @assert 0 < cleared_count < 5
+
+    if cur_player.combo > 0
+      cur_score = ( cleared_count == 1 ) ? 20 : 50
+
+      cur_score *= cur_player.combo * cur_player.level
+
+      cur_player.score += cur_score
+    end
+
+    cur_player.combo += 1
 
     score_array = [ 100, 300, 500, 800 ]
 
