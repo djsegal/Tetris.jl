@@ -23,7 +23,7 @@ function up(cur_player::AbstractPlayer, cur_piece::AbstractPiece, is_main_piece:
 
   did_move = drop!(
     cur_player, cur_piece, cur_grid,
-    -max_rows, is_main_piece
+    -max_rows, is_main_piece, false
   )
 
   did_move

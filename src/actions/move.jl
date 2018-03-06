@@ -15,6 +15,14 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
   end
 
   # ==============
+  #  update score
+  # ==============
+
+  cur_js *= """
+    \$(".js-score-text").text("$(lpad(cur_player.score, 8, "0"))");
+  """
+
+  # ==============
   #  re-add piece
   # ==============
 

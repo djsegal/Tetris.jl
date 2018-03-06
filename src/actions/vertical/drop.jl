@@ -1,4 +1,4 @@
-function drop!(cur_player::AbstractPlayer, cur_piece::AbstractPiece, cur_grid::AbstractGrid, cur_direction::Integer, is_main_piece::Bool)
+function drop!(cur_player::AbstractPlayer, cur_piece::AbstractPiece, cur_grid::AbstractGrid, cur_direction::Integer, is_main_piece::Bool, is_step::Bool)
   cur_blocks = map(
     cur_block -> calc_block_coords(cur_block),
     cur_piece.blocks
@@ -29,11 +29,19 @@ function drop!(cur_player::AbstractPlayer, cur_piece::AbstractPiece, cur_grid::A
 
   cur_piece.i += new_direction
 
+  if is_main_piece && !is_step
+    cur_score = abs(new_direction)
+
+    ( cur_score > 1 ) && ( cur_score *= 2 )
+
+    cur_player.score += cur_score
+  end
+
   is_main_piece && move!(cur_player, false)
 
   true
 end
 
-function drop!(cur_player::AbstractPlayer, cur_piece::Nullable{AbstractPiece}, cur_grid::AbstractGrid, cur_direction::Integer, is_main_piece::Bool)
+function drop!(cur_player::AbstractPlayer, cur_piece::Nullable{AbstractPiece}, cur_grid::AbstractGrid, cur_direction::Integer, is_main_piece::Bool, is_step::Bool)
   false
 end

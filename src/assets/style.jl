@@ -125,6 +125,10 @@ style_asset() = """
       height: 6vmin;
     }
 
+    .cs-tetris-container h2.cs-score-text {
+      padding-top: 1.5vmin;
+    }
+
     .cs-tetris-container h1.cs-level-text {
       margin-top: 6vmin !important;
     }

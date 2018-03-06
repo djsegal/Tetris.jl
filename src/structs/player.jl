@@ -16,6 +16,7 @@ mutable struct Player <: AbstractPlayer
 
   level::Int
   lines::Int
+  score::Int
 end
 
 function Player(cur_game::AbstractGame=Game())
@@ -31,6 +32,7 @@ function Player(cur_game::AbstractGame=Game())
     Nullable{AbstractClock}(),
     "",
     1,
+    0,
     0
   )
 
