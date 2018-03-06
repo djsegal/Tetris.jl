@@ -137,8 +137,8 @@ style_asset() = """
       background-color: transparent !important;
     }
 
-    .cs-side-bar .cs-hold-piece {
-      opacity: 0.55;
+    .cs-side-bar .cs-hold-piece, .cs-side-bar .cs-hold-piece td {
+      opacity: 0.6;
     }
 
   </style>
