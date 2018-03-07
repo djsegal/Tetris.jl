@@ -19,4 +19,22 @@ module Tetris
 
   include("start.jl")
 
+  macro tetris(cur_expr::Expr)
+    cur_expr = quote
+      start()
+
+      $(
+        Expr(
+          :macrocall,
+          Symbol("@async"),
+          esc(cur_expr)
+        )
+      )
+    end
+
+    return cur_expr
+  end
+
+  export @tetris
+
 end
