@@ -74,4 +74,6 @@ function glue_piece!(cur_player::AbstractPlayer)
   cur_player.piece = Nullable{AbstractPiece}()
 
   cur_player.state.can_hold |= true
+
+  drop_clock(cur_player)
 end

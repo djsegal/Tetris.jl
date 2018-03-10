@@ -9,7 +9,6 @@ function up(cur_player::AbstractPlayer)
     Nullable{Base.Random.UUID}()
 
   glue_piece!(cur_player)
-  drop_clock(cur_player)
 
   did_move
 end
