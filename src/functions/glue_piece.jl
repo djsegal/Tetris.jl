@@ -42,6 +42,18 @@ function glue_piece!(cur_player::AbstractPlayer)
 
   if isempty(cleared_rows)
     cur_player.combo = 0
+
+    is_valid = false
+
+    for cur_block in cur_piece.blocks
+      (cur_row, cur_col) = calc_block_coords(cur_block)
+      ( cur_row > cur_grid.rows ) && continue
+
+      is_valid = true
+      break
+    end
+
+    is_valid || return raise_defeat(cur_player)
   else
     cleared_count = length(cleared_rows)
 
