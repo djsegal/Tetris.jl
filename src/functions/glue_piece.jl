@@ -1,11 +1,13 @@
 function glue_piece!(cur_player::AbstractPlayer)
+  cur_piece = cur_player.piece
+
+  isnull(cur_piece) && return
+
   cur_js = """
     \$(".js-shadow-piece, .js-active-piece").removeClass();
 
     var tmp_cell;
   """
-
-  cur_piece = cur_player.piece
 
   cur_grid = cur_player.grid
 
