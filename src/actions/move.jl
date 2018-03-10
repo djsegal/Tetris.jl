@@ -55,7 +55,9 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
 
   if !with_shadow
     evaljs(cur_player.game.scope, JSString(cur_js))
-    cur_player.clock.last_move = now()
+
+    cur_player.clock.lock =
+      Nullable{Base.Random.UUID}()
 
     return
   end
@@ -116,7 +118,9 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
   # ==============
 
   evaljs(cur_player.game.scope, JSString(cur_js))
-  cur_player.clock.last_move = now()
+
+  cur_player.clock.lock =
+    Nullable{Base.Random.UUID}()
 
   return
 

@@ -10,6 +10,8 @@ function lock_clock(cur_player::AbstractPlayer)
 
   start_now = now()
 
+  cur_player.clock.last_move = Nullable{DateTime}()
+
   @async while cur_player.state.is_playing && !cur_player.state.has_lost && cur_player.clock.lock == cur_uuid
     isnull(cur_player.clock.last_move) &&
       ( cur_player.clock.last_move = start_now )
