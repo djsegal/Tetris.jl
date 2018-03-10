@@ -3,8 +3,22 @@ function summon_piece!(cur_player::AbstractPlayer)
   cur_bag = cur_player.bag
   cur_previews = cur_bag.previews
 
-  while length(cur_bag.pieces) < ( 2 * cur_previews + 1 )
+  is_first_piece = isempty(cur_bag.pieces)
+
+  target_pieces = 2 * cur_previews + 1
+
+  is_first_piece && ( target_pieces += cur_previews )
+
+  while length(cur_bag.pieces) < target_pieces
     fill_bag!(cur_bag)
+  end
+
+  if is_first_piece
+    bad_blocks = ['s', 'z', 'o']
+
+    while first(cur_bag.pieces).name in bad_blocks
+      shift!(cur_bag.pieces)
+    end
   end
 
   cur_piece = shift!(cur_player.bag.pieces)
