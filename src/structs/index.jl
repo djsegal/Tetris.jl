@@ -1,7 +1,6 @@
 include("grid.jl")
 include("game.jl")
 include("player.jl")
-include("observer.jl")
 include("state.jl")
 include("clock.jl")
 include("bag.jl")

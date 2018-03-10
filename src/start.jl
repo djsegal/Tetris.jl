@@ -25,8 +25,6 @@ function start()
 
   action_observer = Observable(cur_game.scope, "action", "")
 
-  cur_player.observer.action = action_observer
-
   on(action_observer) do cur_action
 
     ( cur_action == "" ) && ( cur_action = "free" )

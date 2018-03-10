@@ -5,7 +5,6 @@ abstract type AbstractContainer end
 abstract type AbstractPlayer <: AbstractContainer end
 abstract type AbstractBag <: AbstractContainer end
 
-abstract type AbstractObserver end
 abstract type AbstractState end
 abstract type AbstractClock end
 

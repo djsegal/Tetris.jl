@@ -8,7 +8,6 @@ mutable struct Player <: AbstractPlayer
   shadow::Union{AbstractPiece, Nullable{AbstractPiece}}
   hold::Union{AbstractPiece, Nullable{AbstractPiece}}
 
-  observer::Union{AbstractObserver, Nullable{AbstractObserver}}
   state::Union{AbstractState, Nullable{AbstractState}}
   clock::Union{AbstractClock, Nullable{AbstractClock}}
 
@@ -29,7 +28,6 @@ function Player(cur_game::AbstractGame=Game())
     Nullable{AbstractPiece}(),
     Nullable{AbstractPiece}(),
     Nullable{AbstractPiece}(),
-    Nullable{AbstractObserver}(),
     Nullable{AbstractState}(),
     Nullable{AbstractClock}(),
     "",
@@ -41,7 +39,6 @@ function Player(cur_game::AbstractGame=Game())
 
   push!(cur_game.players, cur_player)
 
-  Observer(cur_player)
   State(cur_player)
   Clock(cur_player)
 
