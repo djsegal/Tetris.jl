@@ -1,18 +1,21 @@
 function start()
 
-  # --------------
-  #  send styling
-  # --------------
+  # -------------
+  #  add styling
+  # -------------
 
-  cur_html = HTML(bundled_assets)
-
-  display(cur_html)
+  cur_scope = Scope(imports=[
+    "https://fonts.googleapis.com/css?family=Press+Start+2P",
+    "/pkg/Tetris/colors.css",
+    "/pkg/Tetris/depth.css",
+    "/pkg/Tetris/style.css"
+  ])
 
   # ----------------
   #  create objects
   # ----------------
 
-  cur_game = Game()
+  cur_game = Game(cur_scope)
 
   cur_player = Player(cur_game)
 
