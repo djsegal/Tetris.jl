@@ -3,6 +3,8 @@ function glue_piece!(cur_player::AbstractPlayer)
 
   isnull(cur_piece) && return
 
+  cur_player.state.can_hold |= true
+
   cur_js = """
     \$(".js-shadow-piece, .js-active-piece").removeClass();
 
@@ -84,8 +86,6 @@ function glue_piece!(cur_player::AbstractPlayer)
 
   cur_piece.owner = Nullable{AbstractContainer}()
   cur_player.piece = Nullable{AbstractPiece}()
-
-  cur_player.state.can_hold |= true
 
   drop_clock(cur_player)
 end
