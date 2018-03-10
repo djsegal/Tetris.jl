@@ -17,11 +17,11 @@ module Tetris
   include("functions/index.jl")
   include("actions/index.jl")
 
-  include("start.jl")
+  include("setup.jl")
 
   macro tetris(cur_expr::Expr)
     cur_expr = quote
-      start()
+      setup()
 
       $(
         Expr(

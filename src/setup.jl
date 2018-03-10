@@ -1,4 +1,4 @@
-function start()
+function setup()
 
   # -------------
   #  add styling
