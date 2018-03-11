@@ -65,6 +65,7 @@ function setup()
   evaljs(
     cur_game.scope,
     JSString("""
+      \$(".js-tetris-container").closest(".output").css("height", "auto");
       \$(".js-tetris-container").closest(".output_subarea").css("max-width", "100%");
       \$(".js-tetris-container").closest(".cell")[0].scrollIntoView();
     """)
