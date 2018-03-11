@@ -7,6 +7,7 @@ module Tetris
   using DataStructures
 
   include("abstracts.jl")
+  include("consts.jl")
 
   include("structs/index.jl")
   include("clocks/index.jl")

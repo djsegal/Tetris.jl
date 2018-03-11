@@ -1,5 +1,10 @@
-function check(cur_blocks::Vector{Tuple{Int,Int}}, cur_grid::AbstractGrid)
+function check(cur_blocks::Vector{Tuple{Int,Int}}, cur_grid::AbstractGrid, cur_offsets::Tuple{Int,Int}=(0,0))
+  cur_col_offset, cur_row_offset = cur_offsets
+
   for (cur_row, cur_col) in cur_blocks
+    cur_row += cur_row_offset
+    cur_col += cur_col_offset
+
     ( cur_col <= 0 ) && return false
     ( cur_row <= 0 ) && return false
 

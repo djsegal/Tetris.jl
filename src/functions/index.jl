@@ -1,3 +1,4 @@
+include("get_rotate_offsets.jl")
 include("calc_block_coords.jl")
 include("fill_bag.jl")
 include("summon_piece.jl")
