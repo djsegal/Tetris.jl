@@ -1,0 +1,18 @@
+.cs-tetris-container .row {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.cs-tetris-container h1.cs-level-text, .cs-tetris-container h2.cs-score-text {
+  color: #9E9E9E;
+  margin: 0;
+  padding: 0;
+  height: 6vmin;
+}
+
+.cs-tetris-container h2.cs-score-text {
+  padding-top: 1.5vmin;
+}
+
+.cs-tetris-container h1.cs-level-text {
+  margin-top: 6vmin !important;
+}

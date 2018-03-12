@@ -1,0 +1,36 @@
+div.cs-main-area table.cs-tetris-table {
+  margin: 0 auto;
+}
+
+div.cs-side-bar table.cs-tetris-table {
+  margin: 0;
+}
+
+div.cs-tetris-container div.cs-side-bar > table.cs-tetris-table:not(:last-child):first-of-type {
+  margin-bottom: 6vmin;
+}
+
+div.cs-side-bar > table.cs-tetris-table:not(:last-child) {
+  margin-bottom: 3vmin;
+}
+
+div.cs-side-bar > table.cs-tetris-table:last-child {
+  margin-bottom: 6vmin;
+}
+
+.cs-tetris-table *:hover {
+  background: initial;
+}
+
+.cs-tetris-table td {
+  width: 3vmin;
+  height: 3vmin;
+}
+
+.cs-side-bar .cs-preview-piece tr {
+  background-color: transparent !important;
+}
+
+.cs-side-bar .cs-hold-piece, .cs-side-bar .cs-hold-piece td {
+  opacity: 0.6;
+}

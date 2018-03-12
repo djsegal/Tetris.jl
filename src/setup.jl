@@ -6,8 +6,12 @@ function setup()
 
   cur_scope = Scope(imports=[
     "https://fonts.googleapis.com/css?family=Press+Start+2P",
+    "/pkg/Tetris/arcade.css",
     "/pkg/Tetris/colors.css",
     "/pkg/Tetris/depth.css",
+    "/pkg/Tetris/shadow.css",
+    "/pkg/Tetris/splash.css",
+    "/pkg/Tetris/table.css",
     "/pkg/Tetris/style.css"
   ])
 
