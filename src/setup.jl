@@ -6,9 +6,11 @@ function setup()
 
   cur_scope = Scope(imports=[
     "https://fonts.googleapis.com/css?family=Press+Start+2P",
+    "https://use.fontawesome.com/releases/v5.0.8/js/all.js",
     "/pkg/Tetris/arcade.css",
     "/pkg/Tetris/colors.css",
     "/pkg/Tetris/depth.css",
+    "/pkg/Tetris/icons.css",
     "/pkg/Tetris/shadow.css",
     "/pkg/Tetris/splash.css",
     "/pkg/Tetris/table.css",
@@ -32,6 +34,13 @@ function setup()
   on(action_observer) do cur_action
 
     ( cur_action == "" ) && ( cur_action = "free" )
+
+    if contains(cur_action, "-")
+      split_string = Set(split(cur_action, "-"))
+
+      length(split_string) == 1 &&
+        ( cur_action = first(split_string) )
+    end
 
     getfield(Tetris, Symbol(cur_action))(cur_player)
 

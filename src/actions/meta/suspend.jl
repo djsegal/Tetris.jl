@@ -8,6 +8,7 @@ function suspend(cur_player::AbstractPlayer)
   evaljs(
     cur_player.game.scope,
     JSString("""
+      \$(".js-tetris-container").addClass("cs-has-splash");
       \$(".js-splash-screen").removeClass("cs-disappear");
     """)
   )

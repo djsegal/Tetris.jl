@@ -27,6 +27,7 @@ function play(cur_player::AbstractPlayer)
   drop_clock(cur_player)
 
   cur_js *= """
+    \$(".js-tetris-container").removeClass("cs-has-splash");
     \$(".js-splash-screen").addClass("cs-disappear");
   """
 

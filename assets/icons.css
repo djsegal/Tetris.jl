@@ -1,0 +1,36 @@
+.cs-icon-list {
+  position: absolute;
+}
+
+.cs-side-bar .cs-icon-list {
+  right: 4.5vmin;
+  top: calc( 50% - 4vmin );
+}
+
+.cs-main-area .cs-icon-list {
+  right: 10vmin;
+  top: calc( 50% - 6vmin );
+}
+
+.cs-tetris-container .cs-icon-list a {
+  cursor: default !important;
+}
+
+.cs-icon-list div svg {
+  height: 3vmin;
+  width: 3vmin;
+  font-size: 3vmin;
+  margin-bottom: 0.5vmin;
+}
+
+.cs-tetris-container .cs-icon-list .cs-icon {
+  color: #9E9E9E;
+  fill-opacity: 0.4;
+  transition: all 0.2s ease;
+}
+
+.cs-tetris-container:not(.cs-has-splash) .cs-icon-list a:hover .cs-icon {
+  color: #607D8B;
+  fill-opacity: 1.0;
+  transition: all 0.33s ease;
+}
