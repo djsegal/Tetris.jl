@@ -7,14 +7,14 @@ function setup()
   cur_scope = Scope(imports=[
     "https://fonts.googleapis.com/css?family=Press+Start+2P",
     "https://use.fontawesome.com/releases/v5.0.8/js/all.js",
-    "/pkg/Tetris/arcade.css",
-    "/pkg/Tetris/colors.css",
-    "/pkg/Tetris/depth.css",
-    "/pkg/Tetris/icons.css",
-    "/pkg/Tetris/shadow.css",
-    "/pkg/Tetris/splash.css",
-    "/pkg/Tetris/table.css",
-    "/pkg/Tetris/style.css"
+    "/pkg/Tetris/css/arcade.css",
+    "/pkg/Tetris/css/colors.css",
+    "/pkg/Tetris/css/depth.css",
+    "/pkg/Tetris/css/icons.css",
+    "/pkg/Tetris/css/shadow.css",
+    "/pkg/Tetris/css/splash.css",
+    "/pkg/Tetris/css/table.css",
+    "/pkg/Tetris/css/style.css"
   ])
 
   # ----------------
