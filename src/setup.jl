@@ -7,6 +7,7 @@ function setup()
   cur_scope = Scope(imports=[
     "https://fonts.googleapis.com/css?family=Press+Start+2P",
     "https://use.fontawesome.com/releases/v5.0.8/js/all.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.9/howler.min.js",
     "/pkg/Tetris/css/arcade.css",
     "/pkg/Tetris/css/colors.css",
     "/pkg/Tetris/css/depth.css",
@@ -69,6 +70,32 @@ function setup()
     cur_game.scope(
       render(action_observer, cur_player.grid)
     )
+  )
+
+  # ------------
+  #  load music
+  # ------------
+
+  music_js = """
+    var cur_music_path = "/pkg/Tetris/tetris-theme.mp3",
+        orig_dir = "/notebooks/pkg/Tetris/",
+        new_dir = "/pkg/Tetris/";
+
+    cur_music_path = cur_music_path.replace(orig_dir, new_dir);
+
+    if (typeof tetrisMusic !== 'undefined') {
+      unload(tetrisMusic);
+    }
+
+    tetrisMusic = new Howl({
+      src: [cur_music_path],
+      loop: true
+    });
+  """
+
+  evaljs(
+    cur_game.scope,
+    JSString(music_js)
   )
 
   # ----------------
