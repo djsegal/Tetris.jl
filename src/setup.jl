@@ -77,18 +77,12 @@ function setup()
   # ------------
 
   music_js = """
-    var cur_music_path = "/pkg/Tetris/tetris-theme.mp3",
-        orig_dir = "/notebooks/pkg/Tetris/",
-        new_dir = "/pkg/Tetris/";
-
-    cur_music_path = cur_music_path.replace(orig_dir, new_dir);
-
     if (typeof tetrisMusic !== 'undefined') {
-      unload(tetrisMusic);
+      tetrisMusic.unload();
     }
 
     tetrisMusic = new Howl({
-      src: [cur_music_path],
+      src: ["/pkg/Tetris/tetris-theme.mp3"],
       loop: true
     });
   """
