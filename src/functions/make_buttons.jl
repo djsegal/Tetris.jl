@@ -3,9 +3,15 @@ function make_buttons(cur_observer::Observable, class_names::AbstractString="")
     dom"div"(
       dom"a"(
         dom"i"(
-          attributes=Dict(:class => "fab fa-github-alt cs-icon")
+          attributes=Dict(:class => "fab fa-github-alt cs-icon js-github-button")
         ),
-        attributes=Dict(:href => "https://github.com/djsegal/Tetris.jl", :target => "_blank")
+        events=Dict("click" => @js function (cur_event)
+          if $cur_observer[] == "github"
+            $cur_observer[] = "github-github";
+          else
+            $cur_observer[] = "github";
+          end
+        end)
       )
     ),
     dom"div"(
