@@ -1,5 +1,9 @@
 function play(cur_player::AbstractPlayer)
-  cur_player.state.is_playing = true
+  if cur_player.game.in_focus
+    cur_player.state.is_playing || return
+  else
+    cur_player.state.is_playing = true
+  end
 
   cur_js = ""
 
