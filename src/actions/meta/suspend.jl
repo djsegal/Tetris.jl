@@ -10,6 +10,8 @@ function suspend(cur_player::AbstractPlayer)
     JSString("""
       \$(".js-tetris-container").addClass("cs-has-splash");
       \$(".js-splash-screen").removeClass("cs-disappear");
+
+      \$(".js-pause-button").closest("a").removeClass("cs-active");
     """)
   )
 

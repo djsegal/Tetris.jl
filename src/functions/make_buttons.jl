@@ -11,7 +11,7 @@ function make_buttons(cur_observer::Observable, class_names::AbstractString="")
     dom"div"(
       dom"a"(
         dom"i"(
-          attributes=Dict(:class => "fas fa-volume-down cs-icon")
+          attributes=Dict(:class => "fas fa-volume-down cs-icon js-music-button")
         ),
         events=Dict("click" => @js function (cur_event)
           if $cur_observer[] == "music"
@@ -25,7 +25,7 @@ function make_buttons(cur_observer::Observable, class_names::AbstractString="")
     dom"div"(
       dom"a"(
         dom"i"(
-          attributes=Dict(:class => "fas fa-pause cs-icon")
+          attributes=Dict(:class => "fas fa-pause cs-icon js-pause-button")
         ),
         events=Dict("click" => @js function (cur_event)
           if $cur_observer[] == "pause"
