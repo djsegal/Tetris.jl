@@ -5,6 +5,8 @@ function up(cur_player::AbstractPlayer)
 
   did_move = up(cur_player, cur_piece, true)
 
+  did_move || return false
+
   cur_player.clock.lock =
     Nullable{Base.Random.UUID}()
 

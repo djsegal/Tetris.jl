@@ -1,4 +1,6 @@
 function rotate!(cur_player::AbstractPlayer, cur_piece::AbstractPiece, cur_grid::AbstractGrid, cur_direction::Integer)
+  can_move(cur_player) || return false
+
   ( cur_piece.name == 'o' ) && return false
 
   initial_rotation = cur_piece.rotation

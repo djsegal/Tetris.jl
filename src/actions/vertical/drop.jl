@@ -1,4 +1,6 @@
 function drop!(cur_player::AbstractPlayer, cur_piece::AbstractPiece, cur_grid::AbstractGrid, cur_direction::Integer, is_main_piece::Bool, is_step::Bool)
+  can_move(cur_player) || return false
+
   cur_blocks = map(
     cur_block -> calc_block_coords(cur_block),
     cur_piece.blocks

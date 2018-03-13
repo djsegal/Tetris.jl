@@ -1,5 +1,7 @@
 function hold(cur_player::AbstractPlayer)
 
+  can_move(cur_player) || return
+
   cur_player.state.can_hold || return
   cur_player.state.can_hold = false
 
