@@ -1,5 +1,5 @@
 using Tetris
 using Base.Test
 
-# write your own tests here
-@test 1 == 2
+@test isdefined(Main, Symbol("@tetris"))
+@test isdefined(Tetris, :setup)
