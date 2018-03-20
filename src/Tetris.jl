@@ -1,6 +1,5 @@
 module Tetris
 
-  using Revise
   using JSExpr
 
   using WebIO
