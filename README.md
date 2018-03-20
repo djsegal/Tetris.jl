@@ -2,7 +2,7 @@
 
 music by: [Ghost & Kozmos](https://soundcloud.com/the-ghost-that-haunts-your-house/ghost-kozmos-tetris-theme-electro-swing-remix)
 
-[![Build Status](https://travis-ci.org/djsegal/Tetris.jl.svg?branch=master)](https://travis-ci.org/djsegal/Tetris.jl) [![codecov.io](http://codecov.io/github/djsegal/Tetris.jl/coverage.svg?branch=master)](http://codecov.io/github/djsegal/Tetris.jl?branch=master)
+[![Build Status](https://travis-ci.org/djsegal/Tetris.jl.svg?branch=master)](https://travis-ci.org/djsegal/Tetris.jl) [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/djsegal/webio-binder/master?filepath=webio.ipynb)
 
 -----
 
@@ -13,9 +13,8 @@ note: must be using Python 2.x // :(
 1) enter this into a julia repl:
 
 ```julia
-> Pkg.add("WebIO")
-> Pkg.checkout("WebIO")
 > Pkg.clone("https://github.com/djsegal/Tetris.jl")
+> Pkg.build("WebIO")
 ```
 
 2) now you can play tetris in jupyter!
