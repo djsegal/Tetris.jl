@@ -86,7 +86,7 @@ function setup()
     }
 
     tetrisMusic = new Howl({
-      src: ["/pkg/Tetris/tetris-theme.mp3"],
+      src: ["pkg/Tetris/tetris-theme.mp3"],
       loop: true
     });
   """
