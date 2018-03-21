@@ -4,18 +4,22 @@ function setup()
   #  add styling
   # -------------
 
+  is_ijulia = isdefined(Main, :IJulia) && Main.IJulia.inited
+
+  relative_dir = is_ijulia ? "" : "/"
+
   cur_scope = Scope(imports=[
     "https://fonts.googleapis.com/css?family=Press+Start+2P",
     "https://use.fontawesome.com/releases/v5.0.8/js/all.js",
     "https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.9/howler.min.js",
-    "/pkg/Tetris/css/arcade.css",
-    "/pkg/Tetris/css/colors.css",
-    "/pkg/Tetris/css/depth.css",
-    "/pkg/Tetris/css/icons.css",
-    "/pkg/Tetris/css/shadow.css",
-    "/pkg/Tetris/css/splash.css",
-    "/pkg/Tetris/css/table.css",
-    "/pkg/Tetris/css/style.css"
+    "$( relative_dir )pkg/Tetris/css/arcade.css",
+    "$( relative_dir )pkg/Tetris/css/colors.css",
+    "$( relative_dir )pkg/Tetris/css/depth.css",
+    "$( relative_dir )pkg/Tetris/css/icons.css",
+    "$( relative_dir )pkg/Tetris/css/shadow.css",
+    "$( relative_dir )pkg/Tetris/css/splash.css",
+    "$( relative_dir )pkg/Tetris/css/table.css",
+    "$( relative_dir )pkg/Tetris/css/style.css"
   ])
 
   # ----------------
