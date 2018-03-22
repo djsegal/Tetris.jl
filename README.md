@@ -3,7 +3,7 @@
 music by: [Ghost & Kozmos](https://soundcloud.com/the-ghost-that-haunts-your-house/ghost-kozmos-tetris-theme-electro-swing-remix)
 
 [![Build Status](https://travis-ci.org/djsegal/Tetris.jl.svg?branch=master)](https://travis-ci.org/djsegal/Tetris.jl)
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/djsegal/webio-binder/master?filepath=webio.ipynb)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/djsegal/webio-binder/master?filepath=Tetris.jl.ipynb)
 
 -----
 
