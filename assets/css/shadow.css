@@ -1,6 +1,13 @@
 .js-shadow-piece:not(.js-active-piece) {
-  opacity: 0.3;
   border: solid 1px #F1F1F1 !important;
+}
+
+.js-shadow-piece:not(.js-active-piece).cs-yellow {
+  opacity: 0.45;
+}
+
+.js-shadow-piece:not(.js-active-piece):not(.cs-yellow) {
+  opacity: 0.3;
 }
 
 .js-shadow-piece:not(.js-active-piece).cs-no-top-border {
