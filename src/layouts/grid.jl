@@ -59,6 +59,8 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
     if ( cur_key_code == 32 ) ; $cur_observer[] = "" ; end
 
+    if is_arrow_key ; cur_event.preventDefault() ; end
+
   end
 
   cur_preview_tables = []
