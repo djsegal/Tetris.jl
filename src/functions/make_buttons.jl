@@ -48,14 +48,12 @@ function make_buttons(cur_observer::Observable, class_names::AbstractString="")
           attributes=Dict(:class => "fas fa-times cs-icon")
         ),
         events=Dict("click" => @js function (cur_event)
+          $cur_observer[] = "suspend";
+
           is_sure = window.confirm("Are you sure you want to restart?");
 
           if is_sure
-            if $cur_observer[] == "restart"
-              $cur_observer[] = "restart-restart";
-            else
-              $cur_observer[] = "restart";
-            end
+            $cur_observer[] = "restart";
           end
         end)
       )
