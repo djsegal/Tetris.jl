@@ -5,6 +5,8 @@ function glue_piece!(cur_player::AbstractPlayer)
 
   score!(cur_player, "glue", -1)
 
+  cur_player.glues += 1
+
   cur_player.state.can_hold |= true
 
   cur_js = """

@@ -30,6 +30,8 @@ function setup()
 
   cur_player = Player(cur_game)
 
+  cur_round = Round(cur_player)
+
   # ------------
   #  receive js
   # ------------

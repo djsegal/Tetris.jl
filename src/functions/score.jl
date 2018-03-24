@@ -19,9 +19,6 @@ function score!(cur_player::AbstractPlayer, cur_label::AbstractString, cur_value
     return 1
   end
 
-  ( cur_label == "glue" ) &&
-    ( cur_label = "soft" )
-
   # ---------------------
   #  calculate the score
   # ---------------------
@@ -30,7 +27,9 @@ function score!(cur_player::AbstractPlayer, cur_label::AbstractString, cur_value
     "level" => cur_player.level,
     "lines" => cur_player.lines,
     "combo" => cur_player.combo,
-    "stash" => cur_player.stash
+    "stash" => cur_player.stash,
+    "glues" => cur_player.glues,
+    "total" => cur_player.score
   )
 
   cur_function = getfield(
@@ -40,11 +39,28 @@ function score!(cur_player::AbstractPlayer, cur_label::AbstractString, cur_value
 
   cur_score = cur_function(cur_value, cur_dict)
 
+  # -------------------
+  #  log current score
+  # -------------------
+
+  cur_round = cur_player.round
+
+  if cur_round.is_keeping_score
+    cur_log = Log(
+      cur_label,
+      cur_value,
+      cur_score,
+      values(cur_dict)...
+    )
+
+    push!(cur_round.logs, cur_log)
+  end
+
   # ---------------------
   #  update player score
   # ---------------------
 
-  if cur_label == "soft"
+  if cur_label == "glue"
     cur_player.stash = 0
   else
     cur_player.score += cur_score
@@ -80,7 +96,7 @@ function _score_hard(drop_count::Int, cur_dict::OrderedDict)
   cur_score
 end
 
-function _score_soft(stub_value::Int, cur_dict::OrderedDict)
+function _score_glue(stub_value::Int, cur_dict::OrderedDict)
   cur_score = cur_dict["stash"]
 
   cur_score

@@ -8,6 +8,7 @@ mutable struct Player <: AbstractPlayer
   shadow::Union{AbstractPiece, Nullable{AbstractPiece}}
   hold::Union{AbstractPiece, Nullable{AbstractPiece}}
 
+  round::Union{AbstractRound, Nullable{AbstractRound}}
   state::Union{AbstractState, Nullable{AbstractState}}
   clock::Union{AbstractClock, Nullable{AbstractClock}}
 
@@ -20,6 +21,7 @@ mutable struct Player <: AbstractPlayer
   combo::Int
 
   stash::Int
+  glues::Int
 end
 
 function Player(cur_game::AbstractGame=Game())
@@ -30,10 +32,12 @@ function Player(cur_game::AbstractGame=Game())
     Nullable{AbstractPiece}(),
     Nullable{AbstractPiece}(),
     Nullable{AbstractPiece}(),
+    Nullable{AbstractRound}(),
     Nullable{AbstractState}(),
     Nullable{AbstractClock}(),
     "",
     1,
+    0,
     0,
     0,
     0,

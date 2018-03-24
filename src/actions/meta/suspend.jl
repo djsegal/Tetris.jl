@@ -3,6 +3,7 @@ function suspend(cur_player::AbstractPlayer)
 
   cur_game.in_focus = false
 
+  cur_player.clock.push = Nullable{Base.Random.UUID}()
   cur_player.clock.drop = Nullable{Base.Random.UUID}()
 
   evaljs(

@@ -2,6 +2,9 @@ function drop_clock(cur_player::AbstractPlayer)
 
   ( cur_player.game.in_focus ) || return
 
+  isnull(cur_player.clock.push) &&
+    push_clock(cur_player)
+
   cur_uuid = Base.Random.uuid1()
 
   cur_player.clock.drop = cur_uuid

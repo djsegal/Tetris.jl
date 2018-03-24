@@ -47,8 +47,6 @@ function clear_rows!(cur_player::AbstractPlayer, cleared_rows::Vector{Int})
       )
     )
 
-    drop_clock(cur_player)
-
     cur_js *= """
       \$(".js-level-text").text("Level $(cur_player.level)");
     """
