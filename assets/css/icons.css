@@ -1,15 +1,9 @@
 .cs-icon-list {
+  opacity: 0.84;
+
   position: absolute;
-}
-
-.cs-side-bar .cs-icon-list {
   right: 4.5vmin;
-  top: calc( 50% - 4vmin );
-}
-
-.cs-main-area .cs-icon-list {
-  right: 10vmin;
-  top: calc( 50% - 6vmin );
+  top: calc( 50% - 6.75vmin );
 }
 
 .cs-tetris-container .cs-icon-list a {
@@ -17,26 +11,46 @@
 }
 
 .cs-icon-list div svg {
-  height: 3vmin;
-  width: 3vmin;
+  height: 3vmin !important;
+  width: 3vmin !important;
   font-size: 3vmin;
   margin-bottom: 0.5vmin;
 }
 
 .cs-tetris-container .cs-icon-list .cs-icon {
+  fill-opacity: 1.0;
+  transition: all 0.2s ease;
+}
+
+.cs-tetris-container .cs-icon-list a:hover .cs-icon {
+  transition: all 0.33s ease;
+}
+
+.cs-tetris-container .cs-icon-list a.cs-active .cs-icon {
+  transition: all 0.33s ease;
+}
+
+.cs-tetris-container.cs-has-splash .cs-icon-list a .cs-icon {
+  color: initial;
+}
+
+.cs-tetris-container.cs-has-splash .cs-icon-list a:hover .cs-icon {
+  color: #F1F1F1;
+}
+
+.cs-tetris-container.cs-has-splash .cs-icon-list a.cs-active .cs-icon {
+  color: #F1F1F1;
+}
+
+.cs-tetris-container:not(.cs-has-splash) .cs-icon-list a .cs-icon {
   color: #9E9E9E;
   fill-opacity: 0.4;
-  transition: all 0.2s ease;
 }
 
 .cs-tetris-container:not(.cs-has-splash) .cs-icon-list a:hover .cs-icon {
   color: #607D8B;
-  fill-opacity: 1.0;
-  transition: all 0.33s ease;
 }
 
 .cs-tetris-container:not(.cs-has-splash) .cs-icon-list a.cs-active .cs-icon {
   color: #607D8B;
-  fill-opacity: 1.0;
-  transition: all 0.33s ease;
 }

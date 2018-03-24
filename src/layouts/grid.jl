@@ -82,7 +82,6 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
       "00000000",
       attributes=Dict(:class => "cs-score-text js-score-text")
     ),
-    make_buttons(cur_observer),
     attributes=Dict(:class => "col-sm-5 cs-col hidden-xs cs-side-bar")
   )
 
@@ -90,7 +89,6 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
     dom"div"(
       dom"div"(
         cur_table,
-        make_buttons(cur_observer, "visible-xs"),
         attributes=Dict(:class => "col-sm-7 cs-col cs-main-area")
       ),
       cur_side_bar,
@@ -107,7 +105,11 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
         dom"div"("q. e. space bar"),
         attributes=Dict(:class => "cs-how-to")
       ),
-      attributes=Dict(:class => "cs-splash-screen js-splash-screen cs-blue-grey")
+      attributes=Dict(:class => "cs-overlay-screen cs-splash-screen js-splash-screen cs-blue-grey")
+    ),
+    dom"div"(
+      make_buttons(cur_observer),
+      attributes=Dict(:class => "cs-overlay-screen")
     ),
     attributes=Dict(:class => "js-tetris-container cs-tetris-container container-fluid cs-has-splash"),
     events=cur_events
