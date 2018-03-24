@@ -61,19 +61,12 @@ function glue_piece!(cur_player::AbstractPlayer)
 
     @assert 0 < cleared_count < 5
 
-    if cur_player.combo > 0
-      cur_score = ( cleared_count == 1 ) ? 20 : 50
+    score!(cur_player, "clear", cleared_count)
 
-      cur_score *= cur_player.combo * cur_player.level
-
-      cur_player.score += cur_score
-    end
+    ( cur_player.combo > 0 ) &&
+      score!(cur_player, "combo", cleared_count)
 
     cur_player.combo += 1
-
-    score_array = [ 100, 300, 500, 800 ]
-
-    cur_player.score += score_array[cleared_count]
 
     cur_js *= """
       \$(".js-score-text").text("$(lpad(cur_player.score, 8, "0"))");

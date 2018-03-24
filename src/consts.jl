@@ -1,3 +1,15 @@
+const score_array = [
+  100,
+  300,
+  500,
+  800
+]
+
+const allowed_labels = [
+  "clear",
+  "combo"
+]
+
 const odd_offsets = Dict(
   [ 0 , 1 ] => (
     ( -1 , +0 ),
