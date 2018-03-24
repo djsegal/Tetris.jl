@@ -3,6 +3,8 @@ function glue_piece!(cur_player::AbstractPlayer)
 
   isnull(cur_piece) && return
 
+  score!(cur_player, "glue", -1)
+
   cur_player.state.can_hold |= true
 
   cur_js = """

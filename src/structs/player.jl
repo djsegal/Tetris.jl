@@ -18,6 +18,8 @@ mutable struct Player <: AbstractPlayer
 
   lines::Int
   combo::Int
+
+  stash::Int
 end
 
 function Player(cur_game::AbstractGame=Game())
@@ -32,6 +34,7 @@ function Player(cur_game::AbstractGame=Game())
     Nullable{AbstractClock}(),
     "",
     1,
+    0,
     0,
     0,
     0

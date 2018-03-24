@@ -7,7 +7,10 @@ const score_array = [
 
 const allowed_labels = [
   "clear",
-  "combo"
+  "combo",
+  "soft",
+  "hard",
+  "glue"
 ]
 
 const odd_offsets = Dict(

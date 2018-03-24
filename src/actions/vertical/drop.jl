@@ -32,11 +32,13 @@ function drop!(cur_player::AbstractPlayer, cur_piece::AbstractPiece, cur_grid::A
   cur_piece.i += new_direction
 
   if is_main_piece && !is_step
-    cur_score = abs(new_direction)
+    drop_count = abs(new_direction)
 
-    ( cur_score > 1 ) && ( cur_score *= 2 )
-
-    cur_player.score += cur_score
+    if drop_count == 1
+      score!(cur_player, "soft", -1)
+    else
+      score!(cur_player, "hard", drop_count)
+    end
   end
 
   is_main_piece && move!(cur_player, false)
