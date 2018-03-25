@@ -47,7 +47,7 @@ function Round(cur_player::AbstractPlayer=Player())
   end
 
   cur_server_id = cur_is_keeping_score ?
-    api_parse(cur_response, "id") : -1
+    api_fetch(cur_response, "id") : -1
 
   cur_round = Round(
     cur_player,

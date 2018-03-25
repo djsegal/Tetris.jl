@@ -12,5 +12,8 @@ abstract type AbstractClock end
 abstract type AbstractLog end
 abstract type AbstractGrid end
 
+abstract type AbstractBoard end
+abstract type AbstractEntry end
+
 abstract type AbstractPiece end
 abstract type AbstractBlock end

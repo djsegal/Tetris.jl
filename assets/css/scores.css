@@ -1,0 +1,52 @@
+.cs-scores-screen {
+  text-align: center;
+
+  opacity: 0.84;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+
+.cs-tetris-container:not(.cs-has-splash) .cs-scores-screen {
+  opacity: 0;
+}
+
+.cs-jumbotron {
+  opacity: 0.96;
+  height: calc(100% - 150px);
+  margin: 75px 12%;
+  width: 76%;
+}
+
+.cs-jumbotron .row {
+  height: 100%;
+}
+
+.cs-jumbotron .row:not(.cs-mobile) > div {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cs-jumbotron .row:not(.cs-mobile) > div:last-child > div {
+  height: 100%;
+  overflow: scroll;
+}
+
+.cs-jumbotron .row:not(.cs-mobile) > div:last-child table {
+  height: 100%;
+}
+
+.rendered_html .cs-jumbotron h1, .rendered_html .cs-jumbotron h2 {
+  margin: 0;
+  line-height: 2;
+}
+
+.cs-mobile-scores {
+  height: 100%;
+  overflow-y: scroll;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

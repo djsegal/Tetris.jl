@@ -13,6 +13,7 @@ function setup()
     "https://use.fontawesome.com/releases/v5.0.8/js/all.js",
     "https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.9/howler.min.js",
     "$( relative_dir )pkg/Tetris/css/arcade.css",
+    "$( relative_dir )pkg/Tetris/css/scores.css",
     "$( relative_dir )pkg/Tetris/css/colors.css",
     "$( relative_dir )pkg/Tetris/css/depth.css",
     "$( relative_dir )pkg/Tetris/css/icons.css",

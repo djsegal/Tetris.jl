@@ -113,6 +113,14 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
       make_buttons(cur_observer),
       attributes=Dict(:class => "cs-overlay-screen")
     ),
+    dom"div"(
+      dom"div"(
+        make_scores(cur_grid.player.game.board, true),
+        make_scores(cur_grid.player.game.board, false),
+        attributes=Dict(:class => "cs-jumbotron jumbotron")
+      ),
+      attributes=Dict(:class => "cs-overlay-screen cs-scores-screen")
+    ),
     attributes=Dict(:class => "js-tetris-container cs-tetris-container container-fluid cs-has-splash"),
     events=cur_events
   )
