@@ -5,6 +5,8 @@ function hold(cur_player::AbstractPlayer)
   cur_player.state.can_hold || return
   cur_player.state.can_hold = false
 
+  score!(cur_player, "hold", -1)
+
   work_piece, cur_player.piece =
     cur_player.piece, cur_player.hold
 

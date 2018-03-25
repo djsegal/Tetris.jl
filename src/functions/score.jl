@@ -60,7 +60,7 @@ function score!(cur_player::AbstractPlayer, cur_label::AbstractString, cur_value
   #  update player score
   # ---------------------
 
-  if cur_label == "glue"
+  if cur_label == "glue" || cur_label == "hold"
     cur_player.stash = 0
   else
     cur_player.score += cur_score
@@ -97,6 +97,12 @@ function _score_hard(drop_count::Int, cur_dict::OrderedDict)
 end
 
 function _score_glue(stub_value::Int, cur_dict::OrderedDict)
+  cur_score = cur_dict["stash"]
+
+  cur_score
+end
+
+function _score_hold(stub_value::Int, cur_dict::OrderedDict)
   cur_score = cur_dict["stash"]
 
   cur_score

@@ -10,7 +10,8 @@ const allowed_labels = [
   "combo",
   "soft",
   "hard",
-  "glue"
+  "glue",
+  "hold"
 ]
 
 const odd_offsets = Dict(
