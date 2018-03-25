@@ -2,6 +2,9 @@ mutable struct Round{T <: Vector{<:AbstractLog}} <: AbstractRound
   player::AbstractPlayer
   logs::T
 
+  batch_count::Int
+  log_count::Int
+
   is_keeping_score::Bool
   is_making_call::Bool
 
@@ -12,9 +15,13 @@ end
 function Round(cur_player::AbstractPlayer=Player())
   cur_password = string(Base.Random.uuid4())
 
+  cur_batch_count = 0
+  cur_log_count = 1
+
   cur_request = Dict(
     "round" => Dict(
-      "password" => cur_password
+      "password" => cur_password,
+      "batch_count" => cur_batch_count
     )
   )
 
@@ -45,6 +52,8 @@ function Round(cur_player::AbstractPlayer=Player())
   cur_round = Round(
     cur_player,
     AbstractLog[],
+    cur_batch_count,
+    cur_log_count,
     cur_is_keeping_score,
     false,
     cur_server_id,

@@ -20,9 +20,12 @@ function push_clock(cur_player::AbstractPlayer)
 
     cur_logs = cur_round.logs[cur_log_range]
 
+    cur_batch_count = cur_round.batch_count + 1
+
     cur_request = Dict(
       "round" => Dict(
         "password" => cur_round.client_password,
+        "batch_count" => cur_batch_count,
         "logs_attributes" => cur_logs
       )
     )
@@ -48,8 +51,11 @@ function push_clock(cur_player::AbstractPlayer)
       println("todo: handle this")
     end
 
-    is_successful_request &&
+    if is_successful_request
+      cur_round.batch_count = cur_batch_count
+
       deleteat!(cur_round.logs, cur_log_range)
+    end
 
     cur_round.is_making_call = false
 
