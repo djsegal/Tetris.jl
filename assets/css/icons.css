@@ -44,13 +44,15 @@
 
 .cs-tetris-container:not(.cs-has-splash) .cs-icon-list a .cs-icon {
   color: #9E9E9E;
-  fill-opacity: 0.4;
+  fill-opacity: 0.65;
 }
 
 .cs-tetris-container:not(.cs-has-splash) .cs-icon-list a:hover .cs-icon {
   color: #607D8B;
+  fill-opacity: 1.0;
 }
 
 .cs-tetris-container:not(.cs-has-splash) .cs-icon-list a.cs-active .cs-icon {
   color: #607D8B;
+  fill-opacity: 1.0;
 }
