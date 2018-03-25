@@ -29,6 +29,8 @@ function push_clock(cur_player::AbstractPlayer)
 
     is_successful_request = false
 
+    cur_response = nothing
+
     try
       cur_response = HTTP.put(
         "$(upload_endpoint)/$(cur_round.server_id)",
@@ -41,7 +43,7 @@ function push_clock(cur_player::AbstractPlayer)
       any(
         cur_error_type -> isa(cur_error, cur_error_type),
         api_errors
-      ) || rethrow(cur_response)
+      ) || rethrow(cur_error)
 
       println("todo: handle this")
     end

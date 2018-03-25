@@ -20,6 +20,8 @@ function Round(cur_player::AbstractPlayer=Player())
 
   cur_is_keeping_score = false
 
+  cur_response = nothing
+
   try
     cur_response = HTTP.post(
       upload_endpoint,
@@ -32,7 +34,7 @@ function Round(cur_player::AbstractPlayer=Player())
     any(
       cur_error_type -> isa(cur_error, cur_error_type),
       api_errors
-    ) || rethrow(cur_response)
+    ) || rethrow(cur_error)
 
     println("todo: fix this")
   end
