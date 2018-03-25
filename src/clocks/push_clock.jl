@@ -10,6 +10,8 @@ function push_clock(cur_player::AbstractPlayer)
 
     cur_round = cur_player.round
 
+    isempty(cur_round.logs) && continue
+
     cur_round.is_making_call && continue
 
     cur_round.is_making_call = true
