@@ -3,10 +3,6 @@ function glue_piece!(cur_player::AbstractPlayer)
 
   isnull(cur_piece) && return
 
-  score!(cur_player, "glue", -1)
-
-  cur_player.glues += 1
-
   cur_player.state.can_hold |= true
 
   cur_js = """
@@ -46,7 +42,13 @@ function glue_piece!(cur_player::AbstractPlayer)
     push!(cleared_rows, cur_row)
   end
 
-  if isempty(cleared_rows)
+  cleared_count = length(cleared_rows)
+
+  score!(cur_player, "glue", cleared_count)
+
+  cur_player.glues += 1
+
+  if iszero(cleared_count)
     cur_player.combo = 0
 
     is_valid = false
@@ -61,16 +63,14 @@ function glue_piece!(cur_player::AbstractPlayer)
 
     is_valid || return raise_defeat(cur_player)
   else
-    cleared_count = length(cleared_rows)
-
-    @assert 0 < cleared_count < 5
+    @assert cleared_count < 5
 
     ( cur_player.combo > 0 ) &&
       score!(cur_player, "combo", cleared_count)
 
-    score!(cur_player, "clear", cleared_count)
-
     cur_player.combo += 1
+
+    score!(cur_player, "clear", cleared_count)
 
     cur_js *= """
       \$(".js-score-text").text("$(lpad(cur_player.score, 8, "0"))");
