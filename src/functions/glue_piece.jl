@@ -65,10 +65,10 @@ function glue_piece!(cur_player::AbstractPlayer)
 
     @assert 0 < cleared_count < 5
 
-    score!(cur_player, "clear", cleared_count)
-
     ( cur_player.combo > 0 ) &&
       score!(cur_player, "combo", cleared_count)
+
+    score!(cur_player, "clear", cleared_count)
 
     cur_player.combo += 1
 
