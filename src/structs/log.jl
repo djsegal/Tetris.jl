@@ -1,4 +1,6 @@
 mutable struct Log <: AbstractLog
+  position::Int
+
   label::AbstractString
   value::Int
 
@@ -12,15 +14,4 @@ mutable struct Log <: AbstractLog
   stash::Int
   glues::Int
   total::Int
-
-  timestamp::DateTime
-end
-
-function Log(varargs...)
-  cur_log = Log(
-    varargs...,
-    now()
-  )
-
-  cur_log
 end
