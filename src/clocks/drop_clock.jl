@@ -24,7 +24,7 @@ function drop_clock(cur_player::AbstractPlayer)
 
   cur_sleep_time /= 1000
 
-  @async while cur_player.state.is_playing && !cur_player.state.has_lost && cur_player.clock.drop == cur_uuid
+  @async while cur_player.state.is_playing && !cur_player.state.is_done && cur_player.clock.drop == cur_uuid
     did_step = step(cur_player)
 
     if did_step

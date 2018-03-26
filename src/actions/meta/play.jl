@@ -7,8 +7,8 @@ function play(cur_player::AbstractPlayer)
 
   cur_js = ""
 
-  if cur_player.state.has_lost
-    cur_player.state.has_lost = false
+  if cur_player.state.is_done
+    cur_player.state.is_done = false
 
     cur_js *= """
       \$(".js-tetris-container td").removeClass();

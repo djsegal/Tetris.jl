@@ -4,7 +4,7 @@ function push_clock(cur_player::AbstractPlayer)
 
   cur_player.clock.push = cur_uuid
 
-  @async while cur_player.state.is_playing && !cur_player.state.has_lost && cur_player.clock.push == cur_uuid && cur_player.round.is_keeping_score
+  @async while cur_player.state.is_playing && !cur_player.state.is_done && cur_player.clock.push == cur_uuid && cur_player.round.is_keeping_score
 
     sleep(10)
 

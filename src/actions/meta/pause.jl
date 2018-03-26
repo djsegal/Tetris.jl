@@ -3,7 +3,7 @@ function pause(cur_player::AbstractPlayer)
 
   cur_state = cur_player.state
 
-  cur_state.has_lost && return
+  cur_state.is_done && return
 
   is_paused = !cur_state.is_playing
 
