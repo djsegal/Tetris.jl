@@ -50,6 +50,7 @@ function score!(cur_player::AbstractPlayer, cur_label::AbstractString, cur_value
       [0, 1] + cur_round.log_count
 
     cur_log = Log(
+      Replica(cur_player.piece),
       cur_position,
       cur_label,
       cur_value,
