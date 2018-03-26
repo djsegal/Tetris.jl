@@ -30,6 +30,7 @@
 }
 
 .cs-jumbotron .row {
+  pointer-events: initial;
   height: 100%;
 }
 
