@@ -43,7 +43,12 @@ function Round(cur_player::AbstractPlayer=Player())
       api_errors
     ) || rethrow(cur_error)
 
-    println("todo: implement this")
+    evaljs(
+      cur_player.game.scope,
+      JSString("""
+        \$(".js-offline").removeClass("hidden");
+      """)
+    )
   end
 
   cur_server_id = cur_is_keeping_score ?

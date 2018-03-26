@@ -121,6 +121,9 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
       ),
       attributes=Dict(:class => "cs-overlay-screen cs-scores-screen $(isempty(cur_grid.player.game.board.entries) ? "hidden" : "")")
     ),
+    dom"div"(
+      attributes=Dict(:class => "cs-offline js-offline hidden", :title => "You are offline.")
+    ),
     attributes=Dict(:class => "js-tetris-container cs-tetris-container container-fluid cs-has-splash"),
     events=cur_events
   )

@@ -19,8 +19,6 @@ function Board()
       cur_error_type -> isa(cur_error, cur_error_type),
       api_errors
     ) || rethrow(cur_error)
-
-    println("todo: fix this")
   end
 
   cur_entries = Entry[]

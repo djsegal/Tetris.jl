@@ -47,14 +47,21 @@ function push_clock(cur_player::AbstractPlayer)
         cur_error_type -> isa(cur_error, cur_error_type),
         api_errors
       ) || rethrow(cur_error)
-
-      println("todo: handle this")
     end
 
     if is_successful_request
       cur_round.batch_count = cur_batch_count
 
       deleteat!(cur_round.logs, cur_log_range)
+    else
+      evaljs(
+        cur_player.game.scope,
+        JSString("""
+          \$(".js-offline").removeClass("hidden");
+        """)
+      )
+
+      cur_player.round.is_keeping_score = false
     end
 
     cur_round.is_making_call = false

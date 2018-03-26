@@ -1,0 +1,10 @@
+.cs-offline {
+  position: absolute;
+  left: 2vmin;
+  bottom: 2vmin;
+  opacity: 0.4;
+  width: 3vmin;
+  height: 3vmin;
+  border-radius: 3vmin;
+  border: solid 2px white;
+}
