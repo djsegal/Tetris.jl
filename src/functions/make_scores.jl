@@ -4,7 +4,7 @@ function make_scores(cur_board::AbstractBoard, is_mobile::Bool)
   for (cur_index, cur_entry) in enumerate(cur_board.entries)
     rendered_entry = dom"tr"(
       dom"td"(
-        "$(cur_index-1)",
+        "$(cur_index)",
       ),
       dom"td"(
         "$(rpad(cur_entry.name, 8, "\u00A0"))"[1:8]
