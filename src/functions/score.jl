@@ -29,7 +29,8 @@ function score!(cur_player::AbstractPlayer, cur_label::AbstractString, cur_value
     "combo" => cur_player.combo,
     "stash" => cur_player.stash,
     "glues" => cur_player.glues,
-    "total" => cur_player.score
+    "total" => cur_player.score,
+    "piece" => cur_player.piece.name
   )
 
   cur_function = getfield(
