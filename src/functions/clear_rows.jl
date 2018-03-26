@@ -47,9 +47,11 @@ function clear_rows!(cur_player::AbstractPlayer, cleared_rows::Vector{Int})
       )
     )
 
-    cur_js *= """
-      \$(".js-level-text").text("Level $(cur_player.level)");
-    """
+    if cur_player.level <= max_level
+      cur_js *= """
+        \$(".js-level-text").text("Level $(cur_player.level)");
+      """
+    end
   end
 
   cur_range = -(row_count-1):0

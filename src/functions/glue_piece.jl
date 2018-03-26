@@ -84,5 +84,10 @@ function glue_piece!(cur_player::AbstractPlayer)
   cur_piece.owner = Nullable{AbstractContainer}()
   cur_player.piece = Nullable{AbstractPiece}()
 
-  drop_clock(cur_player)
+  if cur_player.level <= max_level
+    drop_clock(cur_player)
+  else
+    raise_defeat(cur_player)
+  end
+
 end

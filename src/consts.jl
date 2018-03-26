@@ -1,3 +1,5 @@
+const max_level = 42
+
 const score_array = [
   100,
   300,
