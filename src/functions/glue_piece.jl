@@ -61,7 +61,7 @@ function glue_piece!(cur_player::AbstractPlayer)
       break
     end
 
-    is_valid || return raise_defeat(cur_player)
+    is_valid || return end_round(cur_player)
   else
     @assert cleared_count < 5
 
@@ -87,7 +87,7 @@ function glue_piece!(cur_player::AbstractPlayer)
   if cur_player.level <= max_level
     drop_clock(cur_player)
   else
-    raise_defeat(cur_player)
+    end_round(cur_player)
   end
 
 end

@@ -1,6 +1,6 @@
-function raise_defeat(cur_player::AbstractPlayer, is_restart::Bool=false)
+function end_round(cur_player::AbstractPlayer, is_restart::Bool=false)
   cur_player.state.is_playing = false
-  cur_player.state.has_lost = true
+  cur_player.state.is_done = true
 
   cur_player.grid.height = 0
   fill!(cur_player.grid.table, "")
