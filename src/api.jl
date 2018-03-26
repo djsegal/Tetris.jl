@@ -1,11 +1,16 @@
 score_api = "http://localhost:3000"
 
-upload_endpoint = "$(score_api)/rounds"
+rounds_endpoint = "$(score_api)/rounds"
 
-download_endpoint = "$(score_api)/scores"
+scores_endpoint = "$(score_api)/scores"
 
-default_headers = Dict(
+json_headers = Dict(
   "Content-Type" => "application/json",
+  "Accept" => "application/json"
+)
+
+gzip_headers = Dict(
+  "Content-Type" => "application/gzip",
   "Accept" => "application/json"
 )
 

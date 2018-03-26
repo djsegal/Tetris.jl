@@ -7,6 +7,8 @@ module Tetris
   using JSExpr
 
   using DataStructures
+  using CodecZlib
+
 
   include("abstracts.jl")
   include("consts.jl")

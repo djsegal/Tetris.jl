@@ -31,8 +31,8 @@ function Round(cur_player::AbstractPlayer=Player())
 
   try
     cur_response = HTTP.post(
-      upload_endpoint,
-      default_headers,
+      rounds_endpoint,
+      json_headers,
       JSON.json(cur_request)
     )
 
@@ -43,7 +43,7 @@ function Round(cur_player::AbstractPlayer=Player())
       api_errors
     ) || rethrow(cur_error)
 
-    println("todo: fix this")
+    println("todo: implement this")
   end
 
   cur_server_id = cur_is_keeping_score ?

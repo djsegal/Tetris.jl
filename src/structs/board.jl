@@ -9,8 +9,8 @@ function Board()
 
   try
     cur_response = HTTP.get(
-      download_endpoint,
-      default_headers
+      scores_endpoint,
+      json_headers
     )
 
     has_high_scores = ( cur_response.status == 200 )

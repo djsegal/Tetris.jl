@@ -6,7 +6,7 @@ function push_clock(cur_player::AbstractPlayer)
 
   @async while cur_player.state.is_playing && !cur_player.state.has_lost && cur_player.clock.push == cur_uuid && cur_player.round.is_keeping_score
 
-    sleep(5)
+    sleep(10)
 
     cur_round = cur_player.round
 
@@ -36,9 +36,9 @@ function push_clock(cur_player::AbstractPlayer)
 
     try
       cur_response = HTTP.put(
-        "$(upload_endpoint)/$(cur_round.server_id)",
-        default_headers,
-        JSON.json(cur_request)
+        "$(rounds_endpoint)/$(cur_round.server_id)",
+        gzip_headers,
+        transcode(GzipCompressor, JSON.json(cur_request))
       )
 
       is_successful_request = ( cur_response.status == 200 )
