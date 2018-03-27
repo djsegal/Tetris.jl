@@ -46,22 +46,28 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
     cur_key_code = cur_event.keyCode;
 
-    if ( cur_key_code == 37 ) ; $cur_observer[] = "" ; end
-    if ( cur_key_code == 38 ) ; $cur_observer[] = "" ; end
-    if ( cur_key_code == 39 ) ; $cur_observer[] = "" ; end
-    if ( cur_key_code == 40 ) ; $cur_observer[] = "" ; end
+    is_action_key = false;
 
-    if ( cur_key_code == 65 ) ; $cur_observer[] = "" ; end
-    if ( cur_key_code == 87 ) ; $cur_observer[] = "" ; end
-    if ( cur_key_code == 68 ) ; $cur_observer[] = "" ; end
-    if ( cur_key_code == 83 ) ; $cur_observer[] = "" ; end
+    if cur_event.target.tagName.toLowerCase() !== "input"
 
-    if ( cur_key_code == 81 ) ; $cur_observer[] = "" ; end
-    if ( cur_key_code == 69 ) ; $cur_observer[] = "" ; end
+      if ( cur_key_code == 80 ) ; is_action_key = true ; $cur_observer[] = "" ; end
 
-    if ( cur_key_code == 80 ) ; $cur_observer[] = "" ; end
+      if ( cur_key_code == 37 ) ; is_action_key = true ; $cur_observer[] = "" ; end
+      if ( cur_key_code == 38 ) ; is_action_key = true ; $cur_observer[] = "" ; end
+      if ( cur_key_code == 39 ) ; is_action_key = true ; $cur_observer[] = "" ; end
+      if ( cur_key_code == 40 ) ; is_action_key = true ; $cur_observer[] = "" ; end
 
-    if ( cur_key_code == 32 ) ; $cur_observer[] = "" ; end
+      if ( cur_key_code == 32 ) ; is_action_key = true ; $cur_observer[] = "" ; end
+
+      if ( cur_key_code == 81 ) ; is_action_key = true ; $cur_observer[] = "" ; end
+      if ( cur_key_code == 69 ) ; is_action_key = true ; $cur_observer[] = "" ; end
+
+      if ( cur_key_code == 65 ) ; is_action_key = true ; $cur_observer[] = "" ; end
+      if ( cur_key_code == 87 ) ; is_action_key = true ; $cur_observer[] = "" ; end
+      if ( cur_key_code == 68 ) ; is_action_key = true ; $cur_observer[] = "" ; end
+      if ( cur_key_code == 83 ) ; is_action_key = true ; $cur_observer[] = "" ; end
+
+    end
 
     if is_action_key ; cur_event.preventDefault() ; end
 
