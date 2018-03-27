@@ -19,24 +19,19 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
     if cur_event.target.tagName.toLowerCase() !== "input"
 
+      if ( cur_key_code == 77 ) ; is_action_key = true ; $cur_observer[] = "music" ; end
+
       if ( cur_key_code == 80 ) ; is_action_key = true ; $cur_observer[] = "pause" ; end
 
-      if ( cur_key_code == 37 ) ; is_action_key = true ; $cur_observer[] = "left" ; end
-      if ( cur_key_code == 38 ) ; is_action_key = true ; $cur_observer[] = "up" ; end
-      if ( cur_key_code == 39 ) ; is_action_key = true ; $cur_observer[] = "right" ; end
-      if ( cur_key_code == 40 ) ; is_action_key = true ; $cur_observer[] = "down" ; end
+      if ( cur_key_code == 37 ) ; is_action_key = true ; $cur_observer[] = "slide_left" ; end
+      if ( cur_key_code == 38 ) ; is_action_key = true ; $cur_observer[] = "clockwise" ; end
+      if ( cur_key_code == 39 ) ; is_action_key = true ; $cur_observer[] = "slide_right" ; end
+      if ( cur_key_code == 40 ) ; is_action_key = true ; $cur_observer[] = "slow_drop" ; end
 
-      if ( cur_key_code == 32 ) ; is_action_key = true ; $cur_observer[] = "hold" ; end
+      if ( cur_key_code == 32 ) ; is_action_key = true ; $cur_observer[] = "hard_drop" ; end
 
-      if ( cur_key_code == 81 ) ; is_action_key = true ; $cur_observer[] = "counter" ; end
-      if ( cur_key_code == 69 ) ; is_action_key = true ; $cur_observer[] = "clockwise" ; end
-
-      if ( cur_key_code == 65 ) ; is_action_key = true ; $cur_observer[] = "left" ; end
-      if ( cur_key_code == 87 ) ; is_action_key = true ; $cur_observer[] = "up" ; end
-      if ( cur_key_code == 68 ) ; is_action_key = true ; $cur_observer[] = "right" ; end
-      if ( cur_key_code == 83 ) ; is_action_key = true ; $cur_observer[] = "down" ; end
-
-      if ( cur_key_code == 77 ) ; is_action_key = true ; $cur_observer[] = "music" ; end
+      if ( cur_key_code == 67 ) ; is_action_key = true ; $cur_observer[] = "hold" ; end
+      if ( cur_key_code == 90 ) ; is_action_key = true ; $cur_observer[] = "counter" ; end
 
     end
 
@@ -52,6 +47,8 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
     if cur_event.target.tagName.toLowerCase() !== "input"
 
+      if ( cur_key_code == 77 ) ; is_action_key = true ; $cur_observer[] = "" ; end
+
       if ( cur_key_code == 80 ) ; is_action_key = true ; $cur_observer[] = "" ; end
 
       if ( cur_key_code == 37 ) ; is_action_key = true ; $cur_observer[] = "" ; end
@@ -61,15 +58,8 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
       if ( cur_key_code == 32 ) ; is_action_key = true ; $cur_observer[] = "" ; end
 
-      if ( cur_key_code == 81 ) ; is_action_key = true ; $cur_observer[] = "" ; end
-      if ( cur_key_code == 69 ) ; is_action_key = true ; $cur_observer[] = "" ; end
-
-      if ( cur_key_code == 65 ) ; is_action_key = true ; $cur_observer[] = "" ; end
-      if ( cur_key_code == 87 ) ; is_action_key = true ; $cur_observer[] = "" ; end
-      if ( cur_key_code == 68 ) ; is_action_key = true ; $cur_observer[] = "" ; end
-      if ( cur_key_code == 83 ) ; is_action_key = true ; $cur_observer[] = "" ; end
-
-      if ( cur_key_code == 77 ) ; is_action_key = true ; $cur_observer[] = "" ; end
+      if ( cur_key_code == 67 ) ; is_action_key = true ; $cur_observer[] = "" ; end
+      if ( cur_key_code == 90 ) ; is_action_key = true ; $cur_observer[] = "" ; end
 
     end
 

@@ -1,4 +1,4 @@
 include("drop.jl")
 
-include("up.jl")
-include("down.jl")
+include("hard_drop.jl")
+include("slow_drop.jl")

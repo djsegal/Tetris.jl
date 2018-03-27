@@ -1,4 +1,4 @@
-function right(cur_player::AbstractPlayer)
+function slide_right(cur_player::AbstractPlayer)
   cur_piece = cur_player.piece
   cur_grid = cur_player.grid
 

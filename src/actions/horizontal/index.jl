@@ -1,4 +1,4 @@
 include("slide.jl")
 
-include("left.jl")
-include("right.jl")
+include("slide_left.jl")
+include("slide_right.jl")

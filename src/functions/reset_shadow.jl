@@ -13,5 +13,5 @@ function reset_shadow!(cur_player::AbstractPlayer)
     shadow_block.y = piece_block.y
   end
 
-  up(cur_player, cur_shadow)
+  hard_drop(cur_player, cur_shadow)
 end

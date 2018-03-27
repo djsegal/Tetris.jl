@@ -1,4 +1,4 @@
-function down(cur_player::AbstractPlayer, is_step::Bool=false)
+function slow_drop(cur_player::AbstractPlayer, is_step::Bool=false)
   cur_piece = cur_player.piece
   cur_grid = cur_player.grid
 

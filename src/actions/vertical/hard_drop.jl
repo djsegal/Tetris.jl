@@ -1,9 +1,9 @@
-function up(cur_player::AbstractPlayer)
+function hard_drop(cur_player::AbstractPlayer)
   cur_piece = cur_player.piece
 
   isnull(cur_piece) && return false
 
-  did_move = up(cur_player, cur_piece, true)
+  did_move = hard_drop(cur_player, cur_piece, true)
 
   did_move || return false
 
@@ -15,7 +15,7 @@ function up(cur_player::AbstractPlayer)
   did_move
 end
 
-function up(cur_player::AbstractPlayer, cur_piece::AbstractPiece, is_main_piece::Bool=false)
+function hard_drop(cur_player::AbstractPlayer, cur_piece::AbstractPiece, is_main_piece::Bool=false)
   cur_grid = cur_player.grid
 
   max_rows = cur_grid.rows
