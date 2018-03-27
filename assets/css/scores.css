@@ -8,7 +8,7 @@
   -webkit-transition: opacity .25s ease-in-out;
 }
 
-.cs-scores-screen * {
+.cs-scores-screen *:not(input) {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
