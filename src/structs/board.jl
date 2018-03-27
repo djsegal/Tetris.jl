@@ -24,12 +24,16 @@ function Board()
 
   cur_entries = Entry[]
 
-  raw_entries = has_high_scores ?
-    api_fetch(cur_response) : []
+  if has_high_scores
+    raw_entries = api_fetch(cur_response)
 
-  min_score = minimum(
-    map(raw_entry -> raw_entry["value"], raw_entries)
-  )
+    min_score = minimum(
+      map(raw_entry -> raw_entry["value"], raw_entries)
+    )
+  else
+    raw_entries = []
+    min_score = 0
+  end
 
   for raw_entry in raw_entries
     cur_entry = Entry(
