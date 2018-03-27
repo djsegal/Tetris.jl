@@ -1,5 +1,6 @@
 mutable struct Board{T <: Vector{<:AbstractEntry}} <: AbstractBoard
   entries::T
+  min_score::Int
 end
 
 function Board()
@@ -26,6 +27,10 @@ function Board()
   raw_entries = has_high_scores ?
     api_fetch(cur_response) : []
 
+  min_score = minimum(
+    map(raw_entry -> raw_entry["value"], raw_entries)
+  )
+
   for raw_entry in raw_entries
     cur_entry = Entry(
       raw_entry["name"],
@@ -35,7 +40,10 @@ function Board()
     push!(cur_entries, cur_entry)
   end
 
-  cur_board = Board(cur_entries)
+  cur_board = Board(
+    cur_entries,
+    min_score
+  )
 
   cur_board
 end
