@@ -33,6 +33,9 @@ function drop_clock(cur_player::AbstractPlayer)
     else
       isnull(cur_player.clock.lock) &&
         lock_clock(cur_player)
+
+      isnull(cur_player.clock.drag) &&
+        drag_clock(cur_player)
     end
 
     sleep(cur_sleep_time)

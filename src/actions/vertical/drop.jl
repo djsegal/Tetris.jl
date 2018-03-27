@@ -41,7 +41,12 @@ function drop!(cur_player::AbstractPlayer, cur_piece::AbstractPiece, cur_grid::A
     end
   end
 
-  is_main_piece && move!(cur_player, false)
+  if is_main_piece
+    move!(cur_player, false)
+
+    cur_player.clock.drag =
+      Nullable{Base.Random.UUID}()
+  end
 
   true
 end
