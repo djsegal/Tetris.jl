@@ -1,3 +1,4 @@
+include("send_logs.jl")
 include("get_rotate_offsets.jl")
 include("calc_block_coords.jl")
 include("fill_bag.jl")
