@@ -17,9 +17,9 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
     is_action_key = false;
 
-    if ( cur_key_code == 80 ) ; is_action_key = true ; $cur_observer[] = "pause" ; end
-
     if cur_event.target.tagName.toLowerCase() !== "input"
+
+      if ( cur_key_code == 80 ) ; is_action_key = true ; $cur_observer[] = "pause" ; end
 
       if ( cur_key_code == 37 ) ; is_action_key = true ; $cur_observer[] = "left" ; end
       if ( cur_key_code == 38 ) ; is_action_key = true ; $cur_observer[] = "up" ; end
