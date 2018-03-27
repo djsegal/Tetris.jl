@@ -19,12 +19,12 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
     if ( cur_key_code == 80 ) ; is_action_key = true ; $cur_observer[] = "pause" ; end
 
-    if ( cur_key_code == 37 ) ; is_action_key = true ; $cur_observer[] = "left" ; end
-    if ( cur_key_code == 38 ) ; is_action_key = true ; $cur_observer[] = "up" ; end
-    if ( cur_key_code == 39 ) ; is_action_key = true ; $cur_observer[] = "right" ; end
-    if ( cur_key_code == 40 ) ; is_action_key = true ; $cur_observer[] = "down" ; end
-
     if cur_event.target.tagName.toLowerCase() !== "input"
+
+      if ( cur_key_code == 37 ) ; is_action_key = true ; $cur_observer[] = "left" ; end
+      if ( cur_key_code == 38 ) ; is_action_key = true ; $cur_observer[] = "up" ; end
+      if ( cur_key_code == 39 ) ; is_action_key = true ; $cur_observer[] = "right" ; end
+      if ( cur_key_code == 40 ) ; is_action_key = true ; $cur_observer[] = "down" ; end
 
       if ( cur_key_code == 32 ) ; is_action_key = true ; $cur_observer[] = "hold" ; end
 
