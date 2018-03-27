@@ -30,6 +30,7 @@ function score!(cur_player::AbstractPlayer, cur_label::AbstractString, cur_value
     "stash" => cur_player.stash,
     "glues" => cur_player.glues,
     "total" => cur_player.score,
+    "chain" => cur_player.chain,
     "piece" => cur_player.piece.name
   )
 
@@ -76,7 +77,11 @@ function score!(cur_player::AbstractPlayer, cur_label::AbstractString, cur_value
 end
 
 function _score_clear(cleared_count::Int, cur_dict::OrderedDict)
-  cur_score = score_array[cleared_count]
+  if cleared_count == 4 && cur_dict["chain"] == "tetris"
+    cur_score = 1200
+  else
+    cur_score = score_array[cleared_count]
+  end
 
   cur_score *= cur_dict["level"]
 

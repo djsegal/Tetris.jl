@@ -13,7 +13,9 @@ mutable struct Log <: AbstractLog
 
   stash::Int
   glues::Int
+
   total::Int
 
+  chain::AbstractString
   piece::Char
 end

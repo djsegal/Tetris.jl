@@ -13,6 +13,7 @@ mutable struct Player <: AbstractPlayer
   clock::Union{AbstractClock, Nullable{AbstractClock}}
 
   action::AbstractString
+  chain::AbstractString
 
   level::Int
   score::Int
@@ -35,6 +36,7 @@ function Player(cur_game::AbstractGame=Game())
     Nullable{AbstractRound}(),
     Nullable{AbstractState}(),
     Nullable{AbstractClock}(),
+    "",
     "",
     1,
     0,

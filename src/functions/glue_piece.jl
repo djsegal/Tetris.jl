@@ -78,6 +78,12 @@ function glue_piece!(cur_player::AbstractPlayer)
 
     score!(cur_player, "clear", cleared_count)
 
+    if cleared_count == 4
+      cur_player.chain = "tetris"
+    else
+      cur_player.chain = ""
+    end
+
     cur_js *= """
       \$(".js-score-text").text("$(lpad(cur_player.score, 8, "0"))");
     """
