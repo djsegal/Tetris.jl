@@ -8,3 +8,7 @@
   border-radius: 3vmin;
   border: solid 2px white;
 }
+
+.cs-tetris-container:not(.cs-has-splash) .cs-offline {
+  z-index: -1;
+}
