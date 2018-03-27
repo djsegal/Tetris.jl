@@ -77,6 +77,12 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
   end
 
+  cur_events["keypress"] = @js function (cur_event)
+
+    cur_event.preventDefault();
+
+  end
+
   cur_preview_tables = []
 
   for cur_preview in 1:cur_grid.player.bag.previews
