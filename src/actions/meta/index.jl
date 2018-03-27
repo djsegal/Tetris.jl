@@ -6,3 +6,5 @@ include("suspend.jl")
 
 include("restart.jl")
 include("music.jl")
+
+include("submit.jl")

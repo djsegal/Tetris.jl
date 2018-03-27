@@ -1,3 +1,4 @@
+include("update_scores.jl")
 include("set_default_values.jl")
 include("send_logs.jl")
 include("get_rotate_offsets.jl")

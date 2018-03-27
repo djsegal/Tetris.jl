@@ -2,8 +2,6 @@ function end_round(cur_player::AbstractPlayer, is_restart::Bool=false)
   cur_player.state.is_playing = false
   cur_player.state.is_done = true
 
-  set_default_values(cur_player)
-
   cur_js = """
     \$(".js-tetris-container").blur();
   """
@@ -21,10 +19,47 @@ function end_round(cur_player::AbstractPlayer, is_restart::Bool=false)
     """
   end
 
-  evaljs(
-    cur_player.game.scope,
-    JSString(cur_js)
+  is_new_high_score = !is_restart
+
+  is_new_high_score = is_new_high_score &&
+    cur_player.round.is_keeping_score
+
+  is_new_high_score = is_new_high_score && (
+    cur_player.score >
+    cur_player.game.board.min_score
   )
+
+  if !is_new_high_score
+    set_default_values(cur_player)
+
+    evaljs(
+      cur_player.game.scope,
+      JSString(cur_js)
+    )
+
+    return false
+  end
+
+  cur_js *= """
+    \$(".cs-scores-screen").addClass("hidden");
+    \$(".js-new-score").removeClass("hidden");
+    \$(".js-new-score h2").text("$(lpad(cur_player.score, 8, "0"))");
+    \$(".js-new-score input").focus();
+  """
+
+  cur_func = function(cur_timer::Timer)
+    cur_player.round.is_making_call && return
+    send_logs(cur_player) || return
+
+    evaljs(
+      cur_player.game.scope,
+      JSString(cur_js)
+    )
+
+    close(cur_timer)
+  end
+
+  Timer(cur_func, 1, 10)
 
   false
 end

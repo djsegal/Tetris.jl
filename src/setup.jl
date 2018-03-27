@@ -45,10 +45,22 @@ function setup()
     ( cur_action == "" ) && ( cur_action = "free" )
 
     if contains(cur_action, "-")
-      split_string = Set(split(cur_action, "-"))
+      split_string = Set(split(cur_action, "-", limit=2))
 
       length(split_string) == 1 &&
         ( cur_action = first(split_string) )
+
+      if in("submit", split_string) && length(split_string) == 2
+        cur_action = "submit"
+
+        delete!(split_string, "submit")
+
+        getfield(Tetris, Symbol(cur_action))(
+          cur_player, pop!(split_string)
+        )
+
+        return
+      end
     end
 
     getfield(Tetris, Symbol(cur_action))(cur_player)

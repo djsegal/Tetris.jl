@@ -24,16 +24,20 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
     if ( cur_key_code == 39 ) ; is_action_key = true ; $cur_observer[] = "right" ; end
     if ( cur_key_code == 40 ) ; is_action_key = true ; $cur_observer[] = "down" ; end
 
+    if cur_event.target.tagName.toLowerCase() !== "input"
 
-    if ( cur_key_code == 32 ) ; is_action_key = true ; $cur_observer[] = "hold" ; end
+      if ( cur_key_code == 32 ) ; is_action_key = true ; $cur_observer[] = "hold" ; end
 
-    if ( cur_key_code == 81 ) ; is_action_key = true ; $cur_observer[] = "counter" ; end
-    if ( cur_key_code == 69 ) ; is_action_key = true ; $cur_observer[] = "clockwise" ; end
+      if ( cur_key_code == 81 ) ; is_action_key = true ; $cur_observer[] = "counter" ; end
+      if ( cur_key_code == 69 ) ; is_action_key = true ; $cur_observer[] = "clockwise" ; end
 
-    if ( cur_key_code == 65 ) ; is_action_key = true ; $cur_observer[] = "left" ; end
-    if ( cur_key_code == 87 ) ; is_action_key = true ; $cur_observer[] = "up" ; end
-    if ( cur_key_code == 68 ) ; is_action_key = true ; $cur_observer[] = "right" ; end
-    if ( cur_key_code == 83 ) ; is_action_key = true ; $cur_observer[] = "down" ; end
+      if ( cur_key_code == 65 ) ; is_action_key = true ; $cur_observer[] = "left" ; end
+      if ( cur_key_code == 87 ) ; is_action_key = true ; $cur_observer[] = "up" ; end
+      if ( cur_key_code == 68 ) ; is_action_key = true ; $cur_observer[] = "right" ; end
+      if ( cur_key_code == 83 ) ; is_action_key = true ; $cur_observer[] = "down" ; end
+
+    end
+
     if is_action_key ; cur_event.preventDefault() ; end
 
   end
@@ -120,6 +124,45 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
         attributes=Dict(:class => "cs-jumbotron jumbotron")
       ),
       attributes=Dict(:class => "cs-overlay-screen cs-scores-screen $(isempty(cur_grid.player.game.board.entries) ? "hidden" : "")")
+    ),
+    dom"div"(
+      dom"div"(
+        dom"div"(
+          dom"div"(
+            dom"h1"(
+              "New High Score!",
+            ),
+            dom"h2"(
+              lpad(0, 8, "0")
+            ),
+            dom"form"(
+              dom"input"(
+                attributes=Dict(
+                  :class => "form-control",
+                  :type => "text",
+                  :placeholder => "________",
+                  :maxlength => 8,
+                  :method => "post",
+                  :required => "true"
+                )
+              ),
+              events=Dict(
+                "submit" => @js function (cur_event)
+                  curName = document.querySelector(".cs-new-score input").value;
+
+                  $cur_observer[] = "submit-" + curName;
+                  cur_event.preventDefault();
+                end
+              ),
+              attributes=Dict(:class => "js-form")
+            ),
+            attributes=Dict(:class => "cs-new-score")
+          ),
+          attributes=Dict(:class => "row")
+        ),
+        attributes=Dict(:class => "cs-jumbotron jumbotron")
+      ),
+      attributes=Dict(:class => "cs-overlay-screen cs-scores-screen js-new-score hidden")
     ),
     dom"div"(
       attributes=Dict(:class => "cs-offline js-offline hidden", :title => "You are offline.")
