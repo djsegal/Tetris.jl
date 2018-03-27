@@ -1,4 +1,4 @@
-score_api = "http://localhost:3000"
+score_api = "http://api.juliatetris.com"
 
 rounds_endpoint = "$(score_api)/rounds"
 
