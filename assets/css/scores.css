@@ -18,6 +18,10 @@
                                   supported by Chrome and Opera */
 }
 
+.cs-scores-screen td {
+  text-align: left;
+}
+
 .cs-tetris-container:not(.cs-has-splash) .cs-scores-screen {
   opacity: 0;
 }
@@ -48,6 +52,10 @@
 
 .cs-jumbotron .row:not(.cs-mobile) > div:last-child table {
   height: 100%;
+}
+
+.cs-jumbotron table {
+  text-transform: uppercase;
 }
 
 .rendered_html .cs-jumbotron h1, .rendered_html .cs-jumbotron h2 {
