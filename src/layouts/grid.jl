@@ -36,6 +36,8 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
       if ( cur_key_code == 68 ) ; is_action_key = true ; $cur_observer[] = "right" ; end
       if ( cur_key_code == 83 ) ; is_action_key = true ; $cur_observer[] = "down" ; end
 
+      if ( cur_key_code == 77 ) ; is_action_key = true ; $cur_observer[] = "music" ; end
+
     end
 
     if is_action_key ; cur_event.preventDefault() ; end
@@ -66,6 +68,8 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
       if ( cur_key_code == 87 ) ; is_action_key = true ; $cur_observer[] = "" ; end
       if ( cur_key_code == 68 ) ; is_action_key = true ; $cur_observer[] = "" ; end
       if ( cur_key_code == 83 ) ; is_action_key = true ; $cur_observer[] = "" ; end
+
+      if ( cur_key_code == 77 ) ; is_action_key = true ; $cur_observer[] = "" ; end
 
     end
 
