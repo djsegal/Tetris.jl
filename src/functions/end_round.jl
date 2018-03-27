@@ -2,24 +2,7 @@ function end_round(cur_player::AbstractPlayer, is_restart::Bool=false)
   cur_player.state.is_playing = false
   cur_player.state.is_done = true
 
-  cur_player.grid.height = 0
-  fill!(cur_player.grid.table, "")
-
-  empty!(cur_player.bag.pieces)
-
-  cur_player.hold = Nullable{AbstractPiece}()
-  cur_player.piece = Nullable{AbstractPiece}()
-  cur_player.shadow = Piece(cur_player)
-
-  Round(cur_player)
-
-  cur_player.level = 1
-  cur_player.score = 0
-
-  cur_player.lines = 0
-  cur_player.combo = 0
-
-  cur_player.glues = 0
+  set_default_values(cur_player)
 
   cur_js = """
     \$(".js-tetris-container").blur();
