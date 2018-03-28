@@ -114,7 +114,7 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
       ),
       dom"div"(
         dom"div"("⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️"),
-        dom"div"("q. e. space bar"),
+        dom"div"("c. z. space bar"),
         attributes=Dict(:class => "cs-how-to")
       ),
       attributes=Dict(:class => "cs-overlay-screen cs-splash-screen js-splash-screen cs-blue-grey")
