@@ -65,7 +65,7 @@ function setup()
 
     getfield(Tetris, Symbol(cur_action))(cur_player)
 
-    in(cur_action, ["left", "right", "down"]) || return
+    in(cur_action, ["slide_left", "slide_right", "soft_drop"]) || return
 
     cur_player.action = cur_action
 
