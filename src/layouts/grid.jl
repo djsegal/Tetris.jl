@@ -26,7 +26,7 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
       if ( cur_key_code == 37 ) ; is_action_key = true ; $cur_observer[] = "slide_left" ; end
       if ( cur_key_code == 38 ) ; is_action_key = true ; $cur_observer[] = "clockwise" ; end
       if ( cur_key_code == 39 ) ; is_action_key = true ; $cur_observer[] = "slide_right" ; end
-      if ( cur_key_code == 40 ) ; is_action_key = true ; $cur_observer[] = "slow_drop" ; end
+      if ( cur_key_code == 40 ) ; is_action_key = true ; $cur_observer[] = "soft_drop" ; end
 
       if ( cur_key_code == 32 ) ; is_action_key = true ; $cur_observer[] = "hard_drop" ; end
 
