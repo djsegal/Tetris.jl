@@ -69,7 +69,11 @@ function render(cur_observer::Observable, cur_grid::AbstractGrid)
 
   cur_events["keypress"] = @js function (cur_event)
 
-    cur_event.preventDefault();
+    if cur_event.target.tagName.toLowerCase() !== "input"
+
+      cur_event.preventDefault();
+
+    end
 
   end
 
