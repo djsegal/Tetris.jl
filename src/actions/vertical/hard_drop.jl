@@ -5,8 +5,6 @@ function hard_drop(cur_player::AbstractPlayer)
 
   did_move = hard_drop(cur_player, cur_piece, true)
 
-  did_move || return false
-
   cur_player.clock.lock =
     Nullable{Base.Random.UUID}()
 
