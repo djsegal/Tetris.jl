@@ -1,3 +1,4 @@
+include("check_clock.jl")
 include("update_scores.jl")
 include("set_default_values.jl")
 include("send_logs.jl")

@@ -4,7 +4,7 @@ function drag_clock(cur_player::AbstractPlayer)
 
   cur_player.clock.drag = cur_uuid
 
-  @async while cur_player.state.is_playing && !cur_player.state.is_done
+  @async while check_clock(cur_player)
 
     sleep(4)
 
