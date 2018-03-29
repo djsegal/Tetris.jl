@@ -4,6 +4,8 @@ function push_clock(cur_player::AbstractPlayer)
 
   cur_player.clock.push = cur_uuid
 
+  zero_seconds = Base.Dates.Millisecond(0)
+
   total_time = Base.Dates.Millisecond(12000)
 
   is_first_call = true
@@ -23,7 +25,14 @@ function push_clock(cur_player::AbstractPlayer)
 
     time_diff = now() - init_time
 
-    sleep(total_time - time_diff)
+    sleep_time = total_time - time_diff
+
+    if sleep_time > zero_seconds
+      sleep(sleep_time)
+    else
+      sleep(1)
+    end
+
 
   end
 
