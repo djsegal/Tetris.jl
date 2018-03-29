@@ -33,7 +33,6 @@ function push_clock(cur_player::AbstractPlayer)
       sleep(1)
     end
 
-
   end
 
 end
