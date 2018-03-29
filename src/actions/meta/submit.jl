@@ -16,6 +16,8 @@ function submit(cur_player::AbstractPlayer, cur_name::AbstractString)
 
   cur_response = nothing
 
+  cur_error = nothing
+
   try
     cur_response = HTTP.post(
       scores_endpoint,
@@ -24,6 +26,8 @@ function submit(cur_player::AbstractPlayer, cur_name::AbstractString)
     )
 
     did_save_score = ( cur_response.status == 201 )
+
+    did_save_score || ( cur_error = cur_response )
   catch cur_error
     any(
       cur_error_type -> isa(cur_error, cur_error_type),
@@ -32,13 +36,7 @@ function submit(cur_player::AbstractPlayer, cur_name::AbstractString)
   end
 
   if !did_save_score
-    evaljs(
-      cur_player.game.scope,
-      JSString("""
-        alert(cur_error)
-      """)
-    )
-
+    println(cur_error)
     return
   end
 
