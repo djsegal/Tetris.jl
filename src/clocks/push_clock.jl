@@ -12,7 +12,9 @@ function push_clock(cur_player::AbstractPlayer)
 
   @async while cur_player.round.is_keeping_score && check_clock(cur_player, :push, cur_uuid)
 
-    if length(cur_player.round.logs) < min_logs
+    init_logs = length(cur_player.round.logs)
+
+    if init_logs < min_logs
       sleep(total_time)
       continue
     end
@@ -20,6 +22,15 @@ function push_clock(cur_player::AbstractPlayer)
     init_time = now()
 
     send_logs(cur_player)
+
+    logs_diff = init_logs - length(cur_player.round.logs)
+
+    evaljs(
+      cur_player.game.scope,
+      JSString("""
+        console.log("Sent $(logs_diff) logs to score api.");
+      """)
+    )
 
     time_diff = now() - init_time
 
