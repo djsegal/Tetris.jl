@@ -9,7 +9,7 @@ function send_logs(cur_player::AbstractPlayer, limit_logs::Bool=true)
 
   end_index = length(cur_round.logs)
 
-  limit_logs && ( end_index = min(40, end_index) )
+  limit_logs && ( end_index = min(30, end_index) )
 
   cur_log_range = 1:end_index
 

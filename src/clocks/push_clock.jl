@@ -6,7 +6,7 @@ function push_clock(cur_player::AbstractPlayer)
 
   one_second = Base.Dates.Millisecond(1000)
 
-  total_time = 5 * one_second
+  sleep_time = 5 * one_second
 
   min_logs = 10
 
@@ -15,11 +15,9 @@ function push_clock(cur_player::AbstractPlayer)
     init_logs = length(cur_player.round.logs)
 
     if init_logs < min_logs
-      sleep(total_time)
+      sleep(sleep_time)
       continue
     end
-
-    init_time = now()
 
     send_logs(cur_player)
 
@@ -30,13 +28,6 @@ function push_clock(cur_player::AbstractPlayer)
       JSString("""
         console.log("Sent $(logs_diff) logs to score api.");
       """)
-    )
-
-    time_diff = now() - init_time
-
-    sleep_time = max(
-      one_second,
-      total_time - time_diff
     )
 
     sleep(sleep_time)
