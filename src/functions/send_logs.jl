@@ -1,4 +1,4 @@
-function send_logs(cur_player::AbstractPlayer)
+function send_logs(cur_player::AbstractPlayer, max_logs::Union{Void, Int}=40)
   cur_round = cur_player.round
 
   isempty(cur_round.logs) && return true
@@ -7,7 +7,12 @@ function send_logs(cur_player::AbstractPlayer)
 
   cur_round.is_making_call = true
 
-  cur_log_range = 1:length(cur_round.logs)
+  end_index = length(cur_round.logs)
+
+  ( max_logs == nothing ) ||
+    ( end_index = min(max_logs, end_index) )
+
+  cur_log_range = 1:end_index
 
   cur_logs = cur_round.logs[cur_log_range]
 

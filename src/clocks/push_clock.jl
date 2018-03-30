@@ -4,18 +4,16 @@ function push_clock(cur_player::AbstractPlayer)
 
   cur_player.clock.push = cur_uuid
 
-  five_seconds = Base.Dates.Millisecond(5000)
+  one_second = Base.Dates.Millisecond(1000)
 
-  total_time = 3 * five_seconds
+  total_time = 5 * one_second
 
-  is_first_call = true
+  min_logs = 10
 
   @async while cur_player.round.is_keeping_score && check_clock(cur_player, :push, cur_uuid)
 
-    if is_first_call
-      is_first_call = false
-
-      sleep( total_time / 2 )
+    if length(cur_player.round.logs) < min_logs
+      sleep(total_time)
       continue
     end
 
@@ -26,7 +24,7 @@ function push_clock(cur_player::AbstractPlayer)
     time_diff = now() - init_time
 
     sleep_time = max(
-      five_seconds,
+      one_second,
       total_time - time_diff
     )
 

@@ -49,7 +49,7 @@ function end_round(cur_player::AbstractPlayer, is_restart::Bool=false)
 
   cur_func = function(cur_timer::Timer)
     cur_player.round.is_making_call && return
-    send_logs(cur_player) || return
+    send_logs(cur_player, nothing) || return
 
     evaljs(
       cur_player.game.scope,
