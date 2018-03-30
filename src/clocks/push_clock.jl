@@ -4,9 +4,9 @@ function push_clock(cur_player::AbstractPlayer)
 
   cur_player.clock.push = cur_uuid
 
-  one_second = Base.Dates.Millisecond(1000)
+  five_seconds = Base.Dates.Millisecond(5000)
 
-  total_time = 12 * one_second
+  total_time = 3 * five_seconds
 
   is_first_call = true
 
@@ -26,7 +26,7 @@ function push_clock(cur_player::AbstractPlayer)
     time_diff = now() - init_time
 
     sleep_time = max(
-      one_second,
+      five_seconds,
       total_time - time_diff
     )
 
