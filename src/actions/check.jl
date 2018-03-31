@@ -8,7 +8,10 @@ function check(cur_blocks::Vector{Tuple{Int,Int}}, cur_grid::AbstractGrid, cur_o
     ( cur_col <= 0 ) && return false
     ( cur_row <= 0 ) && return false
 
+    total_rows = cur_grid.rows + cur_grid.hidden_rows
+
     ( cur_col > cur_grid.cols ) && return false
+    ( cur_row > total_rows ) && return false
 
     has_collision = ( cur_grid.table[cur_row, cur_col] != "" )
     has_collision && return false
