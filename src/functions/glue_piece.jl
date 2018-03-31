@@ -54,6 +54,8 @@ function glue_piece!(cur_player::AbstractPlayer)
 
   cur_player.glues += 1
 
+  iszero( cur_player.glues % 25 ) && @async gc()
+
   if iszero(cleared_count)
     cur_player.combo = 0
 
