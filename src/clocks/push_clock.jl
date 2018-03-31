@@ -10,6 +10,8 @@ function push_clock(cur_player::AbstractPlayer)
 
   min_logs = 10
 
+  push_count = 0
+
   @async while cur_player.round.is_keeping_score && check_clock(cur_player, :push, cur_uuid)
 
     init_logs = length(cur_player.round.logs)
@@ -29,6 +31,10 @@ function push_clock(cur_player::AbstractPlayer)
         console.log("Sent $(logs_diff) logs to score api.");
       """)
     )
+
+    push_count += 1
+
+    iszero( push_count % 5 ) && gc()
 
     sleep(sleep_time)
 
