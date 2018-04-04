@@ -7,30 +7,29 @@ music by: [Ghost & Kozmos](https://soundcloud.com/the-ghost-that-haunts-your-hou
 
 -----
 
-### Instructions
+### 
+
 
 note: must be using Python 2.x // :(
 
-1) enter this into a julia repl:
+1) add tetris package
 
 ```julia
-> Pkg.clone("https://github.com/djsegal/Tetris.jl")
-> Pkg.build("WebIO")
+> Pkg.add("Tetris")
 ```
 
-2) now you can play tetris in jupyter!
+2) get webio working
+
+> see webio [readme](https://github.com/juliaGizmos/WebIO.jl#getting-started) 
+
+3) now you can play tetris in jupyter!
 
 ```julia
 using Tetris
 
-function foo()
-  for cur_index in 99:-1:0
-    print("$(cur_index) bottles of beer on the wall. ")
-    println("$(cur_index) bottles of beer.")
-    println("Take one down. Pass it around.")
-    sleep(0.5)
-  end
-end
+@tetris slow_function()
 
-@tetris foo()
+# or just Tetris.setup()
 ```
+
+// for the most part, controls match [tetris friends](http://www.tetrisfriends.com/help/tips_appendix.php#controls)
