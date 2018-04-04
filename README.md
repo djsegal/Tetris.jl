@@ -20,7 +20,7 @@ note: must be using Python 2.x // :(
 
 2) get webio working
 
-> see webio [readme](https://github.com/juliaGizmos/WebIO.jl#getting-started) 
+   + see webio [readme](https://github.com/juliaGizmos/WebIO.jl#getting-started) 
 
 3) now you can play tetris in jupyter!
 
@@ -32,4 +32,4 @@ using Tetris
 # or just Tetris.setup()
 ```
 
-// for the most part, controls match [tetris friends](http://www.tetrisfriends.com/help/tips_appendix.php#controls)
+*// for the most part, controls match [tetris friends](http://www.tetrisfriends.com/help/tips_appendix.php#controls)*
