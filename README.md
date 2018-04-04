@@ -22,7 +22,7 @@ note: must be using Python 2.x // :(
 
    + see webio [readme](https://github.com/juliaGizmos/WebIO.jl#getting-started) 
 
-3) now you can play tetris in jupyter!
+3) play some tetris!
 
 ```julia
 using Tetris
