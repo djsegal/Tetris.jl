@@ -1,11 +1,24 @@
 function hold(cur_player::AbstractPlayer)
 
+  # ------------
+  #  start hold
+  # ------------
+
   can_move(cur_player) || return
 
   cur_player.state.can_hold || return
   cur_player.state.can_hold = false
 
   score!(cur_player, "hold", -1)
+
+  # ------------
+  #  clean hold
+  # ------------
+
+  cur_js = """
+    \$(".js-hold-piece td").removeClass();
+    var tmp_cell;
+  """
 
   if is_repl
     cur_coords = map(
@@ -28,16 +41,17 @@ function hold(cur_player::AbstractPlayer)
         has_piece = cur_player.grid.table[cur_row, cur_col] != ""
         has_piece && continue
 
-        push!(cur_string, "\x1b[$(cur_player.grid.rows-cur_row+4);$(8+2*cur_col)H")
+        push!(cur_string, "\x1b[$(cur_player.grid.rows-cur_row+4);$(29+2*cur_col)H")
         push!(cur_string, crayon_dict["invisible"])
         push!(cur_string, "  ")
         push!(cur_string, inv(crayon_dict["invisible"]))
       end
     end
-
-    push!(cur_string, "\x1b[u")
-    print(cur_string...)
   end
+
+  # -------------------
+  #  show hold preview
+  # -------------------
 
   work_piece, cur_player.piece =
     cur_player.piece, cur_player.hold
@@ -50,13 +64,19 @@ function hold(cur_player::AbstractPlayer)
     :hold
   )
 
-  cur_js = """
-    \$(".js-hold-piece td").removeClass();
-    var tmp_cell;
-  """
-
   cur_game = cur_player.game
   cur_piece = cur_player.hold
+
+  if is_repl
+    for cur_row in 1:2
+      for cur_col in 1:4
+        push!(cur_string, "\x1b[$(21-cur_row);$(9+2*cur_col)H")
+        push!(cur_string, crayon_dict["invisible"])
+        push!(cur_string, "  ")
+        push!(cur_string, inv(crayon_dict["invisible"]))
+      end
+    end
+  end
 
   for cur_block in cur_piece.blocks
     (cur_row, cur_col) = calc_block_coords(cur_block)
@@ -70,6 +90,22 @@ function hold(cur_player::AbstractPlayer)
       tmp_cell = \$(".js-hold-piece .cs-row-$(cur_row) td:nth-child($(cur_col))");
       tmp_cell.addClass("cs-color cs-$(cur_piece.color)");
     """
+
+    if is_repl
+      push!(cur_string, "\x1b[$(21-cur_row);$(9+2*cur_col)H")
+      push!(cur_string, crayon_dict["$(cur_piece.color)_shadow"])
+      push!(cur_string, "  ")
+      push!(cur_string, inv(crayon_dict["$(cur_piece.color)_shadow"]))
+    end
+  end
+
+  # --------------
+  #  wrap-up hold
+  # --------------
+
+  if is_repl
+    push!(cur_string, "\x1b[u")
+    print(cur_string...)
   end
 
   tetris_js(

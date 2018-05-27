@@ -98,7 +98,7 @@ function glue_piece!(cur_player::AbstractPlayer)
         cur_color = cur_player.grid.table[cur_row, cur_col]
         ( cur_color == "" ) && ( cur_color = "invisible" )
 
-        push!(cur_string, "\x1b[$(cur_player.grid.rows-cur_row+4);$(8+2*cur_col)H")
+        push!(cur_string, "\x1b[$(cur_player.grid.rows-cur_row+4);$(29+2*cur_col)H")
         push!(cur_string, crayon_dict[cur_color],)
         push!(cur_string, "  ")
         push!(cur_string, inv(crayon_dict[cur_color]))
@@ -106,7 +106,6 @@ function glue_piece!(cur_player::AbstractPlayer)
     end
 
     push!(cur_string, "\x1b[u")
-
     print(cur_string...)
   end
 

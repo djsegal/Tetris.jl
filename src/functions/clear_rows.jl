@@ -51,6 +51,16 @@ function clear_rows!(cur_player::AbstractPlayer, cleared_rows::Vector{Int})
       cur_js *= """
         \$(".js-level-text").text("Level $(cur_player.level)");
       """
+
+      if is_repl
+        cur_string = []
+        push!(cur_string, crayon_dict["grey"])
+        push!(cur_string, "\x1b[$(8);$(11)H")
+        push!(cur_string, "   $(lpad(cur_player.level, 2, "0"))   ")
+        push!(cur_string, inv(crayon_dict["grey"]))
+        push!(cur_string, "\x1b[u")
+        print(cur_string...)
+      end
     end
   end
 

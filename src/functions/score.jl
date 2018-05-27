@@ -72,6 +72,16 @@ function score!(cur_player::AbstractPlayer, cur_label::AbstractString, cur_value
     cur_player.score += cur_score
   end
 
+  if is_repl
+    cur_string = []
+    push!(cur_string, crayon_dict["grey"])
+    push!(cur_string, "\x1b[$(14);$(11)H")
+    push!(cur_string, lpad(cur_player.score, 8, "0"))
+    push!(cur_string, inv(crayon_dict["grey"]))
+    push!(cur_string, "\x1b[u")
+    print(cur_string...)
+  end
+
   return cur_score
 
 end

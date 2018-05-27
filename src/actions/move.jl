@@ -1,5 +1,18 @@
 function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
 
+  # ==================
+  #  handle repl move
+  # ==================
+
+  if is_repl
+    _move_repl(cur_player)
+
+    cur_player.clock.lock =
+      Nullable{Base.Random.UUID}()
+
+    return
+  end
+
   # ====================
   #  start from scratch
   # ====================
@@ -14,53 +27,6 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
     """
   end
 
-  if is_repl
-    cur_string = []
-
-    cur_piece = cur_player.piece
-
-    cur_piece_coords = map(
-      cur_block -> calc_block_coords(cur_block),
-      cur_piece.blocks
-    )
-
-    row_info = map(first, cur_piece_coords)
-    col_info = map(last, cur_piece_coords)
-
-    max_row = min(cur_player.grid.rows, maximum(row_info) + cur_player.piece.width )
-
-    min_col = max(1, minimum(col_info) - cur_player.piece.width )
-    max_col = min(cur_player.grid.cols, maximum(col_info) + cur_player.piece.width )
-
-    cur_shadow = cur_player.shadow
-
-    cur_shadow_coords = map(
-      cur_block -> calc_block_coords(cur_block),
-      cur_shadow.blocks
-    )
-
-    for cur_row in 1:max_row
-      for cur_col in 1:cur_player.grid.cols
-        has_piece = cur_player.grid.table[cur_row, cur_col] != ""
-        has_piece && continue
-
-        if in((cur_row, cur_col), cur_piece_coords)
-          cur_color = cur_piece.color
-        elseif in((cur_row, cur_col), cur_shadow_coords)
-          cur_color = "$(cur_piece.color)_shadow"
-        else
-          cur_color = "invisible"
-        end
-
-        push!(cur_string, "\x1b[$(cur_player.grid.rows-cur_row+4);$(8+2*cur_col)H")
-        push!(cur_string, crayon_dict[cur_color])
-        push!(cur_string, "  ")
-        push!(cur_string, inv(crayon_dict[cur_color]))
-      end
-    end
-
-  end
-
   # ==============
   #  update score
   # ==============
@@ -73,9 +39,7 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
   #  re-add piece
   # ==============
 
-  if is_ide
-    cur_piece = cur_player.piece
-  end
+  cur_piece = cur_player.piece
 
   cur_coords = map(
     cur_block -> calc_block_coords(cur_block),
@@ -97,8 +61,6 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
     """
   end
 
-  is_repl && append!(cur_string, _move_repl(cur_player, cur_coords, false))
-
   # ==============
   #  return early
   #  if no shadow
@@ -117,9 +79,7 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
   #  add shadow
   # ============
 
-  if is_ide
-    cur_shadow = cur_player.shadow
-  end
+  cur_shadow = cur_player.shadow
 
   cur_coords = map(
     cur_block -> calc_block_coords(cur_block),
@@ -134,8 +94,6 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
       cur_cell.addClass("cs-$(cur_shadow.color)");
     """
   end
-
-  is_repl && append!(cur_string, _move_repl(cur_player, cur_coords, true))
 
   # ====================
   #  remove bad borders
@@ -172,11 +130,6 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
   #  wrap up move
   # ==============
 
-  if is_repl
-    push!(cur_string, "\x1b[u")
-    print(cur_string...)
-  end
-
   tetris_js(cur_player.game.scope, JSString(cur_js))
 
   cur_player.clock.lock =
@@ -186,19 +139,51 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
 
 end
 
-function _move_repl(cur_player::AbstractPlayer, cur_coords::Vector{Tuple{Int64,Int64}}, is_shadow)
+function _move_repl(cur_player::AbstractPlayer)
   cur_string = []
 
-  cur_color = cur_player.piece.color
-  is_shadow && ( cur_color *= "_shadow" )
+  cur_piece = cur_player.piece
 
-  for (cur_row, cur_col) in cur_coords
-    ( cur_row > cur_player.grid.rows ) && continue
-    push!(cur_string, "\x1b[$(cur_player.grid.rows-cur_row+4);$(8+2*cur_col)H")
-    push!(cur_string, crayon_dict[cur_color])
-    push!(cur_string, "  ")
-    push!(cur_string, inv(crayon_dict[cur_color]))
+  cur_piece_coords = map(
+    cur_block -> calc_block_coords(cur_block),
+    cur_piece.blocks
+  )
+
+  row_info = map(first, cur_piece_coords)
+  col_info = map(last, cur_piece_coords)
+
+  max_row = min(cur_player.grid.rows, maximum(row_info) + cur_player.piece.width )
+
+  min_col = max(1, minimum(col_info) - cur_player.piece.width )
+  max_col = min(cur_player.grid.cols, maximum(col_info) + cur_player.piece.width )
+
+  cur_shadow = cur_player.shadow
+
+  cur_shadow_coords = map(
+    cur_block -> calc_block_coords(cur_block),
+    cur_shadow.blocks
+  )
+
+  for cur_row in 1:max_row
+    for cur_col in 1:cur_player.grid.cols
+      has_piece = cur_player.grid.table[cur_row, cur_col] != ""
+      has_piece && continue
+
+      if in((cur_row, cur_col), cur_piece_coords)
+        cur_color = cur_piece.color
+      elseif in((cur_row, cur_col), cur_shadow_coords)
+        cur_color = "$(cur_piece.color)_shadow"
+      else
+        cur_color = "invisible"
+      end
+
+      push!(cur_string, "\x1b[$(cur_player.grid.rows-cur_row+4);$(29+2*cur_col)H")
+      push!(cur_string, crayon_dict[cur_color])
+      push!(cur_string, "  ")
+      push!(cur_string, inv(crayon_dict[cur_color]))
+    end
   end
 
-  return cur_string
+  push!(cur_string, "\x1b[u")
+  print(cur_string...)
 end

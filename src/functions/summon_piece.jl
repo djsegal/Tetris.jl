@@ -42,6 +42,21 @@ function summon_piece!(cur_player::AbstractPlayer)
     var tmp_cell;
   """
 
+  if is_repl
+    cur_string = []
+
+    for cur_index in 1:cur_previews
+      for cur_row in 1:2
+        for cur_col in 1:4
+          push!(cur_string, "\x1b[$(3-cur_row+6*cur_index);$(61+2*cur_col)H")
+          push!(cur_string, crayon_dict["invisible"])
+          push!(cur_string, "  ")
+          push!(cur_string, inv(crayon_dict["invisible"]))
+        end
+      end
+    end
+  end
+
   for (cur_index, cur_piece) in enumerate(cur_player.bag.pieces[1:cur_previews])
     for cur_block in cur_piece.blocks
       (cur_row, cur_col) = calc_block_coords(cur_block)
@@ -55,7 +70,19 @@ function summon_piece!(cur_player::AbstractPlayer)
         tmp_cell = \$(".js-preview-piece__$(cur_index) .cs-row-$(cur_row) td:nth-child($(cur_col))");
         tmp_cell.addClass("cs-color cs-$(cur_piece.color)");
       """
+
+      if is_repl
+        push!(cur_string, "\x1b[$(3-cur_row+6*cur_index);$(61+2*cur_col)H")
+        push!(cur_string, crayon_dict[cur_piece.color])
+        push!(cur_string, "  ")
+        push!(cur_string, inv(crayon_dict[cur_piece.color]))
+      end
     end
+  end
+
+  if is_repl
+    push!(cur_string, "\x1b[u")
+    print(cur_string...)
   end
 
   tetris_js(
