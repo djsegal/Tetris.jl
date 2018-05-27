@@ -1,6 +1,6 @@
 # Tetris
 
-![Gameplay Shots](https://raw.githubusercontent.com/djsegal/Tetris.jl/master/tetris.png)
+[![Gameplay Shots](https://raw.githubusercontent.com/djsegal/Tetris.jl/master/tetris.png)](https://mybinder.org/v2/gh/djsegal/tetris-binder/master?urlpath=apps%2FJulia%20Tetris.ipynb)
 
 music by: [Ghost & Kozmos](https://soundcloud.com/the-ghost-that-haunts-your-house/ghost-kozmos-tetris-theme-electro-swing-remix)
 
@@ -31,4 +31,6 @@ using Tetris
 @tetris slow_func()
 ```
 
-*// for the most part, controls match [tetris friends](http://www.tetrisfriends.com/help/tips_appendix.php#controls)*
+### Controls
+
+For the most part, they match [tetris friends](http://www.tetrisfriends.com/help/tips_appendix.php#controls).
