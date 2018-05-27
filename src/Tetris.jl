@@ -10,6 +10,8 @@ module Tetris
   using CodecZlib
 
 
+  include("platform.jl")
+
   include("abstracts.jl")
   include("consts.jl")
   include("api.jl")

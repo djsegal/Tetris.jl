@@ -4,9 +4,7 @@ function setup()
   #  add styling
   # -------------
 
-  is_ijulia = isdefined(Main, :IJulia) && Main.IJulia.inited
-
-  relative_dir = is_ijulia ? "" : "/"
+  relative_dir = is_ijulia() ? "" : "/"
 
   cur_scope = Scope(imports=[
     "https://fonts.googleapis.com/css?family=Press+Start+2P",
