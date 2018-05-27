@@ -1,5 +1,7 @@
 # Tetris
 
+![Gameplay Shots](https://raw.githubusercontent.com/djsegal/Tetris.jl/master/tetris.png)
+
 music by: [Ghost & Kozmos](https://soundcloud.com/the-ghost-that-haunts-your-house/ghost-kozmos-tetris-theme-electro-swing-remix)
 
 [![Build Status](https://travis-ci.org/djsegal/Tetris.jl.svg?branch=master)](https://travis-ci.org/djsegal/Tetris.jl)
@@ -7,29 +9,26 @@ music by: [Ghost & Kozmos](https://soundcloud.com/the-ghost-that-haunts-your-hou
 
 -----
 
-### 
-
-
-note: must be using Python 2.x // :(
-
-1) add tetris package
+### Installation
 
 ```julia
-> Pkg.add("Tetris")
+Pkg.add("Tetris")
 ```
 
-2) get webio working
+### Usage
 
-   + see webio [readme](https://github.com/juliaGizmos/WebIO.jl#getting-started) 
+Standard usage is:
 
-3) play some tetris!
-
-```julia
+```
 using Tetris
+Tetris.setup()
+```
 
-@tetris slow_function()
+However, if you have a long running function, this might be more your speed:
 
-# or just Tetris.setup()
+```
+using Tetris
+@tetris slow_func()
 ```
 
 *// for the most part, controls match [tetris friends](http://www.tetrisfriends.com/help/tips_appendix.php#controls)*
