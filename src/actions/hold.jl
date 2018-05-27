@@ -7,6 +7,38 @@ function hold(cur_player::AbstractPlayer)
 
   score!(cur_player, "hold", -1)
 
+  if is_repl
+    cur_coords = map(
+      cur_block -> calc_block_coords(cur_block),
+      cur_player.piece.blocks
+    )
+
+    cur_string = []
+
+    row_info = map(first, cur_coords)
+    col_info = map(last, cur_coords)
+
+    max_row = min(cur_player.grid.rows, maximum(row_info) + cur_player.piece.width )
+
+    min_col = max(1, minimum(col_info) - cur_player.piece.width )
+    max_col = min(cur_player.grid.cols, maximum(col_info) + cur_player.piece.width )
+
+    for cur_row in 1:max_row
+      for cur_col in min_col:max_col
+        has_piece = cur_player.grid.table[cur_row, cur_col] != ""
+        has_piece && continue
+
+        push!(cur_string, "\x1b[$(cur_player.grid.rows-cur_row+4);$(8+2*cur_col)H")
+        push!(cur_string, crayon_dict["invisible"])
+        push!(cur_string, "  ")
+        push!(cur_string, inv(crayon_dict["invisible"]))
+      end
+    end
+
+    push!(cur_string, "\x1b[u")
+    print(cur_string...)
+  end
+
   work_piece, cur_player.piece =
     cur_player.piece, cur_player.hold
 

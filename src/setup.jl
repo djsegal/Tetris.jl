@@ -84,11 +84,15 @@ function setup()
   #  render grid
   # -------------
 
-  display(
-    cur_game.scope(
-      render(action_observer, cur_player.grid)
+  if is_repl
+    repl_render(cur_player)
+  else
+    cur_render = cur_game.scope(
+      web_render(action_observer, cur_player.grid)
     )
-  )
+
+    display(cur_render)
+  end
 
   # ------------
   #  load music

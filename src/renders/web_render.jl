@@ -1,4 +1,4 @@
-function render(cur_observer::Observable, cur_grid::AbstractGrid)
+function web_render(cur_observer::Observable, cur_grid::AbstractGrid)
   cur_table = make_table(cur_grid.rows, cur_grid.cols, cur_grid.hidden_rows)
 
   cur_events = Dict()

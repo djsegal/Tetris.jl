@@ -1,4 +1,18 @@
 function end_round(cur_player::AbstractPlayer, is_restart::Bool=false)
+  if is_repl
+    println("""
+
+
+
+        __ _   __ _  _ __ ___    ___    ___ __   __ ___  _ __
+       / _` | / _` || '_ ` _ \\  / _ \\  / _ \\\\ \\ / // _ \\| '__|
+      | (_| || (_| || | | | | ||  __/ | (_) |\\ V /|  __/| | _  _  _
+       \\__, | \\__,_||_| |_| |_| \\___|  \\___/  \\_/  \\___||_|(_)(_)(_)
+        __/ |
+       |___/
+    """)
+  end
+
   cur_player.state.is_playing = false
   cur_player.state.is_done = true
 

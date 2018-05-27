@@ -9,6 +9,8 @@ module Tetris
   using DataStructures
   using CodecZlib
 
+  using Colors
+  using Crayons
 
 
   include("abstracts.jl")
@@ -18,12 +20,13 @@ module Tetris
   include("structs/index.jl")
   include("clocks/index.jl")
 
-  include("layouts/index.jl")
+  include("renders/index.jl")
   include("tetrominoes/index.jl")
 
   include("functions/index.jl")
   include("actions/index.jl")
 
+  include("raw_terminal.jl")
   include("setup.jl")
 
   macro tetris(cur_expr::Expr)
@@ -50,12 +53,19 @@ module Tetris
   end
 
   function __init__()
+    global terminal
 
     global is_ijulia
     global is_juno
     global is_vscode
     global is_ide
     global is_repl
+
+    terminal = Base.REPL.Terminals.TTYTerminal(
+      get(ENV, "TERM", is_windows() ? "" : "dumb"),
+      STDIN, STDOUT, STDERR
+    )
+
     is_ijulia = isdefined(Main, :IJulia) && Main.IJulia.inited
     is_juno = isdefined(Main, :Juno) && Main.Juno.isactive()
     is_vscode = isdefined(Main, :_vscodeserver)
