@@ -10,7 +10,6 @@ module Tetris
   using CodecZlib
 
 
-  include("platform.jl")
 
   include("abstracts.jl")
   include("consts.jl")
@@ -44,5 +43,25 @@ module Tetris
   end
 
   export @tetris
+
+  function tetris_js(cur_scope::Scope, cur_string::JSString)
+    is_repl && return
+    evaljs(cur_scope, cur_string)
+  end
+
+  function __init__()
+
+    global is_ijulia
+    global is_juno
+    global is_vscode
+    global is_ide
+    global is_repl
+    is_ijulia = isdefined(Main, :IJulia) && Main.IJulia.inited
+    is_juno = isdefined(Main, :Juno) && Main.Juno.isactive()
+    is_vscode = isdefined(Main, :_vscodeserver)
+
+    is_ide = is_ijulia || is_juno || is_vscode
+    is_repl = !is_ide
+  end
 
 end

@@ -49,7 +49,7 @@ function send_logs(cur_player::AbstractPlayer, limit_logs::Bool=true)
 
     deleteat!(cur_round.logs, cur_log_range)
   else
-    evaljs(
+    tetris_js(
       cur_player.game.scope,
       JSString("""
         \$(".js-offline").removeClass("hidden");

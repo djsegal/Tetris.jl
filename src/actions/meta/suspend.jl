@@ -6,7 +6,7 @@ function suspend(cur_player::AbstractPlayer)
   cur_player.clock.push = Nullable{Base.Random.UUID}()
   cur_player.clock.drop = Nullable{Base.Random.UUID}()
 
-  evaljs(
+  tetris_js(
     cur_player.game.scope,
     JSString("""
       \$(".js-tetris-container").addClass("cs-has-splash");

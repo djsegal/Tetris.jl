@@ -43,7 +43,7 @@ function Round(cur_player::AbstractPlayer=Player())
       api_errors
     ) || rethrow(cur_error)
 
-    evaljs(
+    tetris_js(
       cur_player.game.scope,
       JSString("""
         \$(".js-offline").removeClass("hidden");

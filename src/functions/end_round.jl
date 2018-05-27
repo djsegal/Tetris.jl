@@ -32,7 +32,7 @@ function end_round(cur_player::AbstractPlayer, is_restart::Bool=false)
   if !is_new_high_score
     set_default_values(cur_player)
 
-    evaljs(
+    tetris_js(
       cur_player.game.scope,
       JSString(cur_js)
     )
@@ -51,7 +51,7 @@ function end_round(cur_player::AbstractPlayer, is_restart::Bool=false)
     cur_player.round.is_making_call && return
     send_logs(cur_player, false) || return
 
-    evaljs(
+    tetris_js(
       cur_player.game.scope,
       JSString(cur_js)
     )

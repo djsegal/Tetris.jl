@@ -20,7 +20,7 @@ function update_scores(cur_player::AbstractPlayer)
     """
   end
 
-  evaljs(
+  tetris_js(
     cur_player.game.scope,
     JSString(cur_js)
   )

@@ -58,7 +58,7 @@ function summon_piece!(cur_player::AbstractPlayer)
     end
   end
 
-  evaljs(
+  tetris_js(
     cur_game.scope,
     JSString(cur_js)
   )

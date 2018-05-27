@@ -23,7 +23,7 @@ function push_clock(cur_player::AbstractPlayer)
 
     logs_diff = init_logs - length(cur_player.round.logs)
 
-    evaljs(
+    tetris_js(
       cur_player.game.scope,
       JSString("""
         console.log("Sent $(logs_diff) logs to score api.");

@@ -44,7 +44,7 @@ function submit(cur_player::AbstractPlayer, cur_name::AbstractString)
 
   set_default_values(cur_player)
 
-  evaljs(
+  tetris_js(
     cur_player.game.scope,
     JSString("""
       \$(".cs-scores-screen").removeClass("hidden");

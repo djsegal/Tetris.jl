@@ -16,7 +16,7 @@ function music(cur_player::AbstractPlayer)
 
   """
 
-  evaljs(
+  tetris_js(
     cur_player.game.scope,
     JSString(cur_js)
   )

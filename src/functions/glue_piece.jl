@@ -91,7 +91,7 @@ function glue_piece!(cur_player::AbstractPlayer)
     cur_js *= clear_rows!(cur_player, cleared_rows)
   end
 
-  evaljs(cur_player.game.scope, JSString(cur_js))
+  tetris_js(cur_player.game.scope, JSString(cur_js))
 
   cur_piece.owner = Nullable{AbstractContainer}()
   cur_player.piece = Nullable{AbstractPiece}()

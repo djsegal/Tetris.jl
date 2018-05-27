@@ -36,7 +36,7 @@ function play(cur_player::AbstractPlayer)
     \$(".js-splash-screen").addClass("cs-disappear");
   """
 
-  evaljs(
+  tetris_js(
     cur_game.scope,
     JSString(cur_js)
   )

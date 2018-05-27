@@ -17,7 +17,7 @@ function pause(cur_player::AbstractPlayer)
     \$(".js-pause-button").closest("a").$(cur_js_func)("cs-active");
   """
 
-  evaljs(
+  tetris_js(
     cur_player.game.scope,
     JSString(cur_js)
   )

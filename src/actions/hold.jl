@@ -40,7 +40,7 @@ function hold(cur_player::AbstractPlayer)
     """
   end
 
-  evaljs(
+  tetris_js(
     cur_game.scope,
     JSString(cur_js)
   )

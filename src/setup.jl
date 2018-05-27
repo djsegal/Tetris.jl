@@ -4,7 +4,7 @@ function setup()
   #  add styling
   # -------------
 
-  relative_dir = is_ijulia() ? "" : "/"
+  relative_dir = is_ijulia ? "" : "/"
 
   cur_scope = Scope(imports=[
     "https://fonts.googleapis.com/css?family=Press+Start+2P",
@@ -105,7 +105,7 @@ function setup()
     });
   """
 
-  evaljs(
+  tetris_js(
     cur_game.scope,
     JSString(music_js)
   )
@@ -114,7 +114,7 @@ function setup()
   #  responsiveness
   # ----------------
 
-  evaljs(
+  tetris_js(
     cur_game.scope,
     JSString("""
       \$(".js-tetris-container").closest(".output").css("height", "auto");
