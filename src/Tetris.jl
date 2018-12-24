@@ -12,7 +12,6 @@ module Tetris
   using Colors
   using Crayons
 
-
   include("abstracts.jl")
   include("consts.jl")
   include("api.jl")
