@@ -7,9 +7,9 @@ function setup()
   relative_dir = is_ijulia ? "" : "/"
 
   cur_scope = Scope(imports=[
-    "https://fonts.googleapis.com/css?family=Press+Start+2P",
-    "https://use.fontawesome.com/releases/v5.0.8/js/all.js",
+    "$( relative_dir )pkg/Tetris/js/fonts.js",
     "$( relative_dir )pkg/Tetris/js/howler.js",
+    "$( relative_dir )pkg/Tetris/css/fonts.css",
     "$( relative_dir )pkg/Tetris/css/offline.css",
     "$( relative_dir )pkg/Tetris/css/arcade.css",
     "$( relative_dir )pkg/Tetris/css/scores.css",
