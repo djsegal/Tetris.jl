@@ -56,7 +56,7 @@ function make_scores(cur_board::AbstractBoard, is_mobile::Bool)
   if is_mobile
     cur_contents = [
       dom"div"(
-        cur_contents,
+        cur_contents...,
         attributes=Dict(:class => "cs-mobile-scores")
       )
     ]
