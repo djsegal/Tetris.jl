@@ -27,9 +27,13 @@ function Board()
   if has_high_scores
     raw_entries = api_fetch(cur_response)
 
-    min_score = minimum(
-      map(raw_entry -> raw_entry["value"], raw_entries)
-    )
+    if isempty(raw_entries)
+      min_score = 0
+    else
+      min_score = minimum(
+        map(raw_entry -> raw_entry["value"], raw_entries)
+      )
+    end
   else
     raw_entries = []
     min_score = 0
