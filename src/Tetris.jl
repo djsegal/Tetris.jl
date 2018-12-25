@@ -12,7 +12,6 @@ module Tetris
   using Colors
   using Crayons
 
-
   include("abstracts.jl")
   include("consts.jl")
   include("api.jl")
@@ -69,6 +68,10 @@ module Tetris
     is_ijulia = isdefined(Main, :IJulia) && Main.IJulia.inited
     is_juno = isdefined(Main, :Juno) && Main.Juno.isactive()
     is_vscode = isdefined(Main, :_vscodeserver)
+
+    if is_ijulia
+      WebIO.setup("ijulia")
+    end
 
     is_ide = is_ijulia || is_juno || is_vscode
     is_repl = !is_ide
