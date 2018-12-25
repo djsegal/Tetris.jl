@@ -69,10 +69,6 @@ module Tetris
     is_juno = isdefined(Main, :Juno) && Main.Juno.isactive()
     is_vscode = isdefined(Main, :_vscodeserver)
 
-    if is_ijulia
-      WebIO.setup("ijulia")
-    end
-
     is_ide = is_ijulia || is_juno || is_vscode
     is_repl = !is_ide
   end
