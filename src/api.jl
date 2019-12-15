@@ -16,10 +16,10 @@ gzip_headers = Dict(
 
 api_errors = [
   HTTP.ExceptionRequest.StatusError,
-  Base.UVError
+  Base.IOError
 ]
 
-function api_fetch(cur_response::HTTP.Response, cur_key::Union{AbstractString, Int, Void}=nothing)
+function api_fetch(cur_response::HTTP.Response, cur_key::Union{AbstractString, Int, Nothing}=nothing)
   cur_fetch = JSON.parse(
     String(cur_response.body)
   )

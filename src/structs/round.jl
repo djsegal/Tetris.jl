@@ -13,7 +13,7 @@ mutable struct Round{T <: Vector{<:AbstractLog}} <: AbstractRound
 end
 
 function Round(cur_player::AbstractPlayer=Player())
-  cur_password = string(Base.Random.uuid4())
+  cur_password = string(UUIDs.uuid4())
 
   cur_batch_count = 0
   cur_log_count = 1

@@ -1,10 +1,10 @@
 function push_clock(cur_player::AbstractPlayer)
 
-  cur_uuid = Base.Random.uuid1()
+  cur_uuid = UUIDs.uuid4()
 
   cur_player.clock.push = cur_uuid
 
-  one_second = Base.Dates.Millisecond(1000)
+  one_second = Dates.Millisecond(1000)
 
   sleep_time = 5 * one_second
 

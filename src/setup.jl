@@ -67,7 +67,7 @@ function setup()
 
     cur_player.action = cur_action
 
-    cur_uuid = Base.Random.uuid1()
+    cur_uuid = UUIDs.uuid4()
     cur_player.clock.hold = cur_uuid
 
     cur_func = function(cur_timer::Timer)

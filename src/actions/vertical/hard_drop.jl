@@ -6,7 +6,7 @@ function hard_drop(cur_player::AbstractPlayer)
   did_move = hard_drop(cur_player, cur_piece, true)
 
   cur_player.clock.lock =
-    Nullable{Base.Random.UUID}()
+    Nullable{UUIDs.UUID}()
 
   glue_piece!(cur_player)
 

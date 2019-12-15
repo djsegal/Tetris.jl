@@ -4,10 +4,10 @@ function glue_piece!(cur_player::AbstractPlayer)
   isnull(cur_piece) && return
 
   cur_player.clock.lock =
-    Nullable{Base.Random.UUID}()
+    Nullable{UUIDs.UUID}()
 
   cur_player.clock.drag =
-    Nullable{Base.Random.UUID}()
+    Nullable{UUIDs.UUID}()
 
   cur_player.state.can_hold |= true
 

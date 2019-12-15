@@ -1,10 +1,10 @@
 function lock_clock(cur_player::AbstractPlayer)
 
-  cur_uuid = Base.Random.uuid1()
+  cur_uuid = UUIDs.uuid4()
 
   cur_player.clock.lock = cur_uuid
 
-  max_time = Base.Dates.Millisecond(500)
+  max_time = Dates.Millisecond(500)
 
   wait_time = max_time
 

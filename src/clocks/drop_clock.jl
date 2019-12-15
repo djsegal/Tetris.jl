@@ -5,12 +5,12 @@ function drop_clock(cur_player::AbstractPlayer)
   isnull(cur_player.clock.push) &&
     push_clock(cur_player)
 
-  cur_uuid = Base.Random.uuid1()
+  cur_uuid = UUIDs.uuid4()
 
   cur_player.clock.drop = cur_uuid
 
   cur_player.clock.lock =
-    Nullable{Base.Random.UUID}()
+    Nullable{UUIDs.UUID}()
 
   cur_level = cur_player.level
 
@@ -29,7 +29,7 @@ function drop_clock(cur_player::AbstractPlayer)
 
     if did_step
       cur_player.clock.lock =
-        Nullable{Base.Random.UUID}()
+        Nullable{UUIDs.UUID}()
     else
       isnull(cur_player.clock.lock) &&
         lock_clock(cur_player)

@@ -12,6 +12,14 @@ module Tetris
   using Colors
   using Crayons
 
+  using Nullables
+  using UUIDs
+
+  using Dates
+  using REPL
+
+  using Random
+
   include("abstracts.jl")
   include("consts.jl")
   include("api.jl")
@@ -60,9 +68,9 @@ module Tetris
     global is_ide
     global is_repl
 
-    terminal = Base.REPL.Terminals.TTYTerminal(
-      get(ENV, "TERM", is_windows() ? "" : "dumb"),
-      STDIN, STDOUT, STDERR
+    terminal = REPL.Terminals.TTYTerminal(
+      get(ENV, "TERM", Sys.iswindows() ? "" : "dumb"),
+      stdin, stdout, stderr
     )
 
     is_ijulia = isdefined(Main, :IJulia) && Main.IJulia.inited

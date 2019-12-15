@@ -1,4 +1,4 @@
-function hold_clock(cur_player::AbstractPlayer, cur_uuid::Base.Random.UUID)
+function hold_clock(cur_player::AbstractPlayer, cur_uuid::UUIDs.UUID)
 
   ( cur_player.game.in_focus ) || return
 

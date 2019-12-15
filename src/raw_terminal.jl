@@ -15,7 +15,7 @@ end
 
 function _enable_raw_terminal(terminal)
   try
-    Base.REPL.Terminals.raw!(terminal, true)
+    REPL.Terminals.raw!(terminal, true)
     return true
   catch err
     warn("TerminalMenus: Unable to enable raw mode: $err")
@@ -26,7 +26,7 @@ end
 
 function _disable_raw_terminal(terminal)
   try
-    Base.REPL.Terminals.raw!(terminal, false)
+    REPL.Terminals.raw!(terminal, false)
     return true
   catch err
     warn("TerminalMenus: Unable to disable raw mode: $err")

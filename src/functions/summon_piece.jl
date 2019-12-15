@@ -17,11 +17,11 @@ function summon_piece!(cur_player::AbstractPlayer)
     bad_blocks = ['s', 'z', 'o']
 
     while first(cur_bag.pieces).name in bad_blocks
-      shift!(cur_bag.pieces)
+      popfirst!(cur_bag.pieces)
     end
   end
 
-  cur_piece = shift!(cur_player.bag.pieces)
+  cur_piece = popfirst!(cur_player.bag.pieces)
 
   cur_player.piece = cur_piece
   cur_piece.owner = cur_player

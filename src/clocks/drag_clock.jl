@@ -1,6 +1,6 @@
 function drag_clock(cur_player::AbstractPlayer)
 
-  cur_uuid = Base.Random.uuid1()
+  cur_uuid = UUIDs.uuid4()
 
   cur_player.clock.drag = cur_uuid
 

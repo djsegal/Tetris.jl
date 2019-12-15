@@ -13,7 +13,7 @@ function clear_rows!(cur_player::AbstractPlayer, cleared_rows::Vector{Int})
 
     cur_range = cur_row+1:next_row-1
 
-    cur_grid.table[cur_range-cur_index,:] =
+    cur_grid.table[cur_range.-cur_index,:] =
       cur_grid.table[cur_range,:]
 
     cur_js *= """
@@ -64,10 +64,9 @@ function clear_rows!(cur_player::AbstractPlayer, cleared_rows::Vector{Int})
     end
   end
 
-  cur_range = -(row_count-1):0
-  cur_range += end_index
+  cur_range = ( -(row_count-1):0 ) .+ end_index
 
-  cur_grid.table[cur_range, :] = ""
+  cur_grid.table[cur_range, :] .= ""
 
   cur_string = "<td></td>" ^ cur_grid.cols
 

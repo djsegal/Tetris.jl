@@ -25,6 +25,7 @@ function Grid(cur_player::AbstractPlayer=Player())
     cur_height,
     fill!(
       Array{AbstractString}(
+        undef,
         cur_rows + cur_hidden_rows,
         cur_cols
       ),

@@ -3,23 +3,23 @@ mutable struct Clock <: AbstractClock
 
   last_move::Union{DateTime, Nullable{DateTime}}
 
-  drop::Union{Base.Random.UUID, Nullable{Base.Random.UUID}}
-  lock::Union{Base.Random.UUID, Nullable{Base.Random.UUID}}
-  hold::Union{Base.Random.UUID, Nullable{Base.Random.UUID}}
-  drag::Union{Base.Random.UUID, Nullable{Base.Random.UUID}}
+  drop::Union{UUIDs.UUID, Nullable{UUIDs.UUID}}
+  lock::Union{UUIDs.UUID, Nullable{UUIDs.UUID}}
+  hold::Union{UUIDs.UUID, Nullable{UUIDs.UUID}}
+  drag::Union{UUIDs.UUID, Nullable{UUIDs.UUID}}
 
-  push::Union{Base.Random.UUID, Nullable{Base.Random.UUID}}
+  push::Union{UUIDs.UUID, Nullable{UUIDs.UUID}}
 end
 
 function Clock(cur_player::AbstractPlayer=Player())
   cur_clock = Clock(
     cur_player,
     Nullable{DateTime}(),
-    Nullable{Base.Random.UUID}(),
-    Nullable{Base.Random.UUID}(),
-    Nullable{Base.Random.UUID}(),
-    Nullable{Base.Random.UUID}(),
-    Nullable{Base.Random.UUID}()
+    Nullable{UUIDs.UUID}(),
+    Nullable{UUIDs.UUID}(),
+    Nullable{UUIDs.UUID}(),
+    Nullable{UUIDs.UUID}(),
+    Nullable{UUIDs.UUID}()
   )
 
   cur_player.clock = cur_clock

@@ -49,7 +49,7 @@ function score!(cur_player::AbstractPlayer, cur_label::AbstractString, cur_value
 
   if cur_round.is_keeping_score
     cur_position, cur_round.log_count =
-      [0, 1] + cur_round.log_count
+      [0, 1] .+ cur_round.log_count
 
     cur_log = Log(
       cur_position,

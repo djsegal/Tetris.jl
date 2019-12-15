@@ -1,4 +1,4 @@
-function check_clock(cur_player::AbstractPlayer, cur_clock_symbol::Union{Void, Symbol}=nothing, expected_uuid::Union{Void, Base.Random.UUID}=nothing)
+function check_clock(cur_player::AbstractPlayer, cur_clock_symbol::Union{Nothing, Symbol}=nothing, expected_uuid::Union{Nothing, UUIDs.UUID}=nothing)
   cur_state = cur_player.state
 
   cur_state.is_playing || return false

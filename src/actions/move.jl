@@ -8,7 +8,7 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
     _move_repl(cur_player)
 
     cur_player.clock.lock =
-      Nullable{Base.Random.UUID}()
+      Nullable{UUIDs.UUID}()
 
     return
   end
@@ -70,7 +70,7 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
     tetris_js(cur_player.game.scope, JSString(cur_js))
 
     cur_player.clock.lock =
-      Nullable{Base.Random.UUID}()
+      Nullable{UUIDs.UUID}()
 
     return
   end
@@ -133,7 +133,7 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
   tetris_js(cur_player.game.scope, JSString(cur_js))
 
   cur_player.clock.lock =
-    Nullable{Base.Random.UUID}()
+    Nullable{UUIDs.UUID}()
 
   return
 
