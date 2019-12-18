@@ -1,4 +1,6 @@
 mutable struct Log <: AbstractLog
+  replica_attributes::Replica
+
   position::Int
 
   label::AbstractString
