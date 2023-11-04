@@ -6,21 +6,21 @@ end
 function Board()
   has_high_scores = false
 
-  cur_response = nothing
+  # cur_response = nothing
 
-  try
-    cur_response = HTTP.get(
-      scores_endpoint,
-      json_headers
-    )
+  # try
+  #   cur_response = HTTP.get(
+  #     scores_endpoint,
+  #     json_headers
+  #   )
 
-    has_high_scores = ( cur_response.status == 200 )
-  catch cur_error
-    any(
-      cur_error_type -> isa(cur_error, cur_error_type),
-      api_errors
-    ) || rethrow(cur_error)
-  end
+  #   has_high_scores = ( cur_response.status == 200 )
+  # catch cur_error
+  #   any(
+  #     cur_error_type -> isa(cur_error, cur_error_type),
+  #     api_errors
+  #   ) || rethrow(cur_error)
+  # end
 
   cur_entries = Entry[]
 

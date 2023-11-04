@@ -20,6 +20,10 @@ api_errors = [
 ]
 
 function api_fetch(cur_response::HTTP.Response, cur_key::Union{AbstractString, Int, Nothing}=nothing)
+  # todo: remove [top]
+  return
+  # todo: remove [bot]
+
   cur_fetch = JSON.parse(
     String(cur_response.body)
   )

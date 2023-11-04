@@ -1,4 +1,8 @@
 function send_logs(cur_player::AbstractPlayer, limit_logs::Bool=true)
+  # todo: remove [top]
+  return
+  # todo: remove [bot]
+
   cur_round = cur_player.round
 
   isempty(cur_round.logs) && return true
