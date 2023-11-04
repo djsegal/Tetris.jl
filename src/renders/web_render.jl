@@ -13,9 +13,8 @@ function web_render(cur_observer::Observable, cur_grid::AbstractGrid)
 
   cur_events["keydown"] = @js function (cur_event)
 
-    cur_key_code = cur_event.keyCode;
-
-    is_action_key = false;
+    @var cur_key_code = cur_event.keyCode;
+    @var is_action_key = false;
 
     if cur_event.target.tagName.toLowerCase() !== "input"
 
@@ -41,9 +40,8 @@ function web_render(cur_observer::Observable, cur_grid::AbstractGrid)
 
   cur_events["keyup"] = @js function (cur_event)
 
-    cur_key_code = cur_event.keyCode;
-
-    is_action_key = false;
+    @var cur_key_code = cur_event.keyCode;
+    @var is_action_key = false;
 
     if cur_event.target.tagName.toLowerCase() !== "input"
 
@@ -158,7 +156,7 @@ function web_render(cur_observer::Observable, cur_grid::AbstractGrid)
               ),
               events=Dict(
                 "submit" => @js function (cur_event)
-                  curName = document.querySelector(".cs-new-score input").value;
+                  @var curName = document.querySelector(".cs-new-score input").value;
 
                   $cur_observer[] = "submit-" + curName;
                   cur_event.preventDefault();

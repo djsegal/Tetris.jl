@@ -10,18 +10,18 @@
   opacity: 0.3;
 }
 
-.js-shadow-piece:not(.js-active-piece).cs-no-top-border {
+.js-cell:not(.js-active-piece).cs-no-top-border {
   border-top: none !important;
 }
 
-.js-shadow-piece:not(.js-active-piece).cs-no-bottom-border {
+.js-cell:not(.js-active-piece).cs-no-bottom-border {
   border-bottom: none !important;
 }
 
-.js-shadow-piece:not(.js-active-piece).cs-no-left-border {
+.js-cell:not(.js-active-piece).cs-no-left-border {
   border-left: none !important;
 }
 
-.js-shadow-piece:not(.js-active-piece).cs-no-right-border {
+.js-cell:not(.js-active-piece).cs-no-right-border {
   border-right: none !important;
 }

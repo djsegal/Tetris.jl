@@ -12,7 +12,7 @@ function glue_piece!(cur_player::AbstractPlayer)
   cur_player.state.can_hold |= true
 
   cur_js = """
-    \$(".js-shadow-piece, .js-active-piece").removeClass();
+    \$(".js-shadow-piece, .js-active-piece").removeClass().addClass("js-cell");
 
     var tmp_cell;
   """

@@ -7,19 +7,19 @@ function setup()
   relative_dir = is_ijulia ? "" : "/"
 
   cur_scope = Scope(imports=[
-    "$( relative_dir )pkg/Tetris/js/fonts.js",
-    "$( relative_dir )pkg/Tetris/js/howler.js",
-    "$( relative_dir )pkg/Tetris/css/fonts.css",
-    "$( relative_dir )pkg/Tetris/css/offline.css",
-    "$( relative_dir )pkg/Tetris/css/arcade.css",
-    "$( relative_dir )pkg/Tetris/css/scores.css",
-    "$( relative_dir )pkg/Tetris/css/colors.css",
-    "$( relative_dir )pkg/Tetris/css/depth.css",
-    "$( relative_dir )pkg/Tetris/css/icons.css",
-    "$( relative_dir )pkg/Tetris/css/shadow.css",
-    "$( relative_dir )pkg/Tetris/css/splash.css",
-    "$( relative_dir )pkg/Tetris/css/table.css",
-    "$( relative_dir )pkg/Tetris/css/style.css"
+    pkgdir(@__MODULE__, "assets/js/fonts.js"),
+    pkgdir(@__MODULE__, "assets/js/howler.js"),
+    pkgdir(@__MODULE__, "assets/css/fonts.css"),
+    pkgdir(@__MODULE__, "assets/css/offline.css"),
+    pkgdir(@__MODULE__, "assets/css/arcade.css"),
+    pkgdir(@__MODULE__, "assets/css/scores.css"),
+    pkgdir(@__MODULE__, "assets/css/colors.css"),
+    pkgdir(@__MODULE__, "assets/css/depth.css"),
+    pkgdir(@__MODULE__, "assets/css/icons.css"),
+    pkgdir(@__MODULE__, "assets/css/shadow.css"),
+    pkgdir(@__MODULE__, "assets/css/splash.css"),
+    pkgdir(@__MODULE__, "assets/css/table.css"),
+    pkgdir(@__MODULE__, "assets/css/style.css")
   ])
 
   # ----------------
@@ -98,15 +98,25 @@ function setup()
   #  load music
   # ------------
 
+  music_path = AssetRegistry.register(
+    pkgdir(@__MODULE__, "assets/tetris-theme.mp3")
+  )
+
   music_js = """
+    var tetrisMusic = window.tetrisMusic;
+
     if (typeof tetrisMusic !== 'undefined') {
       tetrisMusic.unload();
     }
 
-    tetrisMusic = new Howl({
-      src: ["pkg/Tetris/tetris-theme.mp3"],
+    window.tetrisMusic = new Howl({
+      src: [\"""" * music_path * """\"],
       loop: true
     });
+
+    // this is needed to have the
+    // script run for some reason:
+    console.log("Music loaded.");
   """
 
   tetris_js(
@@ -127,6 +137,6 @@ function setup()
     """)
   )
 
-  return
+  return cur_game
 
 end

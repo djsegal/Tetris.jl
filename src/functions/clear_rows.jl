@@ -68,7 +68,7 @@ function clear_rows!(cur_player::AbstractPlayer, cleared_rows::Vector{Int})
 
   cur_grid.table[cur_range, :] .= ""
 
-  cur_string = "<td></td>" ^ cur_grid.cols
+  cur_string = "<td class='js-cell'></td>" ^ cur_grid.cols
 
   for tmp_row in cur_range
     cur_js *= """

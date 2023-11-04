@@ -18,12 +18,12 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
   # ====================
 
   cur_js = """
-    \$(".js-active-piece").removeClass();
+    \$(".js-active-piece").removeClass().addClass("js-cell");
   """
 
   if with_shadow
     cur_js *= """
-      \$(".js-shadow-piece").removeClass();
+      \$(".js-shadow-piece").removeClass().addClass("js-cell");
     """
   end
 
@@ -52,7 +52,7 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
 
   for (cur_row, cur_col) in cur_coords
     cur_js *= """
-      \$(".cs-main-area .cs-row-$(cur_row) td:nth-child($(cur_col)).js-shadow-piece").removeClass();
+      \$(".cs-main-area .cs-row-$(cur_row) td:nth-child($(cur_col)).js-shadow-piece").removeClass().addClass("js-cell");
 
       cur_cell = \$(".cs-main-area .cs-row-$(cur_row) td:nth-child($(cur_col)):not(.cs-color)");
 
@@ -103,26 +103,30 @@ function move!(cur_player::AbstractPlayer, with_shadow::Bool=true)
     var other_cell;
   """
 
-  for (cur_row, cur_col) in cur_coords
-    cur_js *= """
-      cur_cell = \$(".cs-main-area .cs-row-$(cur_row) td:nth-child($(cur_col)).js-shadow-piece");
-    """
+  for cur_row in 1:cur_player.grid.rows
+    for cur_col in 1:cur_player.grid.cols
+      if cur_player.grid.table[cur_row,cur_col] != "" ; continue ; end
 
-    cur_dict = Dict(
-      "top" => (cur_row+1, cur_col),
-      "bottom" => (cur_row-1, cur_col),
-      "left" => (cur_row, cur_col-1),
-      "right" => (cur_row, cur_col+1),
-    )
-
-    for (cur_direction, (other_row, other_col)) in cur_dict
       cur_js *= """
-        other_cell = \$(".cs-main-area .cs-row-$(other_row) td:nth-child($(other_col)).cs-color:not(.js-shadow-piece)");
-
-        if ( other_cell.length > 0 ) {
-          cur_cell.addClass("cs-no-$(cur_direction)-border");
-        }
+        cur_cell = \$(".cs-main-area .cs-row-$(cur_row) td:nth-child($(cur_col))");
       """
+
+      cur_dict = Dict(
+        "top" => (cur_row+1, cur_col),
+        "bottom" => (cur_row-1, cur_col),
+        "left" => (cur_row, cur_col-1),
+        "right" => (cur_row, cur_col+1),
+      )
+
+      for (cur_direction, (other_row, other_col)) in cur_dict
+        cur_js *= """
+          other_cell = \$(".cs-main-area .cs-row-$(other_row) td:nth-child($(other_col)).cs-color:not(.js-shadow-piece)");
+
+          if ( other_cell.length > 0 ) {
+            cur_cell.addClass("cs-no-$(cur_direction)-border");
+          }
+        """
+      end
     end
   end
 

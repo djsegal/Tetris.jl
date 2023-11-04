@@ -19,6 +19,7 @@ module Tetris
   using REPL
 
   using Random
+  using AssetRegistry
 
   include("abstracts.jl")
   include("consts.jl")

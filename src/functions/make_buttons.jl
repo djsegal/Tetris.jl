@@ -47,7 +47,7 @@ function make_buttons(cur_observer::Observable)
         events=Dict("click" => @js function (cur_event)
           $cur_observer[] = "suspend";
 
-          is_sure = window.confirm("Are you sure you want to restart?");
+          @var is_sure = window.confirm("Are you sure you want to restart?");
 
           if is_sure
             $cur_observer[] = "restart";

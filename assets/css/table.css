@@ -27,6 +27,10 @@ div.cs-side-bar > table.cs-tetris-table:last-child {
   height: 3vmin;
 }
 
+.cs-tetris-table td.js-cell:not(.cs-color) {
+  border: solid 1px transparent;
+}
+
 .cs-side-bar .cs-preview-piece tr {
   background-color: transparent !important;
 }

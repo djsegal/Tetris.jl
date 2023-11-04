@@ -39,6 +39,7 @@ function summon_piece!(cur_player::AbstractPlayer)
 
   cur_js = """
     \$(".js-preview-piece td").removeClass();
+
     var tmp_cell;
   """
 

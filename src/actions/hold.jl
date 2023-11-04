@@ -17,6 +17,7 @@ function hold(cur_player::AbstractPlayer)
 
   cur_js = """
     \$(".js-hold-piece td").removeClass();
+
     var tmp_cell;
   """
 
@@ -88,7 +89,7 @@ function hold(cur_player::AbstractPlayer)
 
     cur_js *= """
       tmp_cell = \$(".js-hold-piece .cs-row-$(cur_row) td:nth-child($(cur_col))");
-      tmp_cell.addClass("cs-color cs-$(cur_piece.color)");
+      tmp_cell.addClass("js-cell cs-color cs-$(cur_piece.color)");
     """
 
     if is_repl

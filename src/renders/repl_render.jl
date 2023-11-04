@@ -1,9 +1,17 @@
 function repl_render(cur_player::AbstractPlayer)
   cur_string = []
 
-  push!(cur_string, "\x1b[2J")
+  push!(cur_string, "\x1b[1J")
+
+  push!(cur_string, "\x1b[2;1H")
+
+  push!(cur_string, " " ^ 35 * "◢ TETRIS ◣" * " " ^ 35)
+
+  push!(cur_string, "\x1b[3;1H")
 
   push!(cur_string, crayon_dict["grey"])
+
+  top_row = " " ^ 29 * "\u2584" ^ 22 * "\n"
 
   main_chunk = "\u258C" * " " ^ 20 * "\u2590"
 
@@ -22,6 +30,8 @@ function repl_render(cur_player::AbstractPlayer)
   card_bot = card_bot_chunk * main_chunk * reverse(card_bot_chunk) * "\n"
 
   bottom_row = " " ^ 29 * "\u2580" ^ 22 * "\n"
+
+  push!(cur_string, top_row)
 
   push!(cur_string, plain_row)
   push!(cur_string, plain_row)

@@ -1,16 +1,16 @@
 function make_table(cur_rows::Int, cur_cols::Int, cur_hidden_rows::Int=0; class_names::AbstractString="")
-  cur_row_array = Array{Node}(0)
+  cur_row_array = Node[]
 
   total_rows = cur_rows + cur_hidden_rows
 
   for cur_row in total_rows:-1:1
 
-    cur_cell_array = Array{Node}(0)
+    cur_cell_array = Node[]
 
     for cur_col in 1:cur_cols
       push!(
         cur_cell_array,
-        Node(:td)
+        Node(:td, attributes=Dict(:class => "js-cell"))
       )
     end
 

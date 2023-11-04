@@ -11,7 +11,8 @@ function play(cur_player::AbstractPlayer)
     cur_player.state.is_done = false
 
     cur_js *= """
-      \$(".js-tetris-container td").removeClass();
+      \$(".js-tetris-container td").removeClass().addClass("js-cell");
+
       \$(".js-level-text").text("Level $(cur_player.level)");
       \$(".js-score-text").text("$(lpad(cur_player.score, 8, "0"))");
 

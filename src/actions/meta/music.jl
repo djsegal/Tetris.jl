@@ -1,7 +1,6 @@
 function music(cur_player::AbstractPlayer)
 
   cur_js = """
-
     if (typeof tetrisMusic !== 'undefined') {
 
       if ( tetrisMusic.playing() ) {
@@ -13,7 +12,6 @@ function music(cur_player::AbstractPlayer)
       }
 
     }
-
   """
 
   tetris_js(
